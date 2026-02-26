@@ -30,8 +30,8 @@ def importJs(jsPath):
             files[key] = file
 
 def importFieldExport(fieldExportPath):
-    if not fieldExportPath.exists(): # I'll try making the filename lowercase. That's a neat trick!
-        fieldExportPath = fieldExportPath.with_name(fieldExportPath.name.lower())
+    if not os.path.exists(fieldExportPath):
+        fieldExportPath = Path(fieldExportPath).with_name(Path(fieldExportPath).name.lower())
     with io.open(fieldExportPath, 'r') as fieldExportFile:
         jsonText = fieldExportFile.read()
         global allFieldExports
