@@ -175,7 +175,7 @@ def generateJsFiles(dataPath, usePerforce):
         if p4EditString:
             subprocess.run("p4 edit " + p4EditString, check=True, shell=True, cwd=dataFilesPath)
 
-    fieldExportPath = os.path.join(dataPath, "DataGuideFieldExport.json")
+    fieldExportPath = os.path.join(dataPath, "dataguidefieldexport.json")
     allFieldExports = []
     with io.open(fieldExportPath, 'r') as fieldExportFile:
         jsonText = fieldExportFile.read()
