@@ -11,8 +11,10 @@ def jsToHtml(jsPath, htmlDir, templatePath):
 
     with io.open(jsPath, 'r') as jsFile:
         # Strip out the js specific stuff to turn it into json
-        inText = re.sub(r"(files(.*?)= )|(^[\/\/].*)", "", jsFile.read(), flags=re.MULTILINE)
-        data = json.loads(inText)
+        inText = jsFile.read()
+        key = re.search(r"(?<=files\[\").+?(?=\"\])", inText).group()
+        jsonText = re.sub(r"(files(.*?)= )|(^[\/\/].*)", "", inText, flags=re.MULTILINE)
+        data = json.loads(jsonText)
         name = data["title"]
         referenceFiles = data["referenceFiles"] if "referenceFiles" in data else []
 
@@ -22,7 +24,7 @@ def jsToHtml(jsPath, htmlDir, templatePath):
     # Fill out the html template with the filename
     with io.open(templatePath, 'r') as templateFile:
         formattedTemplate = re.sub(r"<##>", name, templateFile.read(), flags=re.MULTILINE)
-        formattedTemplate = re.sub(r"<@@>", jsPath.stem, formattedTemplate, flags=re.MULTILINE)
+        formattedTemplate = re.sub(r"<@@>", key, formattedTemplate, flags=re.MULTILINE)
 
         # Populate reference files
         if referenceFiles and len(referenceFiles) > 0:
