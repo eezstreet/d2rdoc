@@ -33,6 +33,7 @@ jobs:
         run: pip install markdown
 
       - name: Build
+        shell: pwsh
         run: python python/update_fileguide.py -a all -data data -html files
 
       - name: Setup Pages
