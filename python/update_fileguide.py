@@ -42,6 +42,8 @@ def main():
     
     runAll = args.a == 'all'
 
+    print('Generating docs...')
+
     # Generate HTML
     if runAll or args.a == 'files':
         if not generateJsFiles(args.data, args.p):
