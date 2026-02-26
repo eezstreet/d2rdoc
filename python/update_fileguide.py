@@ -3,12 +3,13 @@ import os
 from generate_js_files import generateJsFiles
 from generate_html_files import generateHtmlFiles
 from generate_search import generateSearch
+from generate_community_notes import generateCommunityNotes
 from validate import validateDataGuide
 
 def parseArgs():
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('-a', choices=['all', 'files', 'search', 'validate'], required=True)
+    parser.add_argument('-a', choices=['all', 'files', 'search', 'notes', 'validate'], required=True)
     parser.add_argument("-data", help="path to the directory that contains the data files")
     parser.add_argument("-html", help="path to the directory that contains the .html files")
     parser.add_argument("-p", action='store_true', help="whether perforce should be used")
@@ -51,7 +52,13 @@ def main():
     if runAll or args.a == 'search':
         if not generateSearch(args.data, args.p):
             return
-        
+
+    # Generate community notes
+    if runAll or args.a == 'notes':
+        repoRoot = os.path.dirname(os.path.abspath(args.data))
+        if not generateCommunityNotes(repoRoot, args.data, args.p):
+            return
+
     # Validate
     if runAll or args.a == 'validate':
         if not validateDataGuide(args.data):

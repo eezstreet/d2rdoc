@@ -59,6 +59,16 @@ function parseJSONText(text, pageOverride) {
     return text;
 }
 
+function getCommunityNote(fileKey, fieldName) {
+    if (typeof communityNotes === 'undefined') return null;
+    const fileEntry = communityNotes.find(f => f.file.toLowerCase() === fileKey.toLowerCase());
+    if (!fileEntry) return null;
+    if (fieldName === null) return fileEntry.note || null;
+    if (!fileEntry.fields) return null;
+    const fieldEntry = fileEntry.fields.find(f => f.name.toLowerCase() === fieldName.toLowerCase());
+    return fieldEntry ? fieldEntry.note || null : null;
+}
+
 function createTable(table, entries, pageOverride, attachIds = true) {
     const header = table.querySelector("thead");
     const body = table.querySelector("tbody");
@@ -309,7 +319,7 @@ function createAppendField(appendField, fileTitle, pageOverride) {
     return appendfieldClone;
 }
 
-function createField(fieldTemplate, field) {
+function createField(fieldTemplate, field, fileKey) {
     const fieldClone = fieldTemplate.content.cloneNode(true);
 
     // Field name
@@ -425,18 +435,30 @@ function createField(fieldTemplate, field) {
         fieldClone.querySelector(".field-appendfield").remove();
     }
 
+    // Community note
+    if (fileKey) {
+        const communityNote = getCommunityNote(fileKey, field.name);
+        if (communityNote) {
+            const noteDiv = document.createElement("div");
+            noteDiv.classList.add("community-note");
+            noteDiv.innerHTML = parseJSONText(communityNote, fileKey);
+            fieldClone.querySelectorAll(".field-column")[1].appendChild(noteDiv);
+        }
+    }
+
     return fieldClone;
 }
 
-function createFields(fieldTemplate, container, fieldsJson) {
+function createFields(fieldTemplate, container, fieldsJson, fileKey) {
     for (const field of fieldsJson) {
-        container.appendChild(createField(fieldTemplate, field));
+        container.appendChild(createField(fieldTemplate, field, fileKey));
     }
 }
 
 function createFile(fileData, fileContainer) {
     const fileTemplate = document.querySelector("#file-template");
     const fileClone = fileTemplate.content.cloneNode(true);
+    const fileKey = Object.keys(files).find(k => files[k] === fileData);
 
     const title = fileClone.querySelector(".file-title");
     title.innerText = fileData.title;
@@ -444,9 +466,18 @@ function createFile(fileData, fileContainer) {
     const overview = fileClone.querySelector(".file-overview");
     overview.innerHTML = parseJSONText(fileData.overview);
 
+    // File-level community note
+    const fileNote = getCommunityNote(fileKey, null);
+    if (fileNote) {
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("community-note");
+        noteDiv.innerHTML = parseJSONText(fileNote, fileKey);
+        overview.after(noteDiv);
+    }
+
     const fieldTemplate = document.querySelector("#field-template");
     const fieldsContainer = fileClone.querySelector(".file-fields");
-    createFields(fieldTemplate, fieldsContainer, fileData.fields);
+    createFields(fieldTemplate, fieldsContainer, fileData.fields, fileKey);
 
     fileContainer.appendChild(fileClone);
 }

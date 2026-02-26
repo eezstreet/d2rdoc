@@ -118,6 +118,19 @@
     cursor: pointer;
 }
 
+/* Community Notes */
+
+.community-note {
+    color: #7ec8e3;
+    margin-top: 0.75rem;
+    font-style: italic;
+}
+
+.community-note::before {
+    content: "Community note: ";
+    font-weight: bold;
+}
+
 /* Chrome, Safari, Edge, Opera */
 .field-bittable-input::-webkit-outer-spin-button,
 .field-bittable-input::-webkit-inner-spin-button {

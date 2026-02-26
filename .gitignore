@@ -1,6 +1,7 @@
 # Generated output — do not commit, regenerate with update_fileguide.py
 files/*.html
 data/search.js
+data/community-notes.js
 
 # Python
 __pycache__/

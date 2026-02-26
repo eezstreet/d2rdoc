@@ -1,0 +1,40 @@
+[
+  {
+    "file": "misc",
+    "fields": [
+      {
+        "name": "AdvancedStashStackable",
+        "note": "According to Phrozen Keep member Yupgoolg, this controls the ability to stack items in the stash. You need to also edit layout/bankexpansionlayouthd.json in order for the item to actually show up in the stash tab."
+      }
+    ]
+  },
+  {
+    "file": "shareditems",
+    "fields": [
+      {
+        "name": "spawnable",
+        "note": "If this field is enabled, the item can still be created using the Horadric Cube."
+      },
+      {
+        "name": "cost",
+        "note": "The rarity of the item has no bearing on the cost. This base cost is modified by the 'Reduced Vendor Costs' property and the costs of each stat as defined in $!itemstatcost!$."
+      },
+      {
+        "name": "auto prefix",
+        "note": "This description is inaccurate - it applies to normal (white/grey) items as well, and it doesn't replace random prefixes - it adds to them. This column needs to be set in order for automagic to work properly."
+      },
+      {
+        "name": "stackable",
+        "note": "Not all items can be stacked if this property is turned on. Notably, gems/runes will crash the game if they are inserted into an item while they have a quantity."
+      },
+      {
+        "name": "Transmogrify",
+        "note": "The Transmogrify behavior is unused in the base game, and is a relic from the alpha version of Diablo II, which allowed for the conversion of organs (dropped items) into various utility items. When Transmogrify is enabled, the item will get a piece of text in its tooltip, stating 'Right Click to Convert to X' and it will transform into another item."
+      },
+      {
+        "name": "bitfield1",
+        "note": "This can be used to control which items can be consumed to make an Iron Golem."
+      }
+    ]
+  }
+]

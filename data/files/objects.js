@@ -22,7 +22,7 @@ files["objects"] = {
             "description": "String key. Used as the display name of the object when being highlighted by the player.",
             "type": {
                 "type": "text",
-                "dataLength": 31,
+                "dataLength": 63,
                 "memSize": 0
             }
         },
@@ -31,8 +31,8 @@ files["objects"] = {
             "description": "Determines what files to use to display the graphics of the object.",
             "type": {
                 "type": "text",
-                "dataLength": 4,
-                "memSize": 32
+                "dataLength": 2,
+                "memSize": 0
             }
         },
         {
