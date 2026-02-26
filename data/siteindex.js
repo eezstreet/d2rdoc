@@ -382,7 +382,7 @@ const siteIndex = [
         ]
     },
     {
-        "name": "Docs",
+        "name": "Appendix",
         "children": [
             {
                 "name": "Generic Pet AI",
