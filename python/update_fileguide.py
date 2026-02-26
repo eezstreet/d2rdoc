@@ -36,13 +36,13 @@ def verifyArgs(args):
     return True
 
 def main():
+    print('Generating docs...')
+    
     args = parseArgs()
     if not verifyArgs(args):
         return
     
     runAll = args.a == 'all'
-
-    print('Generating docs...')
 
     # Generate HTML
     if runAll or args.a == 'files':
