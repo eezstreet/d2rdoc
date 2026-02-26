@@ -23,7 +23,7 @@ const siteIndex = [
             },
             {
                 "name": "AutoMap.txt",
-                "path": "/files/AutoMap.html"
+                "path": "/files/automap.html"
             },
             {
                 "name": "belts.txt",
@@ -71,51 +71,51 @@ const siteIndex = [
             },
             {
                 "name": "ItemStatCost.txt",
-                "path": "/files/ItemStatCost.html"
+                "path": "/files/itemstatcost.html"
             },
             {
                 "name": "ItemTypes.txt",
-                "path": "/files/ItemTypes.html"
+                "path": "/files/itemtypes.html"
             },
             {
                 "name": "ItemUICategories.txt",
-                "path": "/files/ItemUICategories.html"
+                "path": "/files/itemuicategories.html"
             },
             {
                 "name": "LevelGroups.txt",
-                "path": "/files/LevelGroups.html"
+                "path": "/files/levelgroups.html"
             },
             {
                 "name": "Levels.txt",
-                "path": "/files/Levels.html"
+                "path": "/files/levels.html"
             },
             {
                 "name": "LvlMaze.txt",
-                "path": "/files/LvlMaze.html"
+                "path": "/files/lvlmaze.html"
             },
             {
                 "name": "LvlPrest.txt",
-                "path": "/files/LvlPrest.html"
+                "path": "/files/lvlprest.html"
             },
             {
                 "name": "LvlSub.txt",
-                "path": "/files/LvlSub.html"
+                "path": "/files/lvlsub.html"
             },
             {
                 "name": "LvlTypes.txt",
-                "path": "/files/LvlTypes.html"
+                "path": "/files/lvltypes.html"
             },
             {
                 "name": "LvlWarp.txt",
-                "path": "/files/LvlWarp.html"
+                "path": "/files/lvlwarp.html"
             },
             {
                 "name": "MagicPrefix.txt",
-                "path": "/files/MagicPrefix.html"
+                "path": "/files/magicprefix.html"
             },
             {
                 "name": "MagicSuffix.txt",
-                "path": "/files/MagicSuffix.html"
+                "path": "/files/magicsuffix.html"
             },
             {
                 "name": "misc.txt",
@@ -123,7 +123,7 @@ const siteIndex = [
             },
             {
                 "name": "Missiles.txt",
-                "path": "/files/Missiles.html"
+                "path": "/files/missiles.html"
             },
             {
                 "name": "monequip.txt",
@@ -131,19 +131,19 @@ const siteIndex = [
             },
             {
                 "name": "MonLvl.txt",
-                "path": "/files/MonLvl.html"
+                "path": "/files/monlvl.html"
             },
             {
                 "name": "MonPet.txt",
-                "path": "/files/MonPet.html"
+                "path": "/files/monpet.html"
             },
             {
                 "name": "MonPreset.txt",
-                "path": "/files/MonPreset.html"
+                "path": "/files/monpreset.html"
             },
             {
                 "name": "MonProp.txt",
-                "path": "/files/MonProp.html"
+                "path": "/files/monprop.html"
             },
             {
                 "name": "monseq.txt",
@@ -187,7 +187,7 @@ const siteIndex = [
             },
             {
                 "name": "Overlay.txt",
-                "path": "/files/Overlay.html"
+                "path": "/files/overlay.html"
             },
             {
                 "name": "pettype.txt",
@@ -195,11 +195,11 @@ const siteIndex = [
             },
             {
                 "name": "Properties.txt",
-                "path": "/files/Properties.html"
+                "path": "/files/properties.html"
             },
             {
                 "name": "PropertyGroups.txt",
-                "path": "/files/PropertyGroups.html"
+                "path": "/files/propertygroups.html"
             },
             {
                 "name": "qualityitems.txt",
@@ -207,27 +207,27 @@ const siteIndex = [
             },
             {
                 "name": "RarePrefix.txt",
-                "path": "/files/RarePrefix.html"
+                "path": "/files/rareprefix.html"
             },
             {
                 "name": "RareSuffix.txt",
-                "path": "/files/RareSuffix.html"
+                "path": "/files/raresuffix.html"
             },
             {
                 "name": "Runes.txt",
-                "path": "/files/Runes.html"
+                "path": "/files/runes.html"
             },
             {
                 "name": "RunewordUICategories.txt",
-                "path": "/files/RunewordUICategories.html"
+                "path": "/files/runeworduicategories.html"
             },
             {
                 "name": "SetItems.txt",
-                "path": "/files/SetItems.html"
+                "path": "/files/setitems.html"
             },
             {
                 "name": "Sets.txt",
-                "path": "/files/Sets.html"
+                "path": "/files/sets.html"
             },
             {
                 "name": "shrines.txt",
@@ -243,7 +243,7 @@ const siteIndex = [
             },
             {
                 "name": "SoundEnviron.txt",
-                "path": "/files/SoundEnviron.html"
+                "path": "/files/soundenviron.html"
             },
             {
                 "name": "sounds.txt",
@@ -255,27 +255,27 @@ const siteIndex = [
             },
             {
                 "name": "SuperUniques.txt",
-                "path": "/files/SuperUniques.html"
+                "path": "/files/superuniques.html"
             },
             {
                 "name": "TreasureClassEx.txt",
-                "path": "/files/TreasureClassEx.html"
+                "path": "/files/treasureclassex.html"
             },
             {
                 "name": "UniqueAppellation.txt",
-                "path": "/files/UniqueAppellation.html"
+                "path": "/files/uniqueappellation.html"
             },
             {
                 "name": "UniqueItems.txt",
-                "path": "/files/UniqueItems.html"
+                "path": "/files/uniqueitems.html"
             },
             {
                 "name": "UniquePrefix.txt",
-                "path": "/files/UniquePrefix.html"
+                "path": "/files/uniqueprefix.html"
             },
             {
                 "name": "UniqueSuffix.txt",
-                "path": "/files/UniqueSuffix.html"
+                "path": "/files/uniquesuffix.html"
             },
             {
                 "name": "wanderingmon.txt",
@@ -290,7 +290,7 @@ const siteIndex = [
                 "children": [
                     {
                         "name": "ArmType.txt",
-                        "path": "/files/ArmType.html"
+                        "path": "/files/armtype.html"
                     },
                     {
                         "name": "bodylocs.txt",
@@ -306,7 +306,7 @@ const siteIndex = [
                     },
                     {
                         "name": "Composit.txt",
-                        "path": "/files/Composit.html"
+                        "path": "/files/composit.html"
                     },
                     {
                         "name": "cubemod.txt",
@@ -314,7 +314,7 @@ const siteIndex = [
                     },
                     {
                         "name": "ElemTypes.txt",
-                        "path": "/files/ElemTypes.html"
+                        "path": "/files/elemtypes.html"
                     },
                     {
                         "name": "events.txt",
@@ -322,7 +322,7 @@ const siteIndex = [
                     },
                     {
                         "name": "HitClass.txt",
-                        "path": "/files/HitClass.html"
+                        "path": "/files/hitclass.html"
                     },
                     {
                         "name": "lowqualityitems.txt",
@@ -338,27 +338,27 @@ const siteIndex = [
                     },
                     {
                         "name": "MonMode.txt",
-                        "path": "/files/MonMode.html"
+                        "path": "/files/monmode.html"
                     },
                     {
                         "name": "MonPlace.txt",
-                        "path": "/files/MonPlace.html"
+                        "path": "/files/monplace.html"
                     },
                     {
                         "name": "ObjMode.txt",
-                        "path": "/files/ObjMode.html"
+                        "path": "/files/objmode.html"
                     },
                     {
                         "name": "PlayerClass.txt",
-                        "path": "/files/PlayerClass.html"
+                        "path": "/files/playerclass.html"
                     },
                     {
                         "name": "PlrMode.txt",
-                        "path": "/files/PlrMode.html"
+                        "path": "/files/plrmode.html"
                     },
                     {
                         "name": "PlrType.txt",
-                        "path": "/files/PlrType.html"
+                        "path": "/files/plrtype.html"
                     },
                     {
                         "name": "skillcalc.txt",
@@ -366,7 +366,7 @@ const siteIndex = [
                     },
                     {
                         "name": "StorePage.txt",
-                        "path": "/files/StorePage.html"
+                        "path": "/files/storepage.html"
                     }
                 ]
             },
