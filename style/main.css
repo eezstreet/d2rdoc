@@ -1,10 +1,37 @@
-/* Main */
+/* Fonts */
+@font-face {
+    font-family: 'Exocet';
+    src: url('exocetlight.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Exocet';
+    src: url('exocetotcecy-medium.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Exocet';
+    src: url('exocetheavy.ttf');
+    font-weight: bolder;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Formal';
+    src: url('formal436bt.ttf');
+    font-style: normal;
+}
+
+/* Main */
 body {
-    background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(52,2,2,1) 55%, rgba(0,0,0,1) 100%);
+    background: rgb(22,22,22);
     color :#f5f5f5;
     margin: 0;
+    font-family: Georgia, Times, serif;
 }
 
 #page {
@@ -12,7 +39,12 @@ body {
     flex-direction: row;
 }
 
+h1 {
+    font-family: Exocet, Verdana, sans-serif;
+}
+
 h2, h3, h4, h5 {
+    font-family: Formal, sans-serif;
     color: #BD9B4E; 
 }
 
@@ -28,7 +60,8 @@ a:hover {
 }
 
 .reference-link {
-    font-style: italic;
+    font-family: Consolas, Courier, monospace;
+    color: #7ec8e3;
 }
 
 /* Sidebar */
@@ -83,14 +116,13 @@ a:hover {
 
 /* Search */
 #site-search {
+    font-family: Formal, sans-serif;
     position: fixed;
     overflow: hidden;
     top: 0;
     
     padding-top: 0.5rem;
     padding-left: 1.5em;
-
-    background-color: black;
 }
 
 #site-search-results {
@@ -101,7 +133,6 @@ a:hover {
     max-height: 50em;
     min-width: 30vw;
     margin: 0;
-    padding: 0;
     list-style: none;
 
     box-shadow: 0 0 4px black;
@@ -144,6 +175,10 @@ a:hover {
 
 .search-result span {
     margin-left: auto;
+}
+
+.search-result {
+    padding: 4px;
 }
 
 /* Guides */
@@ -190,5 +225,10 @@ table {
 
 td, th {
     border: 1px solid lightgray;
-    padding: 0.15rem;
+    padding: 0.5rem;
+}
+
+th {
+    font-family: Exocet, serif;
+    padding: 1em;
 }

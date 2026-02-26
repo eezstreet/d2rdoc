@@ -111,6 +111,8 @@
     text-decoration: none;
     width: 1px;
     white-space: nowrap;
+    font-family: Exocet, serif;
+    font-weight: normal;
 }
 
 .field-appendfield summary:hover {
@@ -124,6 +126,7 @@
     color: #7ec8e3;
     margin-top: 0.75rem;
     font-style: italic;
+    padding: 8px;
 }
 
 .community-note::before {
