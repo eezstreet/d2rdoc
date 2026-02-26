@@ -6,9 +6,18 @@
 function populateSidebarRecursive(index, pathToHomeDirectory, ul) {
     const li = document.createElement("li");
     const indexPath = pathToHomeDirectory + (index.path ? index.path : "");
-    const isLink =  indexPath.lastIndexOf(".html") != "-1";
+    const isLink = indexPath.lastIndexOf(".html") != "-1";
 
-    // Text and links
+    // Populate children first (needed to detect .current descendants)
+    let ulChildren = null;
+    if (index.children) {
+        ulChildren = document.createElement("ul");
+        for (const childIndex of index.children) {
+            populateSidebarRecursive(childIndex, pathToHomeDirectory, ulChildren);
+        }
+    }
+
+    // Text, links, and accordion groups
     if (isLink) {
         const link = document.createElement("a");
         link.setAttribute("href", indexPath);
@@ -17,18 +26,22 @@ function populateSidebarRecursive(index, pathToHomeDirectory, ul) {
             link.classList.add("current");
         }
         li.appendChild(link);
+        if (ulChildren) li.appendChild(ulChildren);
+    }
+    else if (ulChildren) {
+        // Non-link with children: render as an accordion
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.innerHTML = index.name;
+        details.appendChild(summary);
+        details.appendChild(ulChildren);
+        if (ulChildren.querySelector(".current")) {
+            details.open = true;
+        }
+        li.appendChild(details);
     }
     else {
         li.innerHTML = index.name;
-    }
-
-    // Populate children
-    if (index.children) {
-        const ulChildren = document.createElement("ul");
-        for (const childIndex of index.children) {
-            populateSidebarRecursive(childIndex, pathToHomeDirectory, ulChildren)
-        }
-        li.appendChild(ulChildren);
     }
 
     ul.appendChild(li);
