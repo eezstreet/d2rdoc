@@ -86,8 +86,8 @@ def updateFields(file, appendFiles, fieldExports):
             updateField(file, appendFiles, fieldExport)
 
 def updateFile(jsPath, allFieldExports, processedFiles):
-    if not os.path.exists(jsPath): # I'll try case-switching. That's a neat trick!
-        jsPath = jsPath.as_posix().lower()
+    if not jsPath.exists(): # I'll try making the filename lowercase. That's a neat trick!
+        jsPath = jsPath.with_name(jsPath.name.lower())
 
     with io.open(jsPath, 'r+') as jsFile:
         # Strip out the js specific stuff to turn it into json
