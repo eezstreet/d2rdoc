@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["RareSuffix"] = {
+files["raresuffix"] = {
     "title": "RareSuffix.txt",
     "overview": "This file controls the list of strings that are randomly selected to be used as the suffix part of the name when generating Rare items. Rare Suffixes are chosen at random from the list define in the data file. These item affixes will appear at the end of a Rare item's name.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

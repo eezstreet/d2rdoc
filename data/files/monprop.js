@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["MonProp"] = {
+files["monprop"] = {
     "title": "MonProp.txt",
     "overview": "This file controls special properties that can be added to a monster, based on the game difficulty.<br>The \"(N)\" text in field names signifies to use that specific value for games in Nightmare difficulty. The \"(H)\" text in field names signifies to use that specific value for games in Hell difficulty.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["LvlMaze"] = {
+files["lvlmaze"] = {
     "title": "LvlMaze.txt",
     "overview": "This file controls the sizes of the underground area levels. This file uses the levels from $!Levels!$ and specifies the sizes for each room, which can mean how many Level Presets to use to build out the entire randomly generated area.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

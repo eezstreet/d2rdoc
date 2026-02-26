@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["AutoMap"] = {
+files["automap"] = {
     "title": "AutoMap.txt",
     "overview": "This file controls how the Automap in game will display the discovered parts of the area level and store this progress in character save files. The Automap is composed of many different image files depicted as small icons to convey what part of the area level is being displayed. This file will assign these image files to their related map cells, which will properly build the Automap as the player explores the area. Not all tiles will have image files assigned to them, and in these cases, those parts of the Automap will remain blank.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

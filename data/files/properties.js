@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["Properties"] = {
+files["properties"] = {
     "title": "Properties.txt",
     "overview": "This file defines how item modifiers work. It takes a stat defined from $!ItemStatCost!$ and uses a function to handle the stat's \"min\", \"max\" and \"parameter\" values.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

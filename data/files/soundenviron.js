@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["SoundEnviron"] = {
+files["soundenviron"] = {
     "title": "SoundEnviron.txt",
     "overview": "This file controls the music and ambient sounds that are played while the player is in the area level.The order of each Sound Environment defined in this file will convey what ID value it has.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [

@@ -1,7 +1,7 @@
 // To let users open the HTML files directly without a local server, we need to eliminate any CORS requests like "fetch".
 // Workaround is to place json into .js files and then load them via html script tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
-files["MonLvl"] = {
+files["monlvl"] = {
     "title": "MonLvl.txt",
     "overview": "This file controls how monster statistics increase per level based on the current game type and difficulty.<br>The \"(N\" text in field names signifies to use that specific value for games in Nightmare difficulty. The \"(H)\" text in field names signifies to use that specific value for games in Hell difficulty.<br>\"L-\" signifies the field is used for Ladder Battle.net game types, otherwise its used for Non-Ladder Battle.net / Singleplay / Open Battle.net / TCP.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
