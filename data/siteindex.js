@@ -4,7 +4,7 @@
 const siteIndex = [
     {
         "name": "Home",
-        "path": "/home.html"
+        "path": "/index.html"
     },
     {
         "name": "Files",
