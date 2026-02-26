@@ -382,6 +382,15 @@ const siteIndex = [
         ]
     },
     {
+        "name": "Guides",
+        "children": [
+            {
+                "name": "Getting Started",
+                "path": "/guides/getting-started.html"
+            }
+        ]
+    },
+    {
         "name": "Appendix",
         "children": [
             {

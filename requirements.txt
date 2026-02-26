@@ -1,0 +1,8 @@
+# Optional dependencies
+#
+# python-markdown is required for the -a guides action.
+# If not installed, the guides feature is fully disabled when running the scripts.
+# Install with:
+#   pip install markdown
+#
+# markdown>=3.0
