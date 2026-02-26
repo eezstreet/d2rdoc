@@ -20,7 +20,7 @@ files["actinfo"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 32,
-                "file": "Levels",
+                "file": "levels",
                 "field": "Name"
             },
             "description": "The Act's town area"
@@ -31,7 +31,7 @@ files["actinfo"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 32,
-                "file": "Levels",
+                "file": "levels",
                 "field": "Name"
             },
             "description": "Where the player starts in the Act"
@@ -51,10 +51,10 @@ files["actinfo"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Levels",
+                "file": "levels",
                 "field": "Name"
             },
-            "description": "Uses a level's $!Levels#MonLvl!$ values as a global Act minimum monster level. For example, this is used to determine chest levels in an Act."
+            "description": "Uses a level's $!levels#MonLvl!$ values as a global Act minimum monster level. For example, this is used to determine chest levels in an Act."
         },
         {
             "name": "classlevelrangeend",
@@ -62,10 +62,10 @@ files["actinfo"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Levels",
+                "file": "levels",
                 "field": "Name"
             },
-            "description": "Uses a level's $!Levels#MonLvl!$ values as a global Act maximum monster level. For example, this is used to determine chest levels in an Act"
+            "description": "Uses a level's $!levels#MonLvl!$ values as a global Act maximum monster level. For example, this is used to determine chest levels in an Act"
         },
         {
             "name": "wanderingnpcstart",
@@ -111,7 +111,7 @@ files["actinfo"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 32,
-                "file": "Levels",
+                "file": "levels",
                 "field": "Name"
             },
             "description": "The designated waypoint selection in the Waypoint UI"

@@ -68,7 +68,7 @@ files["gems"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References a $!Properties#code!$ or a $!PropertyGroups#code!$"
+                "description": "References a $!properties#code!$ or a $!propertygroups#code!$"
             }
         },
         {
@@ -84,12 +84,12 @@ files["gems"] = {
                 "shieldMod2Param",
                 "shieldMod3Param"
             ],
-            "description": "The stat's \"parameter\" value associated with the listed property. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The stat's \"parameter\" value associated with the listed property. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {
@@ -105,7 +105,7 @@ files["gems"] = {
                 "shieldMod2Min",
                 "shieldMod3Min"
             ],
-            "description": "The stat's \"min\" value associated with the listed property. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The stat's \"min\" value associated with the listed property. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -125,7 +125,7 @@ files["gems"] = {
                 "shieldMod2Max",
                 "shieldMod3Max"
             ],
-            "description": "The stat's \"max\" value associated with the listed property. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The stat's \"max\" value associated with the listed property. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

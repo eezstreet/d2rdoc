@@ -4,7 +4,7 @@
 files["monsounds"] = {
     "title": "monsounds.txt",
     "referenceFiles": [
-        "MonMode"
+        "monmode"
     ],
     "overview": "This file controls the sounds that play for each of a monster's actions.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -265,16 +265,16 @@ files["monsounds"] = {
                 "CvtMo2",
                 "CvtMo3"
             ],
-            "description": "This is used to convert the mode for playing the sound. This field defines the original mode that the monster is using. Uses a $!MonMode#code!$.",
+            "description": "This is used to convert the mode for playing the sound. This field defines the original mode that the monster is using. Uses a $!monmode#code!$.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -301,16 +301,16 @@ files["monsounds"] = {
                 "CvtTgt2",
                 "CvtTgt3"
             ],
-            "description": "Defines the mode to convert the sound to when the monster is using the relative skill from the $!#CvtSk#!$ field. This does not actually change the monster's actual mode but only what mode that sounds think the monster is using. Uses a $!MonMode#code!$.",
+            "description": "Defines the mode to convert the sound to when the monster is using the relative skill from the $!#CvtSk#!$ field. This does not actually change the monster's actual mode but only what mode that sounds think the monster is using. Uses a $!monmode#code!$.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         }

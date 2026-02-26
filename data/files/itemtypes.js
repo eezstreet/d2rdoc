@@ -5,8 +5,8 @@ files["itemtypes"] = {
     "title": "ItemTypes.txt",
     "referenceFiles": [
         "bodylocs",
-        "PlayerClass",
-        "StorePage"
+        "playerclass",
+        "storepage"
     ],
     "overview": "This file controls the general statistics for each type of item, which is then used for the item type fields in other files.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -39,7 +39,7 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -87,7 +87,7 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -98,7 +98,7 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -226,11 +226,11 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -241,11 +241,11 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -282,11 +282,11 @@ files["itemtypes"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "StorePage",
+                "file": "storepage",
                 "field": "Code"
             },
             "appendField": {
-                "file": "StorePage",
+                "file": "storepage",
                 "field": "Code"
             }
         },

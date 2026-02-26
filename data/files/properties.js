@@ -3,7 +3,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
 files["properties"] = {
     "title": "Properties.txt",
-    "overview": "This file defines how item modifiers work. It takes a stat defined from $!ItemStatCost!$ and uses a function to handle the stat's \"min\", \"max\" and \"parameter\" values.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
+    "overview": "This file defines how item modifiers work. It takes a stat defined from $!itemstatcost!$ and uses a function to handle the stat's \"min\", \"max\" and \"parameter\" values.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
         {
             "name": "code",
@@ -296,7 +296,7 @@ files["properties"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },

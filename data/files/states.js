@@ -401,7 +401,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -412,7 +412,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -423,7 +423,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -434,7 +434,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -445,7 +445,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -480,43 +480,43 @@ files["states"] = {
                     "2",
                     "SetCloakOfShadows",
                     "",
-                    "Changes the area level's room lighting based on a skill's $!skills#auralencalc!$ field. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file"
+                    "Changes the area level's room lighting based on a skill's $!skills#auralencalc!$ field. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file"
                 ],
                 [
                     "3",
                     "SetStateUpdateSkill",
                     "",
-                    "Updates a skill's level. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file."
+                    "Updates a skill's level. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file."
                 ],
                 [
                     "4",
                     "SetSourceUnit",
                     "",
-                    "Sets the source unit for the state. Gets the \"source_unit_type\" and \"source_unit_id\" stats defined in the $!ItemStatCost!$ file."
+                    "Sets the source unit for the state. Gets the \"source_unit_type\" and \"source_unit_id\" stats defined in the $!itemstatcost!$ file."
                 ],
                 [
                     "5",
                     "SetChangeClass",
                     "",
-                    "Changes the monster's class type to another monster's class type. Gets the \"shortparam1\" stat defined in the $!ItemStatCost!$ file and uses stat's parameter to get the class type that the unit should change to. Only works for monster units. Has a special case where if the class the monster changed from was the \"baalthrone\" monster (defined in $!monstats!$), then also set the path of the monster to move a direction."
+                    "Changes the monster's class type to another monster's class type. Gets the \"shortparam1\" stat defined in the $!itemstatcost!$ file and uses stat's parameter to get the class type that the unit should change to. Only works for monster units. Has a special case where if the class the monster changed from was the \"baalthrone\" monster (defined in $!monstats!$), then also set the path of the monster to move a direction."
                 ],
                 [
                     "6",
                     "SetBoneArmor",
                     "",
-                    "Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file and then creates the overlays defined in the $!#castoverlay!$ and $!#overlay#!$ fields"
+                    "Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file and then creates the overlays defined in the $!#castoverlay!$ and $!#overlay#!$ fields"
                 ],
                 [
                     "7",
                     "SetHurricane",
                     "",
-                    "Plays a sound from the $!skills#prgsound!$ field of a skill from the $!skills!$ file. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file."
+                    "Plays a sound from the $!skills#prgsound!$ field of a skill from the $!skills!$ file. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file."
                 ],
                 [
                     "8",
                     "SetCycloneArmor",
                     "",
-                    "Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file and then creates the overlays defined in the $!#overlay1!$, $!#overlay2!$ and $!#overlay3!$ fields"
+                    "Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file and then creates the overlays defined in the $!#overlay1!$, $!#overlay2!$ and $!#overlay3!$ fields"
                 ],
                 [
                     "9",
@@ -564,7 +564,7 @@ files["states"] = {
                     "16",
                     "SetDruChargeUp",
                     "",
-                    "Sets up the overlays for a charge up skill. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file. Applies all the overlays defined the $!#overlay#!$ fields, based on the number of skill charges on the unit."
+                    "Sets up the overlays for a charge up skill. Gets the skill by looking at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file. Applies all the overlays defined the $!#overlay#!$ fields, based on the number of skill charges on the unit."
                 ],
                 [
                     "17",
@@ -623,7 +623,7 @@ files["states"] = {
                 [
                     "4",
                     "RemoveHurricane",
-                    "Removes the $!skills#prgsound!$ from the related skill. To get the skill, this looks at the \"modifierlist_skill\" stat defined in the $!ItemStatCost!$ file."
+                    "Removes the $!skills#prgsound!$ from the related skill. To get the skill, this looks at the \"modifierlist_skill\" stat defined in the $!itemstatcost!$ file."
                 ],
                 [
                     "5",
@@ -653,7 +653,7 @@ files["states"] = {
                 [
                     "10",
                     "RemovePregnant",
-                    "Gets the related unit's position and creates a \"monstercorpseexplode\" and \"pain worm appear\" missile defined from the $!Missiles!$ file"
+                    "Gets the related unit's position and creates a \"monstercorpseexplode\" and \"pain worm appear\" missile defined from the $!missiles!$ file"
                 ],
                 [
                     "11",
@@ -669,7 +669,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -691,7 +691,7 @@ files["states"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "ItemType"
             }
         },
@@ -882,7 +882,7 @@ files["states"] = {
         },
         {
             "name": "gfxclass",
-            "description": "Controls the unit class used for handling the unit graphics transformation. This field relies on what unit type was used in the $!#gfxtype!$ field. If $!#gfxtype!$ equals 1 for monster type units, then this field will rely on the index of an entry from $!monstats!$. If $!#gfxtype!$ equals 2, then this field will use the index of an entry from $!PlayerClass!$.",
+            "description": "Controls the unit class used for handling the unit graphics transformation. This field relies on what unit type was used in the $!#gfxtype!$ field. If $!#gfxtype!$ equals 1 for monster type units, then this field will rely on the index of an entry from $!monstats!$. If $!#gfxtype!$ equals 2, then this field will use the index of an entry from $!playerclass!$.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

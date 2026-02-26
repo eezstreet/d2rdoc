@@ -4,11 +4,11 @@
 files["misc"] = {
     "title": "misc.txt",
     "referenceFiles": [
-        "SharedItems",
+        "shareditems",
         "enums"
     ],
     "appendFiles": [
-        "SharedItems"
+        "shareditems"
     ],
     "overview": "This file controls the functionalities for miscellaneous type items, such as the non-weapons and non-armor items. This file is loaded together with other similar files in the following order: $!weapons!$, $!armor!$, $!misc!$. These combined files form the items structure. Technically these files share the same fields, but some fields are exclusive for specific item types, so they are not displayed in the data files that do not need them. These are the fields exclusive to this file.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -112,7 +112,7 @@ files["misc"] = {
                         "text": "SkillItemRejuvPotion"
                     },
                     "$!#stat#!$<br>$!#calc#!$",
-                    "Adds a percentage of the stat's \"maxstat\" value (see ItemStatCost.txt) to the current stat. This percentage is determined by the related calculated value."
+                    "Adds a percentage of the stat's \"maxstat\" value (see itemstatcost.txt) to the current stat. This percentage is determined by the related calculated value."
                 ],
                 [
                     "6",
@@ -254,7 +254,7 @@ files["misc"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },

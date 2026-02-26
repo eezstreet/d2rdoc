@@ -4,7 +4,7 @@
 files["skilldesc"] = {
     "title": "skilldesc.txt",
     "referenceFiles": [
-        "ElemTypes"
+        "elemtypes"
     ],
     "overview": "This file controls a skill's tooltip description and how it is displayed on the Skill Tree.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -383,11 +383,11 @@ files["skilldesc"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             },
             "appendField": {
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             }
         },
@@ -472,7 +472,7 @@ files["skilldesc"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -796,7 +796,7 @@ files["skilldesc"] = {
         },
         {
             "name": "item proc text",
-            "description": "String value used as an override format for when the skill appears as a \"chance to cast\" property on an item. Can be formatted to include $!#descline#!$ in the string using \"%s\" entries. Leave blank to ignore and use the string format in $!ItemStatCost!$.",
+            "description": "String value used as an override format for when the skill appears as a \"chance to cast\" property on an item. Can be formatted to include $!#descline#!$ in the string using \"%s\" entries. Leave blank to ignore and use the string format in $!itemstatcost!$.",
             "type": {
                 "type": "string",
                 "dataLength": 255,

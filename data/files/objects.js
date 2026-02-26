@@ -4,7 +4,7 @@
 files["objects"] = {
     "title": "objects.txt",
     "referenceFiles": [
-        "ObjMode"
+        "objmode"
     ],
     "overview": "This file controls the functionalities of all objects found in area levels. The order of each object defined in this file will convey what ID value it has, and thus should not be changed.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -47,14 +47,14 @@ files["objects"] = {
                 "Selectable6",
                 "Selectable7"
             ],
-            "description": "Boolean Field. If equals 1, then the object can be selected by the player and highlighted when hovered on by the mouse cursor. If equals 0, then the object cannot be selected and will not highlight when the player hovers the mouse over it. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Boolean Field. If equals 1, then the object can be selected by the player and highlighted when hovered on by the mouse cursor. If equals 0, then the object cannot be selected and will not highlight when the player hovers the mouse over it. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -82,14 +82,14 @@ files["objects"] = {
                 "FrameCnt6",
                 "FrameCnt7"
             ],
-            "description": "Controls the frame length of the object's mode. If this equals 0, then that mode will be skipped. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Controls the frame length of the object's mode. If this equals 0, then that mode will be skipped. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 32
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -105,14 +105,14 @@ files["objects"] = {
                 "FrameDelta6",
                 "FrameDelta7"
             ],
-            "description": "Controls the animation frame rate of how many frames to update per delta (Measured in 256ths). Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Controls the animation frame rate of how many frames to update per delta (Measured in 256ths). Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 16
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -128,14 +128,14 @@ files["objects"] = {
                 "CycleAnim6",
                 "CycleAnim7"
             ],
-            "description": "Boolean Field. If equals 1, then the object's current animation will loop back to play again when it finishes. If equals 0, then the object will generally play the Opened mode after playing the Operating mode. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Boolean Field. If equals 1, then the object's current animation will loop back to play again when it finishes. If equals 0, then the object will generally play the Opened mode after playing the Operating mode. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -151,14 +151,14 @@ files["objects"] = {
                 "Lit6",
                 "Lit7"
             ],
-            "description": "Controls the Light Radius distance value for the object. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Controls the Light Radius distance value for the object. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -174,14 +174,14 @@ files["objects"] = {
                 "BlocksLight6",
                 "BlocksLight7"
             ],
-            "description": "Boolean Field. If equals 1, then the object will draw a shadow. If equals 0, then the object will not draw a shadow. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Boolean Field. If equals 1, then the object will draw a shadow. If equals 0, then the object will not draw a shadow. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -197,14 +197,14 @@ files["objects"] = {
                 "HasCollision6",
                 "HasCollision7"
             ],
-            "description": "Boolean Field. If equals 1, then the object will have collision. If equals 0, then the object will not have collision, and units can walk through it. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Boolean Field. If equals 1, then the object will have collision. If equals 0, then the object will not have collision, and units can walk through it. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -236,7 +236,7 @@ files["objects"] = {
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -306,7 +306,7 @@ files["objects"] = {
                 "OrderFlag6",
                 "OrderFlag7"
             ],
-            "description": "Controls how the object's sprite is drawn, which can affect how it is displayed in Perspective game camera mode. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Controls how the object's sprite is drawn, which can affect how it is displayed in Perspective game camera mode. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -331,7 +331,7 @@ files["objects"] = {
                 ]
             ],
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -356,14 +356,14 @@ files["objects"] = {
                 "Mode6",
                 "Mode7"
             ],
-            "description": "Boolean Field. If equals 1, then confirm that this object has the correlating mode. If equals 0, then this object will not have the correlating mode. This flag can affect how the object functions work. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!ObjMode#Token!$).",
+            "description": "Boolean Field. If equals 1, then confirm that this object has the correlating mode. If equals 0, then this object will not have the correlating mode. This flag can affect how the object functions work. Each field is numbered, correlating to 1 of 8 Object Modes that the object uses (See $!objmode#Token!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
             },
             "appendField": {
-                "file": "ObjMode",
+                "file": "objmode",
                 "field": "Token"
             }
         },
@@ -1724,7 +1724,7 @@ files["objects"] = {
         },
         {
             "name": "AutoMap",
-            "description": "Used to display a tile in the Automap to represent the object. Defines which cell number to use in the tile list for the Automap. If this value equals 0, then this object will not display on the Automap. (See $!AutoMap!$)",
+            "description": "Used to display a tile in the Automap to represent the object. Defines which cell number to use in the tile list for the Automap. If this value equals 0, then this object will not display on the Automap. (See $!automap!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

@@ -5,8 +5,8 @@ files["monstats"] = {
     "title": "monstats.txt",
     "referenceFiles": [
         "enums",
-        "MonMode",
-        "ElemTypes"
+        "monmode",
+        "elemtypes"
     ],
     "overview": "This file controls the main functionalities and statistics for every monster in the game. This includes enemy monsters, pets, and NPC units.<br>The \"(N)\" text in field names signifies to use that specific value for games in Nightmare difficulty. The \"(H)\" text in field names signifies to use that specific value for games in Hell difficulty.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -76,23 +76,23 @@ files["monstats"] = {
         },
         {
             "name": "MonProp",
-            "description": "Points to a $!MonProp#Id!$ field. Used to add special modifiers to the monster.",
+            "description": "Points to a $!monprop#Id!$ field. Used to add special modifiers to the monster.",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "MonProp",
+                "file": "monprop",
                 "field": "Id"
             }
         },
         {
             "name": "MonType",
-            "description": "Points to a $!MonType#type!$ field. Used to handle the monster's classification.",
+            "description": "Points to a $!montype#type!$ field. Used to handle the monster's classification.",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "MonType",
+                "file": "montype",
                 "field": "type"
             }
         },
@@ -177,16 +177,16 @@ files["monstats"] = {
         },
         {
             "name": "spawnmode",
-            "description": "Defines the animation mode that the spawned monsters will be initiated with. Uses $!MonMode#code!$",
+            "description": "Defines the animation mode that the spawned monsters will be initiated with. Uses $!monmode#code!$",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -289,7 +289,7 @@ files["monstats"] = {
                 "Level(N)",
                 "Level(H)"
             ],
-            "description": "Determines the monster's level. This value for Nightmare and Hell difficulty can be overridden by the area level's $!Levels#MonLvl!$ or $!Levels#MonLvlEx!$ value, unless the monster's $!#boss!$ and $!#noRatio!$ fields are enabled or the monster is desecrated (terrorized).",
+            "description": "Determines the monster's level. This value for Nightmare and Hell difficulty can be overridden by the area level's $!levels#MonLvl!$ or $!levels#MonLvlEx!$ value, unless the monster's $!#boss!$ and $!#noRatio!$ fields are enabled or the monster is desecrated (terrorized).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -405,7 +405,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -666,12 +666,12 @@ files["monstats"] = {
             "altNames": [
                 "leftArmItemType"
             ],
-            "description": "Determines what type of items the monster is allowed to hold in the corresponding arm (see $!ItemTypes!$). A blank value means it can hold any item.",
+            "description": "Determines what type of items the monster is allowed to hold in the corresponding arm (see $!itemtypes!$). A blank value means it can hold any item.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -736,15 +736,15 @@ files["monstats"] = {
                 "Sk7mode",
                 "Sk8mode"
             ],
-            "description": "Determines the monster's animation mode when using the related skill. Outside of the standard animation mode inputs from $!MonMode#code!$, the field can also point to a $!monseq#sequence!$, which handle a specific set of frames to place a sequence animation.",
+            "description": "Determines the monster's animation mode when using the related skill. Outside of the standard animation mode inputs from $!monmode#code!$, the field can also point to a $!monseq#sequence!$, which handle a specific set of frames to place a sequence animation.",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References a $!MonMode#code!$ or a $!monseq#sequence!$"
+                "description": "References a $!monmode#code!$ or a $!monseq#sequence!$"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -893,7 +893,7 @@ files["monstats"] = {
         },
         {
             "name": "noRatio",
-            "description": "Boolean Field. If equals 1, then use this file's fields to determine the monster's baseline stats ($!#minHP!$, $!#maxHP!$, $!#AC!$, $!#Exp!$, $!#A1MinD!$, $!#A1MaxD!$, $!#A1TH!$, $!#A2MinD!$, $!#A2MaxD!$, $!#A2TH!$, $!#S1MinD!$, $!#S1MaxD!$, $!#S1TH!$). If equals 0, then use the $!MonLvl!$ file to determine the monster's baseline stats.",
+            "description": "Boolean Field. If equals 1, then use this file's fields to determine the monster's baseline stats ($!#minHP!$, $!#maxHP!$, $!#AC!$, $!#Exp!$, $!#A1MinD!$, $!#A1MaxD!$, $!#A1TH!$, $!#A2MinD!$, $!#A2MaxD!$, $!#A2TH!$, $!#S1MinD!$, $!#S1MaxD!$, $!#S1TH!$). If equals 0, then use the $!monlvl!$ file to determine the monster's baseline stats.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -1112,11 +1112,11 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -1132,11 +1132,11 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             },
             "appendField": {
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             }
         },
@@ -1231,7 +1231,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1246,7 +1246,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1261,7 +1261,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1276,7 +1276,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1291,7 +1291,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1306,7 +1306,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1321,7 +1321,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -1336,7 +1336,7 @@ files["monstats"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },

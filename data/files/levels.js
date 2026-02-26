@@ -255,7 +255,7 @@ files["levels"] = {
         },
         {
             "name": "LevelType",
-            "description": "Defines the Level Type used for this area level. Uses $!LvlTypes#Id!$, which is determined by what order it is defined in the $!LvlTypes!$ file.",
+            "description": "Defines the Level Type used for this area level. Uses $!lvltypes#Id!$, which is determined by what order it is defined in the $!lvltypes!$ file.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -264,7 +264,7 @@ files["levels"] = {
         },
         {
             "name": "SubType",
-            "description": "Controls the group of tile substitutions for the area level (see $!LvlSub!$). There are defined sub types to choose from.",
+            "description": "Controls the group of tile substitutions for the area level (see $!lvlsub!$). There are defined sub types to choose from.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -339,7 +339,7 @@ files["levels"] = {
         },
         {
             "name": "SubTheme",
-            "description": "Controls which theme number to use in a Level Substitution (See $!LvlSub!$). The allowed values are 0 to 4, which convey which $!LvlSub#Prob#!$, $!LvlSub#Trials#!$, and $!LvlSub#Max#!$ field to use. If this equals -1, then there is no sub theme for the area level.",
+            "description": "Controls which theme number to use in a Level Substitution (See $!lvlsub!$). The allowed values are 0 to 4, which convey which $!lvlsub#Prob#!$, $!lvlsub#Trials#!$, and $!lvlsub#Max#!$ field to use. If this equals -1, then there is no sub theme for the area level.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -348,7 +348,7 @@ files["levels"] = {
         },
         {
             "name": "SubWaypoint",
-            "description": "Controls the level substitutions for adding waypoints in the area level (see $!LvlSub!$). This uses a defined sub type to choose from (See $!#SubType!$). This will depend on the room having a waypoint tile.",
+            "description": "Controls the level substitutions for adding waypoints in the area level (see $!lvlsub!$). This uses a defined sub type to choose from (See $!#SubType!$). This will depend on the room having a waypoint tile.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -357,7 +357,7 @@ files["levels"] = {
         },
         {
             "name": "SubShrine",
-            "description": "Controls the level substitutions for adding shrines in the area level (see $!LvlSub!$). This uses a defined sub type to choose from (See $!#SubType!$). This will depend on the room allowing for a shrine to spawn.",
+            "description": "Controls the level substitutions for adding shrines in the area level (see $!lvlsub!$). This uses a defined sub type to choose from (See $!#SubType!$). This will depend on the room allowing for a shrine to spawn.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -395,7 +395,7 @@ files["levels"] = {
                 "Warp6",
                 "Warp7"
             ],
-            "description": "Uses the $!LvlWarp#Id!$ field, which defines which Level Warp to use when exiting the area level. This is connected with the definition of the related $!#Vis#!$ field. If this equals -1, then no Level Warp is specified which should also mean that the related $!#Vis#!$ field is not defined.",
+            "description": "Uses the $!lvlwarp#Id!$ field, which defines which Level Warp to use when exiting the area level. This is connected with the definition of the related $!#Vis#!$ field. If this equals -1, then no Level Warp is specified which should also mean that the related $!#Vis#!$ field is not defined.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -768,7 +768,7 @@ files["levels"] = {
         },
         {
             "name": "SoundEnv",
-            "description": "Uses the index of an entry from $!SoundEnviron!$, which controls what music is played while the player is in the area level",
+            "description": "Uses the index of an entry from $!soundenviron!$, which controls what music is played while the player is in the area level",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -856,7 +856,7 @@ files["levels"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 32,
-                "file": "LevelGroups",
+                "file": "levelgroups",
                 "field": "LevelGroupId"
             }
         },

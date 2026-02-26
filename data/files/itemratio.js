@@ -34,7 +34,7 @@ files["itemratio"] = {
         },
         {
             "name": "Class Specific",
-            "description": "Boolean Field. If equals 1, then the item ratio will apply to class-based items (This will compare to the $!ItemTypes#Class!$ field to determine if the item is class specific)",
+            "description": "Boolean Field. If equals 1, then the item ratio will apply to class-based items (This will compare to the $!itemtypes#Class!$ field to determine if the item is class specific)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

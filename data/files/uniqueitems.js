@@ -253,7 +253,7 @@ files["uniqueitems"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References a $!Properties#code!$ or a $!PropertyGroups#code!$"
+                "description": "References a $!properties#code!$ or a $!propertygroups#code!$"
             }
         },
         {
@@ -272,12 +272,12 @@ files["uniqueitems"] = {
                 "par11",
                 "par12"
             ],
-            "description": "The stat's \"parameter\" value associated with the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"parameter\" value associated with the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {
@@ -296,7 +296,7 @@ files["uniqueitems"] = {
                 "min11",
                 "min12"
             ],
-            "description": "The stat's \"min\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"min\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -319,7 +319,7 @@ files["uniqueitems"] = {
                 "max11",
                 "max12"
             ],
-            "description": "The stat's \"max\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"max\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

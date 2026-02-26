@@ -7,7 +7,7 @@ files["itemstatcost"] = {
         "events",
         "enums"
     ],
-    "overview": "This file controls the functionalities for each possible stat on a unit. These defined stats are used to form modifiers for the $!Properties!$ and $!PropertyGroups!$ files.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
+    "overview": "This file controls the functionalities for each possible stat on a unit. These defined stats are used to form modifiers for the $!properties!$ and $!propertygroups!$ files.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
         {
             "name": "Stat",
@@ -350,7 +350,7 @@ files["itemstatcost"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -366,7 +366,7 @@ files["itemstatcost"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -386,7 +386,7 @@ files["itemstatcost"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -571,7 +571,7 @@ files["itemstatcost"] = {
                 [
                     "22",
                     "$!#descstrpos!$<br>$!#descstrneg!$",
-                    "Versus Monster Percent<br>Uses $!MonType#strplur!$ based on the monster type selected, and inserts this value into the designated \"descstr\" string"
+                    "Versus Monster Percent<br>Uses $!montype#strplur!$ based on the monster type selected, and inserts this value into the designated \"descstr\" string"
                 ],
                 [
                     "23",

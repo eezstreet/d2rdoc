@@ -144,7 +144,7 @@ files["belts"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },

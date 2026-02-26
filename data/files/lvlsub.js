@@ -16,7 +16,7 @@ files["lvlsub"] = {
         },
         {
             "name": "Type",
-            "description": "This refers to the $!Levels#SubType!$ field. This defines a group that multiple substitutions can share.",
+            "description": "This refers to the $!levels#SubType!$ field. This defines a group that multiple substitutions can share.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -79,7 +79,7 @@ files["lvlsub"] = {
         },
         {
             "name": "Dt1Mask",
-            "description": "This functions as a bit field mask with a size of a 32 bit value. This explains to the ds1 file which of the 32 dt1 tile 1, File2=2, File3 = 4, File4=8, File5=16\u00e2\u20ac\u00a6.File32 = 2147483648). To build the $!#Dt1Mask!$, you would select which $!LvlTypes#File #!$ fields to use and add their associated bit values together for a total value. This total value is the bitmask value.",
+            "description": "This functions as a bit field mask with a size of a 32 bit value. This explains to the ds1 file which of the 32 dt1 tile 1, File2=2, File3 = 4, File4=8, File5=16\u00e2\u20ac\u00a6.File32 = 2147483648). To build the $!#Dt1Mask!$, you would select which $!lvltypes#File #!$ fields to use and add their associated bit values together for a total value. This total value is the bitmask value.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -129,7 +129,7 @@ files["lvlsub"] = {
                 "Prob3",
                 "Prob4"
             ],
-            "description": "This value affects the probability that the tile substitution is used. This is a random chance out of 100. Which $!#Prob#!$ field that is checked depends on the $!Levels#SubTheme!$ value.",
+            "description": "This value affects the probability that the tile substitution is used. This is a random chance out of 100. Which $!#Prob#!$ field that is checked depends on the $!levels#SubTheme!$ value.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

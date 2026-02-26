@@ -343,8 +343,8 @@ files["enums"] = {
                         "id": "srv-SorApplyChillingArmor",
                         "text": "SorApplyChillingArmor (Server)"
                     },
-                    "$!skills#srvmissilea!$<br>$!Missiles#ReturnFire!$",
-                    "Requires the event to be \"hitbymissile\". Shoot $!skills#srvmissilea!$ at the target unit, only if $!Missiles#ReturnFire!$ is set on the missile that hit the unit."
+                    "$!skills#srvmissilea!$<br>$!missiles#ReturnFire!$",
+                    "Requires the event to be \"hitbymissile\". Shoot $!skills#srvmissilea!$ at the target unit, only if $!missiles#ReturnFire!$ is set on the missile that hit the unit."
                 ],
                 [
                     "2",
@@ -515,7 +515,7 @@ files["enums"] = {
                         "text": "ItemApplyHitOrAttack"
                     },
                     "",
-                    "Based on a random chance, cast a skill on the target when the source unit attacks.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!ItemStatCost#stuff!$ field."
+                    "Based on a random chance, cast a skill on the target when the source unit attacks.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!itemstatcost#stuff!$ field."
                 ],
                 [
                     "21",
@@ -524,7 +524,7 @@ files["enums"] = {
                         "text": "ItemApplyGetHit"
                     },
                     "",
-                    "Based on a random chance, cast a skill on the attacker when the source unit gets hit.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!ItemStatCost#stuff!$ field."
+                    "Based on a random chance, cast a skill on the attacker when the source unit gets hit.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!itemstatcost#stuff!$ field."
                 ],
                 [
                     "22",
@@ -605,7 +605,7 @@ files["enums"] = {
                         "text": "ItemApplyOnDeath"
                     },
                     "",
-                    "Based on a random chance, cast a skill when the source unit dies.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!ItemStatCost#stuff!$ field."
+                    "Based on a random chance, cast a skill when the source unit dies.<br>Chance is the stat's value.<br>Skill and level are encoded into the parameter using the $!itemstatcost#stuff!$ field."
                 ],
                 [
                     "31",
@@ -726,8 +726,8 @@ files["enums"] = {
                         "id": "clt-SorApplyChillingArmor",
                         "text": "SorApplyChillingArmor (Client)"
                     },
-                    "$!skills#cltmissilea!$<br>$!Missiles#ReturnFire!$",
-                    "Requires the event to be \"hitbymissile\". Shoot $!skills#cltmissilea!$ at the target unit, only if $!Missiles#ReturnFire!$ is set on the missile that hit the unit."
+                    "$!skills#cltmissilea!$<br>$!missiles#ReturnFire!$",
+                    "Requires the event to be \"hitbymissile\". Shoot $!skills#cltmissilea!$ at the target unit, only if $!missiles#ReturnFire!$ is set on the missile that hit the unit."
                 ]
             ]
         },

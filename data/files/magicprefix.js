@@ -4,13 +4,13 @@
 files["magicprefix"] = {
     "title": "MagicPrefix.txt",
     "referenceFiles": [
-        "SharedItemMods",
-        "PlayerClass",
+        "shareditemmods",
+        "playerclass",
         "colors"
     ],
     "appendFiles": [
-        "SharedItemMods"
+        "shareditemmods"
     ],
-    "overview": "This file controls what item affixes (groups of item modifiers) are applied as the prefix for an itemThese item affixes will appear at the start of an item's name.<br>This file is loaded together with other similar files in the following order: $!MagicSuffix!$, $!MagicPrefix!$, $!automagic!$. These combined files form the Item Mods structure.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
+    "overview": "This file controls what item affixes (groups of item modifiers) are applied as the prefix for an itemThese item affixes will appear at the start of an item's name.<br>This file is loaded together with other similar files in the following order: $!magicsuffix!$, $!magicprefix!$, $!automagic!$. These combined files form the Item Mods structure.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": []
 }

@@ -4,7 +4,7 @@
 files["monseq"] = {
     "title": "monseq.txt",
     "referenceFiles": [
-        "MonMode"
+        "monmode"
     ],
     "overview": "This file controls the sequence table used for specifying events during certain animation frames, such as when using skills. A sequence is divided into multiple lines in this file to define each frame in the animation and to determine which event to use during a specific frame.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -19,16 +19,16 @@ files["monseq"] = {
         },
         {
             "name": "mode",
-            "description": "Defines which monster mode animation to use for the sequence. (Corresponds to $!MonMode#code!$)",
+            "description": "Defines which monster mode animation to use for the sequence. (Corresponds to $!monmode#code!$)",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },

@@ -4,12 +4,12 @@
 files["weapons"] = {
     "title": "weapons.txt",
     "referenceFiles": [
-        "SharedItems",
+        "shareditems",
         "enums",
-        "HitClass"
+        "hitclass"
     ],
     "appendFiles": [
-        "SharedItems"
+        "shareditems"
     ],
     "overview": "This file controls the functionalities for weapons type items. This file is loaded together with other similar files in the following order: $!weapons!$, $!armor!$, $!misc!$. These combined files form the items structure. Technically these files share the same fields, but some fields are exclusive for specific item types, so they are not displayed in the data files that do not need them. These are the fields exclusive to this file.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -69,11 +69,11 @@ files["weapons"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "HitClass",
+                "file": "hitclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "HitClass",
+                "file": "hitclass",
                 "field": "Code"
             }
         },

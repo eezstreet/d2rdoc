@@ -205,7 +205,7 @@ files["shrines"] = {
         },
         {
             "name": "LevelMin",
-            "description": "Define the earliest area level where the Shrine can spawn. Corresponds to an index for an area level from $!Levels!$",
+            "description": "Define the earliest area level where the Shrine can spawn. Corresponds to an index for an area level from $!levels!$",
             "type": {
                 "type": "int",
                 "dataLength": 0,

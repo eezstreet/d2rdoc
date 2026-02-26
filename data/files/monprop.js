@@ -41,7 +41,7 @@ files["monprop"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of $!Properties#code!$ or $!PropertyGroups#code!$"
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
@@ -95,7 +95,7 @@ files["monprop"] = {
                 "par5 (H)",
                 "par6 (H)"
             ],
-            "description": "The \"parameter\" value associated with the related $!#prop#!$. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"parameter\" value associated with the related $!#prop#!$. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -124,7 +124,7 @@ files["monprop"] = {
                 "min5 (H)",
                 "min6 (H)"
             ],
-            "description": "The \"min\" value to assign to the related $!#prop#!$. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"min\" value to assign to the related $!#prop#!$. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -153,7 +153,7 @@ files["monprop"] = {
                 "max5 (H)",
                 "max6 (H)"
             ],
-            "description": "The \"max\" value to assign to the related $!#prop#!$. Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"max\" value to assign to the related $!#prop#!$. Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

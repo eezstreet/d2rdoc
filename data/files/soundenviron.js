@@ -200,7 +200,7 @@ files["soundenviron"] = {
                 "memSize": 32
             },
             "appendField": {
-                "file": "SoundEnviron",
+                "file": "soundenviron",
                 "field": "Material #"
             }
         },
@@ -408,7 +408,7 @@ files["soundenviron"] = {
                 "memSize": 32
             },
             "appendField": {
-                "file": "SoundEnviron",
+                "file": "soundenviron",
                 "field": "SFX EAX Environ"
             }
         },

@@ -5,11 +5,11 @@ files["skills"] = {
     "title": "skills.txt",
     "referenceFiles": [
         "enums",
-        "PlayerClass",
+        "playerclass",
         "events",
-        "MonMode",
-        "PlrMode",
-        "ElemTypes"
+        "monmode",
+        "plrmode",
+        "elemtypes"
     ],
     "overview": "This file controls all skill functionalities. Skills are abilities used by all units in the game.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -29,11 +29,11 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -957,7 +957,7 @@ files["skills"] = {
                         "text": "SorDoTeleport"
                     },
                     "",
-                    "Check that the level allows teleporting (see $!Levels#Teleport!$), then validate the target location and warp the unit to that location."
+                    "Check that the level allows teleporting (see $!levels#Teleport!$), then validate the target location and warp the unit to that location."
                 ],
                 [
                     "28",
@@ -1605,7 +1605,7 @@ files["skills"] = {
                         "text": "MonDoPrimePoisonNova (Server)"
                     },
                     "$!#srvmissilea!$<br>$!#calc1!$<br>$!#calc2!$",
-                    "Create 2 rings of missiles. Use $!#calc1!$ to control the number of missile subloops. Use $!#calc2!$ to control how many missiles are created per ring. Use the missile's $!Missiles#Param1!$ and $!Missiles#Param2!$ values to control its velocity per ring."
+                    "Create 2 rings of missiles. Use $!#calc1!$ to control the number of missile subloops. Use $!#calc2!$ to control how many missiles are created per ring. Use the missile's $!missiles#Param1!$ and $!missiles#Param2!$ values to control its velocity per ring."
                 ],
                 [
                     "100",
@@ -1731,7 +1731,7 @@ files["skills"] = {
                         "text": "ItemDoBookSkill"
                     },
                     "",
-                    "Check the caster's inventory for an item that has the \"Book\" or \"Scroll\" Item Type (See $!ItemTypes!$), and then use that item's skill and update its quantity."
+                    "Check the caster's inventory for an item that has the \"Book\" or \"Scroll\" Item Type (See $!itemtypes!$), and then use that item's skill and update its quantity."
                 ],
                 [
                     "114",
@@ -1848,7 +1848,7 @@ files["skills"] = {
                         "text": "MonDoImpInferno"
                     },
                     "$!#srvmissilea!$<br>$!#calc2!$<br>$!#Param2!$",
-                    "Based on the animation frames set in $!monstats2!$, create a missile where $!#calc2!$ controls the missile's range (and also $!Missiles#Param2!$ from)."
+                    "Based on the animation frames set in $!monstats2!$, create a missile where $!#calc2!$ controls the missile's range (and also $!missiles#Param2!$ from)."
                 ],
                 [
                     "127",
@@ -2082,7 +2082,7 @@ files["skills"] = {
                         "text": "MonDoDiabloLight"
                     },
                     "$!#srvmissilea!$<br>$!#calc1!$<br>$!#calc3!$",
-                    "Shoot a missile from the caster to the target location, adhering to the caster's inferno animation frames (See $!monstats2!$). Use $!#calc1!$ to control the missile range, otherwise default to using the missile's $!Missiles#Param2!$ value calculated with its current level. Use $!#calc3!$ to control the periodic frame count for how often to create the missile."
+                    "Shoot a missile from the caster to the target location, adhering to the caster's inferno animation frames (See $!monstats2!$). Use $!#calc1!$ to control the missile range, otherwise default to using the missile's $!missiles#Param2!$ value calculated with its current level. Use $!#calc3!$ to control the periodic frame count for how often to create the missile."
                 ],
                 [
                     "153",
@@ -2393,7 +2393,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -2427,7 +2427,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -2447,7 +2447,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -2521,7 +2521,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -2601,7 +2601,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "ItemType"
             }
         },
@@ -2637,7 +2637,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -2710,16 +2710,16 @@ files["skills"] = {
         },
         {
             "name": "summode",
-            "description": "Defines the animation mode that the summoned monster will be initiated with. Uses a $!MonMode#code!$.",
+            "description": "Defines the animation mode that the summoned monster will be initiated with. Uses a $!monmode#code!$.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -2775,7 +2775,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -2932,7 +2932,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -2954,7 +2954,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -2976,7 +2976,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -2990,7 +2990,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -3804,7 +3804,7 @@ files["skills"] = {
                         "text": "SorDoFirewall (Client)"
                     },
                     "$!#cltmissilea!$<br>$!#calc1!$",
-                    "Validate the target location. Validate that the missile create has a missile linked in its $!Missiles#SubMissile1!$ field (see Missiles.txt). Use the $!#calc1!$ value to determine the maximum number of fire wall spawning missiles. Create 2 of the $!#cltmissilea!$ missiles thar are launched in opposite directions. Create 1 of the $!#cltmissilea!$ missile's sub missile."
+                    "Validate the target location. Validate that the missile create has a missile linked in its $!missiles#SubMissile1!$ field (see Missiles.txt). Use the $!#calc1!$ value to determine the maximum number of fire wall spawning missiles. Create 2 of the $!#cltmissilea!$ missiles thar are launched in opposite directions. Create 1 of the $!#cltmissilea!$ missile's sub missile."
                 ],
                 [
                     "27",
@@ -3858,7 +3858,7 @@ files["skills"] = {
                         "text": "NecDoCExplosion"
                     },
                     "$!#cltmissilea!$<br>$!#cltmissileb!$<br>$!#cltmissilec!$<br>$!#tgtsound!$",
-                    "Create $!#cltmissilea!$ at the target location facing a random direction. If the target monster is $!monstats2#small!$ then spawn 1 $!#cltmissilea!$. If the target monster is $!monstats2#large!$ then spawn 3 $!#cltmissilea!$ missiles in a radius value of 3, and if that missile has a $!Missiles#SubMissile1!$ value, then also spawn 4 sub missiles in a radius value of 2. If the target monster is neither $!monstats2#small!$ nor $!monstats2#large!$, then spawn 2 $!#cltmissilea!$ missiles in a radius value of 2, and spawn 3 of its sub missiles in a radius value of 1. Spawn 1 $!#cltmissileb!$ normally. Spawn 1 $!#cltmissilec!$ missile with its level equal to 2. If there is no target enemy, then play the $!#tgtsound!$ sound."
+                    "Create $!#cltmissilea!$ at the target location facing a random direction. If the target monster is $!monstats2#small!$ then spawn 1 $!#cltmissilea!$. If the target monster is $!monstats2#large!$ then spawn 3 $!#cltmissilea!$ missiles in a radius value of 3, and if that missile has a $!missiles#SubMissile1!$ value, then also spawn 4 sub missiles in a radius value of 2. If the target monster is neither $!monstats2#small!$ nor $!monstats2#large!$, then spawn 2 $!#cltmissilea!$ missiles in a radius value of 2, and spawn 3 of its sub missiles in a radius value of 1. Spawn 1 $!#cltmissileb!$ normally. Spawn 1 $!#cltmissilec!$ missile with its level equal to 2. If there is no target enemy, then play the $!#tgtsound!$ sound."
                 ],
                 [
                     "33",
@@ -3867,7 +3867,7 @@ files["skills"] = {
                         "text": "NecDoPoisonExplosion (Client)"
                     },
                     "$!#cltmissilea!$<br>$!#cltmissileb!$<br>$!#cltmissilec!$<br>$!#tgtsound!$",
-                    "Create $!#cltmissilea!$ at the target location facing a random direction. Spawn an inner and outer radial ring of $!#cltmissileb!$ missiles, based on the missile's $!Missiles#Param1!$ and $!Missiles#Param2!$ values. Spawn 1 $!#cltmissilec!$ missile with its level equal to 2. If there is no target enemy, then play the $!#tgtsound!$ sound."
+                    "Create $!#cltmissilea!$ at the target location facing a random direction. Spawn an inner and outer radial ring of $!#cltmissileb!$ missiles, based on the missile's $!missiles#Param1!$ and $!missiles#Param2!$ values. Spawn 1 $!#cltmissilec!$ missile with its level equal to 2. If there is no target enemy, then play the $!#tgtsound!$ sound."
                 ],
                 [
                     "34",
@@ -3948,7 +3948,7 @@ files["skills"] = {
                         "text": "BarDoDoubleThrow (Client)"
                     },
                     "",
-                    "Check that the attacking weapon is throwable and shoot a missile based on the weapon's missile class. If the weapon's item type is a \"Missile Potion\" (see $!ItemTypes!$), then use the lobbing missile launch function, otherwise use the normal linear missile launch function."
+                    "Check that the attacking weapon is throwable and shoot a missile based on the weapon's missile class. If the weapon's item type is a \"Missile Potion\" (see $!itemtypes!$), then use the lobbing missile launch function, otherwise use the normal linear missile launch function."
                 ],
                 [
                     "43",
@@ -4056,7 +4056,7 @@ files["skills"] = {
                         "text": "MonDoFetishInferno"
                     },
                     "$!#cltmissilea!$<br>$!#cltmissileb!$<br>$!#calc1!$",
-                    "Randomly create 2 of either $!#cltmissilea!$ or $!#cltmissileb!$ missiles. Use $!#calc1!$ to determine the range of the missile if it is greater than 0, otherwise use the missile's $!Missiles#Param2!$ value."
+                    "Randomly create 2 of either $!#cltmissilea!$ or $!#cltmissileb!$ missiles. Use $!#calc1!$ to determine the range of the missile if it is greater than 0, otherwise use the missile's $!missiles#Param2!$ value."
                 ],
                 [
                     "55",
@@ -4065,7 +4065,7 @@ files["skills"] = {
                         "text": "MonDoPrimePoisonNova (Client)"
                     },
                     "$!#cltmissilea!$<br>$!#calc1!$<br>$!#calc2!$",
-                    "Creates 8 missiles in different directions using a velocity set by the missile's $!Missiles#Param1!$ value. Then uses $!#calc2!$ to control how many additional missiles to create using a velocity set by the missile's $!Missiles#Param2!$ value. Uses $!#calc1!$ to set the missile's subloops."
+                    "Creates 8 missiles in different directions using a velocity set by the missile's $!missiles#Param1!$ value. Then uses $!#calc2!$ to control how many additional missiles to create using a velocity set by the missile's $!missiles#Param2!$ value. Uses $!#calc1!$ to set the missile's subloops."
                 ],
                 [
                     "56",
@@ -4074,7 +4074,7 @@ files["skills"] = {
                         "text": "MonDoDiabLight"
                     },
                     "$!#cltmissilea!$<br>$!#cltcalc1!$<br>$!#calc1!$",
-                    "Create the missile at an interval controlled by the $!#cltcalc1!$ value. Use $!#calc1!$ to determine the range of the missile if it is greater than 0, otherwise use the missile's $!Missiles#Param2!$ value. Also use the monster's inferno values to set the animation frames (see monstats2.txt)"
+                    "Create the missile at an interval controlled by the $!#cltcalc1!$ value. Use $!#calc1!$ to determine the range of the missile if it is greater than 0, otherwise use the missile's $!missiles#Param2!$ value. Also use the monster's inferno values to set the animation frames (see monstats2.txt)"
                 ],
                 [
                     "57",
@@ -4209,7 +4209,7 @@ files["skills"] = {
                         "text": "MonDoInferno"
                     },
                     "$!#cltmissilea!$<br>$!#cltmissileb!$<br>$!#cltcalc1!$<br>$!#cltcalc2!$",
-                    "Randomly create 1 of either $!#cltmissilea!$ or $!#cltmissileb!$ missiles. Use $!#cltcalc1!$ to control the missile's Z offset. Use $!#cltcalc2!$ to control add to the missile's range, which is also determined by the missile's $!Missiles#Param2!$ value"
+                    "Randomly create 1 of either $!#cltmissilea!$ or $!#cltmissileb!$ missiles. Use $!#cltcalc1!$ to control the missile's Z offset. Use $!#cltcalc2!$ to control add to the missile's range, which is also determined by the missile's $!missiles#Param2!$ value"
                 ],
                 [
                     "72",
@@ -4254,7 +4254,7 @@ files["skills"] = {
                         "text": "MonDoDeathMauler (Client)"
                     },
                     "$!#cltmissilea!$<br>$!#cltmissileb!$<br>$!#calc1!$",
-                    "Continuously create $!#cltmissileb!$ missiles as the trail missile's using the missile's $!Missiles#Param1!$ and $!Missiles#Param2!$ values to control the frequency and range/frames of the missile's creation. Create the $!#cltmissilea!$ missile with an animation rate controlled by $!#calc1!$, set this missile to not draw, and update its range and activation frame delay based on the $!#cltmissileb!$ missile's $!Missiles#Param1!$ and $!Missiles#Param2!$ values."
+                    "Continuously create $!#cltmissileb!$ missiles as the trail missile's using the missile's $!missiles#Param1!$ and $!missiles#Param2!$ values to control the frequency and range/frames of the missile's creation. Create the $!#cltmissilea!$ missile with an animation rate controlled by $!#calc1!$, set this missile to not draw, and update its range and activation frame delay based on the $!#cltmissileb!$ missile's $!missiles#Param1!$ and $!missiles#Param2!$ values."
                 ],
                 [
                     "77",
@@ -4608,7 +4608,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -4625,7 +4625,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -4682,7 +4682,7 @@ files["skills"] = {
         },
         {
             "name": "noammo",
-            "description": "Boolean Field. If equals 1, then the skill will not check that weapon's ammo when performing an attack. This relies on the $!ItemTypes#Shoots!$ field. If equals 0, then the weapon will consume its ammo when being used by the skill.",
+            "description": "Boolean Field. If equals 1, then the skill will not check that weapon's ammo when performing an attack. This relies on the $!itemtypes#Shoots!$ field. If equals 0, then the weapon will consume its ammo when being used by the skill.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -4760,7 +4760,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -4775,7 +4775,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -4791,7 +4791,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -4806,52 +4806,52 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
         {
             "name": "anim",
-            "description": "Controls the animation mode that the player character will use when using this skill. Setting the mode to Sequence (SQ) will cause the player character to play a time controlled animation sequence, utilizing certain sequence fields. Uses a $!PlrMode#Code!$",
+            "description": "Controls the animation mode that the player character will use when using this skill. Setting the mode to Sequence (SQ) will cause the player character to play a time controlled animation sequence, utilizing certain sequence fields. Uses a $!plrmode#Code!$",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlrMode",
+                "file": "plrmode",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlrMode",
+                "file": "plrmode",
                 "field": "Name"
             }
         },
         {
             "name": "seqtrans",
-            "description": "If the $!#anim!$ field equals SQ (Sequence) and this field equals SC (Cast), then the sequence animation speed can be modified by the faster cast rate stat modifier. Uses a $!PlrMode#Code!$",
+            "description": "If the $!#anim!$ field equals SQ (Sequence) and this field equals SC (Cast), then the sequence animation speed can be modified by the faster cast rate stat modifier. Uses a $!plrmode#Code!$",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlrMode",
+                "file": "plrmode",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlrMode",
+                "file": "plrmode",
                 "field": "Name"
             }
         },
         {
             "name": "monanim",
-            "description": "Controls the animation mode that the monster will use when using this skill. This is similar to the $!#anim!$ field except with monster units using the skill instead of player units. Uses a $!MonMode#code!$",
+            "description": "Controls the animation mode that the monster will use when using this skill. This is similar to the $!#anim!$ field except with monster units using the skill instead of player units. Uses a $!monmode#code!$",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },
@@ -4998,7 +4998,7 @@ files["skills"] = {
         },
         {
             "name": "UseAttackRate",
-            "description": "Boolean Field. If equals 1, then the current attack speed should be updated after using the skill, relative to the \"attackrate\" stat (See $!ItemStatCost!$), and if the skill was an attacking skill. If equals 0, then the attack speed will not be updated after using the skill.",
+            "description": "Boolean Field. If equals 1, then the current attack speed should be updated after using the skill, relative to the \"attackrate\" stat (See $!itemstatcost!$), and if the skill was an attacking skill. If equals 0, then the attack speed will not be updated after using the skill.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -5337,7 +5337,7 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -5962,11 +5962,11 @@ files["skills"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             },
             "appendField": {
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             }
         },

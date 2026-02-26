@@ -5,7 +5,7 @@ files["missiles"] = {
     "title": "Missiles.txt",
     "referenceFiles": [
         "enums",
-        "ElemTypes"
+        "elemtypes"
     ],
     "overview": "This file controls the different functions for all missiles and their statistics. Missiles are projectiles used throughout the game for attacks, skills, and special effects.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -1059,7 +1059,7 @@ files["missiles"] = {
                         "text": "HitQueenDeathGlob"
                     },
                     "",
-                    "Randomly create 1 of the next 2 missile's defined in the $!Missiles!$ file after the missile that uses this function. For example, if \"Missile\" equals \"queendeathglob\" (ID = 354) and it uses this function, then randomly choose to create \"queendeathsplat1\" (ID = 355) or \"queendeathsplat2\" (ID = 356)."
+                    "Randomly create 1 of the next 2 missile's defined in the $!missiles!$ file after the missile that uses this function. For example, if \"Missile\" equals \"queendeathglob\" (ID = 354) and it uses this function, then randomly choose to create \"queendeathsplat1\" (ID = 355) or \"queendeathsplat2\" (ID = 356)."
                 ],
                 [
                     "40",
@@ -3257,11 +3257,11 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             },
             "appendField": {
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             }
         },
@@ -3439,7 +3439,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Overlay",
+                "file": "overlay",
                 "field": "overlay"
             }
         },
@@ -3450,7 +3450,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -3466,7 +3466,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -3483,7 +3483,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -3499,7 +3499,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },
@@ -3516,7 +3516,7 @@ files["missiles"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Missiles",
+                "file": "missiles",
                 "field": "Missile"
             }
         },

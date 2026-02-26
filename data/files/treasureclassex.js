@@ -103,7 +103,7 @@ files["treasureclassex"] = {
                 "Item9",
                 "Item10"
             ],
-            "description": "Defines an entry in the treasure class. This can be a specific item code, another $!#Treasure Class!$, a $!UniqueItems#index!$, or a $!SetItems#index!$. Linking another Treasure Class in this field means that there is a chance to use that Treasure Class group of items which the game will then calculate a selection from that Treasure Class, and so on. Additional modifiers can also be defined, separated by a comma \",\". The modifier must have an equal sign \"=\" then a value. For example \"gld,mul=1280\"",
+            "description": "Defines an entry in the treasure class. This can be a specific item code, another $!#Treasure Class!$, a $!uniqueitems#index!$, or a $!setitems#index!$. Linking another Treasure Class in this field means that there is a chance to use that Treasure Class group of items which the game will then calculate a selection from that Treasure Class, and so on. Additional modifiers can also be defined, separated by a comma \",\". The modifier must have an equal sign \"=\" then a value. For example \"gld,mul=1280\"",
             "type": {
                 "type": "text",
                 "dataLength": 64,

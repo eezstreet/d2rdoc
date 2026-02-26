@@ -319,7 +319,7 @@ files["sounds"] = {
                 "Block 2",
                 "Block 3"
             ],
-            "description": "Defines an offset time value in the sound. If this sound is used in a Sound Environment (See $!SoundEnviron!$) then these fields control when to periodically update the current song sound to an offset. If this sound is not used in a Sound Environment and if only $!#Block 1!$ is used and the $!#Loop!$ field is enabled, then use this block value as the time in the sound when to start looping. If this equals -1, then the field is ignored.",
+            "description": "Defines an offset time value in the sound. If this sound is used in a Sound Environment (See $!soundenviron!$) then these fields control when to periodically update the current song sound to an offset. If this sound is not used in a Sound Environment and if only $!#Block 1!$ is used and the $!#Loop!$ field is enabled, then use this block value as the time in the sound when to start looping. If this equals -1, then the field is ignored.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

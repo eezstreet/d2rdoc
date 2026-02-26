@@ -4,7 +4,7 @@
 files["shareditemmods"] = {
     "title": "Shared Item Mods",
     "referenceFiles": [
-        "PlayerClass",
+        "playerclass",
         "colors"
     ],
     "notSearchable": true,
@@ -78,16 +78,16 @@ files["shareditemmods"] = {
         },
         {
             "name": "classspecific",
-            "description": "Controls if this item affix should only be used for class specific items. This relies on the class code specified in $!ItemTypes#Class!$, for the specific item.",
+            "description": "Controls if this item affix should only be used for class specific items. This relies on the class code specified in $!itemtypes#Class!$, for the specific item.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -98,11 +98,11 @@ files["shareditemmods"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -145,7 +145,7 @@ files["shareditemmods"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References a $!Properties#code!$ or a $!PropertyGroups#code!$"
+                "description": "References a $!properties#code!$ or a $!propertygroups#code!$"
             }
         },
         {
@@ -155,12 +155,12 @@ files["shareditemmods"] = {
                 "mod2param",
                 "mod3param"
             ],
-            "description": "The parameter value associated with the related property ($!#mod#code!$). Usage depends on the property function (See $!Properties#func#!$).",
+            "description": "The parameter value associated with the related property ($!#mod#code!$). Usage depends on the property function (See $!properties#func#!$).",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {
@@ -170,7 +170,7 @@ files["shareditemmods"] = {
                 "mod2min",
                 "mod3min"
             ],
-            "description": "The min value to assign to the listed related ($!#mod#code!$). Usage depends on the property function (See $!Properties#func#!$).",
+            "description": "The min value to assign to the listed related ($!#mod#code!$). Usage depends on the property function (See $!properties#func#!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -184,7 +184,7 @@ files["shareditemmods"] = {
                 "mod2max",
                 "mod3max"
             ],
-            "description": "The max value to assign to the listed related ($!#mod#code!$). Usage depends on the property function (See $!Properties#func#!$).",
+            "description": "The max value to assign to the listed related ($!#mod#code!$). Usage depends on the property function (See $!properties#func#!$).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -222,7 +222,7 @@ files["shareditemmods"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -240,7 +240,7 @@ files["shareditemmods"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },

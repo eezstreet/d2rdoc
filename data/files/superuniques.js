@@ -137,7 +137,7 @@ files["superuniques"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         },
@@ -152,7 +152,7 @@ files["superuniques"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "TreasureClassEx",
+                "file": "treasureclassex",
                 "field": "Treasure Class"
             }
         }

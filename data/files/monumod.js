@@ -96,12 +96,12 @@ files["monumod"] = {
                 "exclude1",
                 "exclude2"
             ],
-            "description": "This controls which Monster Types should not have this monster modifier (Uses the $!MonType#type!$ field)",
+            "description": "This controls which Monster Types should not have this monster modifier (Uses the $!montype#type!$ field)",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "MonType",
+                "file": "montype",
                 "field": "type"
             }
         },

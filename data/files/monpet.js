@@ -12,7 +12,7 @@ files["monpet"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References a $!monstats#Id!$ or a $!SuperUniques#Superunique!$"
+                "description": "References a $!monstats#Id!$ or a $!superuniques#Superunique!$"
             }
         },
         {
@@ -38,7 +38,7 @@ files["monpet"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "ItemStatCost",
+                "file": "itemstatcost",
                 "field": "Stat"
             }
         },
@@ -56,7 +56,7 @@ files["monpet"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {

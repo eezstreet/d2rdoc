@@ -5,8 +5,8 @@ files["monstats2"] = {
     "title": "monstats2.txt",
     "referenceFiles": [
         "enums",
-        "HitClass",
-        "MonMode"
+        "hitclass",
+        "monmode"
     ],
     "overview": "This file controls additional functionalities and statistics for every monster in the game.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -62,7 +62,7 @@ files["monstats2"] = {
         },
         {
             "name": "OverlayHeight",
-            "description": "Determines the height value of overlays (See $!Overlay!$) for the monster",
+            "description": "Determines the height value of overlays (See $!overlay!$) for the monster",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -144,7 +144,7 @@ files["monstats2"] = {
             }
         },
         {
-            "name": "HitClass",
+            "name": "hitclass",
             "description": "Defines the specific class of an attack when the monster successfully hits with an attack. This can affect the sound and overlay display of the attack hit. Uses an integer index.",
             "type": {
                 "type": "int",
@@ -152,7 +152,7 @@ files["monstats2"] = {
                 "memSize": 8
             },
             "appendField": {
-                "file": "HitClass",
+                "file": "hitclass",
                 "field": "Code"
             }
         },
@@ -624,7 +624,7 @@ files["monstats2"] = {
         },
         {
             "name": "noOvly",
-            "description": "Boolean Field. If equals 1, then no looping overlays will be drawn on the monster. If equals 0, then overlays will be drawn on the monster. (See $!Overlay!$)",
+            "description": "Boolean Field. If equals 1, then no looping overlays will be drawn on the monster. If equals 0, then overlays will be drawn on the monster. (See $!overlay!$)",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -902,16 +902,16 @@ files["monstats2"] = {
         },
         {
             "name": "ResurrectMode",
-            "description": "Controls which monster mode to set on the monster when it is resurrected. Uses a $!MonMode#code!$",
+            "description": "Controls which monster mode to set on the monster when it is resurrected. Uses a $!monmode#code!$",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "code"
             },
             "appendField": {
-                "file": "MonMode",
+                "file": "monmode",
                 "field": "name"
             }
         },

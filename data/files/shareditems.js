@@ -231,7 +231,7 @@ files["shareditems"] = {
         },
         {
             "name": "component",
-            "description": "Determines the layer of player animation when the item is equipped. This uses a code referenced from the $!Composit!$ file.",
+            "description": "Determines the layer of player animation when the item is equipped. This uses a code referenced from the $!composit!$ file.",
             "table": [
                 [
                     "Code",
@@ -341,7 +341,7 @@ files["shareditems"] = {
         },
         {
             "name": "gemsockets",
-            "description": "Controls the maximum number of sockets allowed on this item. This is limited by the item's size based on the $!#invwidth!$ and $!#invheight!$ fields. This also compares with $!ItemTypes#MaxSockets#!$.",
+            "description": "Controls the maximum number of sockets allowed on this item. This is limited by the item's size based on the $!#invwidth!$ and $!#invheight!$ fields. This also compares with $!itemtypes#MaxSockets#!$.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -499,7 +499,7 @@ files["shareditems"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -510,7 +510,7 @@ files["shareditems"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 16,
-                "file": "ItemTypes",
+                "file": "itemtypes",
                 "field": "Code"
             }
         },
@@ -772,7 +772,7 @@ files["shareditems"] = {
         },
         {
             "name": "missiletype",
-            "description": "Points to an entry's index in $!Missiles!$, which determines what type of missile is used when using the throwing weapons",
+            "description": "Points to an entry's index in $!missiles!$, which determines what type of missile is used when using the throwing weapons",
             "type": {
                 "type": "int",
                 "dataLength": 0,

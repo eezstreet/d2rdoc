@@ -4,7 +4,7 @@
 files["cubemain"] = {
     "title": "cubemain.txt",
     "referenceFiles": [
-        "PlayerClass"
+        "playerclass"
     ],
     "overview": "This file controls the recipes for the Horadric Cubetems structure.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -94,122 +94,122 @@ files["cubemain"] = {
                 [
                     "3",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the player's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "4",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the player's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "5",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the player's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "6",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the player's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "7",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the player's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "8",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the player's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "9",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the player's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "10",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the player's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "11",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "12",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "13",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "14",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the player's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "15",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the input item's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "16",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the input item's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "17",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the input item's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "18",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's current stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the input item's current stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "19",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the input item's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "20",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the input item's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "21",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the input item's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "22",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the input item's base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "23",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is greater than $!#value!$"
+                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is greater than $!#value!$"
                 ],
                 [
                     "24",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is less than $!#value!$"
+                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is less than $!#value!$"
                 ],
                 [
                     "25",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is not equal to $!#value!$"
+                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is not equal to $!#value!$"
                 ],
                 [
                     "26",
                     "$!#param!$<br>$!#value!$",
-                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from ItemStatCost.txt) is equal to $!#value!$"
+                    "Require that the input item's non-base stat (using $!#param!$ as the stat ID from itemstatcost.txt) is equal to $!#value!$"
                 ],
                 [
                     "27",
@@ -248,11 +248,11 @@ files["cubemain"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             },
             "appendField": {
-                "file": "PlayerClass",
+                "file": "playerclass",
                 "field": "Code"
             }
         },
@@ -281,7 +281,7 @@ files["cubemain"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References an $!ItemTypes#ItemType!$, item code, $!UniqueItems#index!$, $!Sets#index!$, or one of the parameters described below"
+                "description": "References an $!itemtypes#ItemType!$, item code, $!uniqueitems#index!$, $!sets#index!$, or one of the parameters described below"
             },
             "table": [
                 [
@@ -385,7 +385,7 @@ files["cubemain"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "References an $!ItemTypes#ItemType!$, item code, $!UniqueItems#index!$, $!Sets#index!$, or one of the parameters described below"
+                "description": "References an $!itemtypes#ItemType!$, item code, $!uniqueitems#index!$, $!sets#index!$, or one of the parameters described below"
             },
             "table": [
                 [
@@ -422,11 +422,11 @@ files["cubemain"] = {
                 ],
                 [
                     "pre=#",
-                    "Force the output item to have an item prefix, where # equals the ID of the prefix (see the row count on $!MagicPrefix!$)"
+                    "Force the output item to have an item prefix, where # equals the ID of the prefix (see the row count on $!magicprefix!$)"
                 ],
                 [
                     "suf=#",
-                    "Force the output item to have an item suffix, where # equals the ID of the suffix (see the row count on $!MagicSuffix!$)"
+                    "Force the output item to have an item suffix, where # equals the ID of the suffix (see the row count on $!magicsuffix!$)"
                 ],
                 [
                     "low",
@@ -573,7 +573,7 @@ files["cubemain"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of $!Properties#code!$ or $!PropertyGroups#code!$"
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
@@ -621,7 +621,7 @@ files["cubemain"] = {
                 "c mod 4 param",
                 "c mod 5 param"
             ],
-            "description": "The \"parameter\" value associated with the listed property (mod). Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"parameter\" value associated with the listed property (mod). Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -647,7 +647,7 @@ files["cubemain"] = {
                 "c mod 4 min",
                 "c mod 5 min"
             ],
-            "description": "The \"min\" value to assign to the listed property (mod). Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"min\" value to assign to the listed property (mod). Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -673,7 +673,7 @@ files["cubemain"] = {
                 "c mod 4 max",
                 "c mod 5 max"
             ],
-            "description": "The \"max\" value to assign to the listed property (mod). Usage depends on the property function (See $!Properties#func#!$)",
+            "description": "The \"max\" value to assign to the listed property (mod). Usage depends on the property function (See $!properties#func#!$)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

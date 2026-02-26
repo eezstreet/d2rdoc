@@ -21,7 +21,7 @@ files["levelgroups"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 32,
-                "file": "LevelGroups",
+                "file": "levelgroups",
                 "field": "LevelGroupId"
             }
         },

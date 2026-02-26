@@ -24,7 +24,7 @@ files["setitems"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "Sets",
+                "file": "sets",
                 "field": "index"
             }
         },
@@ -261,7 +261,7 @@ files["setitems"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of $!Properties#code!$ or $!PropertyGroups#code!$"
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
@@ -277,12 +277,12 @@ files["setitems"] = {
                 "par8",
                 "par9"
             ],
-            "description": "The stat's \"parameter\" value associated with the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"parameter\" value associated with the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {
@@ -298,7 +298,7 @@ files["setitems"] = {
                 "min8",
                 "min9"
             ],
-            "description": "The stat's \"min\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"min\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -318,7 +318,7 @@ files["setitems"] = {
                 "max8",
                 "max9"
             ],
-            "description": "The stat's \"max\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"max\" value to assign to the related property ($!#prop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -344,7 +344,7 @@ files["setitems"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of $!Properties#code!$ or $!PropertyGroups#code!$"
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
@@ -361,12 +361,12 @@ files["setitems"] = {
                 "apar5a",
                 "apar5b"
             ],
-            "description": "The stat's \"parameter\" value associated with the related property ($!#aprop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"parameter\" value associated with the related property ($!#aprop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!MonType#type!$, or $!states#state!$"
+                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
             }
         },
         {
@@ -383,7 +383,7 @@ files["setitems"] = {
                 "amin5a",
                 "amin5b"
             ],
-            "description": "The stat's \"min\" value to assign to the related property ($!#aprop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"min\" value to assign to the related property ($!#aprop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -404,7 +404,7 @@ files["setitems"] = {
                 "amax5a",
                 "amax5b"
             ],
-            "description": "The stat's \"max\" value to assign to the related property ($!#aprop#!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"max\" value to assign to the related property ($!#aprop#!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,

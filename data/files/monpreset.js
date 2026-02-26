@@ -21,7 +21,7 @@ files["monpreset"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of a $!SuperUniques#Superunique!$, $!monstats#Id!$, or $!MonPlace#code!$"
+                "description": "Reference of a $!superuniques#Superunique!$, $!monstats#Id!$, or $!monplace#code!$"
             }
         }
     ]

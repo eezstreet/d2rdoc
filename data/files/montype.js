@@ -4,7 +4,7 @@
 files["montype"] = {
     "title": "MonType.txt",
     "referenceFiles": [
-        "ElemTypes"
+        "elemtypes"
     ],
     "overview": "This file handles the classification, naming conventions and element of monsters.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
@@ -29,13 +29,13 @@ files["montype"] = {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "MonType",
+                "file": "montype",
                 "field": "type"
             }
         },
         {
             "name": "strplur",
-            "description": "Uses a string for the plural form of the monster type. This is used for the $!ItemStatCost#descfunc!$ code 22 function, based on the monster type selected.",
+            "description": "Uses a string for the plural form of the monster type. This is used for the $!itemstatcost#descfunc!$ code 22 function, based on the monster type selected.",
             "type": {
                 "type": "string",
                 "dataLength": 255,
@@ -49,11 +49,11 @@ files["montype"] = {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             },
             "appendField": {
-                "file": "ElemTypes",
+                "file": "elemtypes",
                 "field": "Code"
             }
         }

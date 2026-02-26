@@ -16,7 +16,7 @@ files["qualityitems"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "Reference of $!Properties#code!$ or $!PropertyGroups#code!$"
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
@@ -25,7 +25,7 @@ files["qualityitems"] = {
                 "mod1param",
                 "mod2param"
             ],
-            "description": "The stat's \"parameter\" value associated with the related property ($!#mod#code!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"parameter\" value associated with the related property ($!#mod#code!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -38,7 +38,7 @@ files["qualityitems"] = {
                 "mod1min",
                 "mod2min"
             ],
-            "description": "The stat's \"min\" value to assign to the related property ($!#mod#code!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"min\" value to assign to the related property ($!#mod#code!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -51,7 +51,7 @@ files["qualityitems"] = {
                 "mod1max",
                 "mod2max"
             ],
-            "description": "The stat's \"max\" value to assign to the related property ($!#mod#code!$). Usage depends on the property function (See the $!Properties#func#!$ field)",
+            "description": "The stat's \"max\" value to assign to the related property ($!#mod#code!$). Usage depends on the property function (See the $!properties#func#!$ field)",
             "type": {
                 "type": "int",
                 "dataLength": 0,
