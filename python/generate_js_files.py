@@ -105,6 +105,8 @@ def updateFile(jsPath, allFieldExports, processedFiles):
         if "appendFiles" in file:
             for appendFileName in file["appendFiles"]:
                 jsAppendFilePath = jsPath.with_stem(appendFileName)
+                if not jsPath.exists(): # I'll try making the filename lowercase. That's a neat trick!
+                    jsAppendFilePath = jsAppendFilePath.with_name(jsAppendFilePath.name.lower())
 
                 # Process first so they are up to date
                 updateFile(jsAppendFilePath, allFieldExports, processedFiles)
