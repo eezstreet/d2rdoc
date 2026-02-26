@@ -31,7 +31,6 @@ def verifyArgs(args):
             return False
         if not os.path.exists(args.html):
             os.makedirs(args.html, exist_ok=True)
-            return False
     
     return True
 
