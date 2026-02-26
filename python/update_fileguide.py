@@ -30,7 +30,7 @@ def verifyArgs(args):
             print ("ERROR: The .html directory is not defined. Use -html [dir] to point to the directory that contains the .html files.")
             return False
         if not os.path.exists(args.html):
-            print ("ERROR: The .html directory does not exist: {}".format(args.html))
+            os.makedirs(args.html, exist_ok=True)
             return False
     
     return True
