@@ -55,6 +55,7 @@ function replaceReferenceLink(match, p1, pageOverride) {
 
 function parseJSONText(text, pageOverride) {
     // Reference Links
+    text = text || "";
     text = text.replaceAll(/\$\!(.*?)\!\$/g, (match, p1) => replaceReferenceLink(match, p1, pageOverride));
     return text;
 }
