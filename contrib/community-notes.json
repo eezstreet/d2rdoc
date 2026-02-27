@@ -9,6 +9,15 @@
     ]
   },
   {
+    "file": "propertygroups",
+    "fields": [
+      {
+        "name": "pickmode",
+        "note": "This field is undocumented by Blizzard. There is no semantic difference between 1 and 2 - 2 only adds extra checks. However, entering a 0 here will cause all of the properties to be added; effectively allowing you to add more properties to Unique Items, Runewords, etc."
+      }
+    ]
+  },
+  {
     "file": "shareditems",
     "fields": [
       {
