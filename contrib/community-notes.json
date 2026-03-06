@@ -9,6 +9,26 @@
     ]
   },
   {
+    "file": "skills",
+    "fields": [
+      {
+        "name": "auraeventfunc#",
+        "tableNotes": [
+          {
+            "code": "33",
+            "column": 3,
+            "note": "If the associated skill's $!#ItemTarget#!$ is set to 4, the game will crash upon loading."
+          },
+          {
+            "code": "34",
+            "column": 3,
+            "note": "If the monster's health is lower than $!#calc1#!$, or $!#calc2#!$ (if the target unit is Champion, Unique or Super Unique), the unit is instantly killed."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "file": "propertygroups",
     "fields": [
       {

@@ -70,13 +70,23 @@ function getCommunityNote(fileKey, fieldName) {
     return fieldEntry ? fieldEntry.note || null : null;
 }
 
-function createTable(table, entries, pageOverride, attachIds = true) {
+function getCommunityTableNotes(fileKey, fieldName) {
+    if (typeof communityNotes === 'undefined') return null;
+    const fileEntry = communityNotes.find(f => f.file.toLowerCase() === fileKey.toLowerCase());
+    if (!fileEntry || !fileEntry.fields) return null;
+    const fieldEntry = fileEntry.fields.find(f => f.name.toLowerCase() === fieldName.toLowerCase());
+    return fieldEntry ? fieldEntry.tableNotes || null : null;
+}
+
+function createTable(table, entries, pageOverride, attachIds = true, tableNotes = null) {
     const header = table.querySelector("thead");
     const body = table.querySelector("tbody");
     let isHeader = true;
 
     for (const rowData of entries) {
         const row = (isHeader ? header : body).insertRow();
+        let firstCellText = null;
+        let colIndex = 0;
         for (const columnData of rowData) {
             let col = {};
             if (isHeader) {
@@ -106,7 +116,26 @@ function createTable(table, entries, pageOverride, attachIds = true) {
                     col.appendChild(colLink);
                 }
             }
+
+            if (!isHeader && colIndex === 0) {
+                firstCellText = typeof columnData === 'string' ? columnData : columnData.text;
+            }
+            colIndex++;
         }
+
+        if (!isHeader && tableNotes && firstCellText !== null) {
+            const tableNote = tableNotes.find(tn => tn.code === firstCellText);
+            if (tableNote) {
+                const targetCell = row.cells[tableNote.column];
+                if (targetCell) {
+                    const noteDiv = document.createElement("div");
+                    noteDiv.classList.add("community-note");
+                    noteDiv.innerHTML = parseJSONText(tableNote.note, pageOverride);
+                    targetCell.appendChild(noteDiv);
+                }
+            }
+        }
+
         isHeader = false;
     }
 }
@@ -293,7 +322,7 @@ function createBittable(table, entries, pageOverride) {
     }
 }
 
-function createAppendField(appendField, fileTitle, pageOverride) {
+function createAppendField(appendField, fileTitle, pageOverride, tableNotes = null) {
     const appendfieldTemplate = document.querySelector("#appendfield-template");
     const appendfieldClone = appendfieldTemplate.content.cloneNode(true);
 
@@ -308,7 +337,7 @@ function createAppendField(appendField, fileTitle, pageOverride) {
     // Table
     if (appendField.table) {
         const attachIds = false;
-        createTable(appendfieldClone.querySelector(".field-table"), appendField.table, pageOverride, attachIds);
+        createTable(appendfieldClone.querySelector(".field-table"), appendField.table, pageOverride, attachIds, tableNotes);
     }
     else if (appendField.bittable) {
         createBittable(appendfieldClone.querySelector(".field-table"), appendField.bittable, pageOverride);
@@ -409,7 +438,8 @@ function createField(fieldTemplate, field, fileKey) {
 
     // Table
     if (field.table) {
-        createTable(fieldClone.querySelector(".field-table"), field.table);
+        const tableNotes = fileKey ? getCommunityTableNotes(fileKey, field.name) : null;
+        createTable(fieldClone.querySelector(".field-table"), field.table, fileKey, true, tableNotes);
     }
     else if (field.bittable) {
         createBittable(fieldClone.querySelector(".field-table"), field.bittable);
@@ -423,7 +453,8 @@ function createField(fieldTemplate, field, fileKey) {
         let otherFile = files[field.appendField.file];
         let appendField = otherFile.fields.find(f => f.name == field.appendField.field);
         if (appendField) {
-            const appendFieldClone = createAppendField(appendField, otherFile.title, field.appendField.file);
+            const tableNotes = fileKey ? getCommunityTableNotes(fileKey, field.name) : null;
+            const appendFieldClone = createAppendField(appendField, otherFile.title, field.appendField.file, tableNotes);
 
             const appendFieldContainer = fieldClone.querySelector(".field-appendfield")
             appendFieldContainer.appendChild(appendFieldClone);
