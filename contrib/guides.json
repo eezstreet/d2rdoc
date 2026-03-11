@@ -4,5 +4,11 @@
         "title": "Getting Started",
         "description": "This is an introduction to getting started with Diablo II: Resurrected modding.",
         "author": "eezstreet"
+    },
+    {
+        "filename": "desecratedzones.md",
+        "title": "Terror Zones",
+        "description": "This is a guide to modding Terror Zones through the desecratedzones.json file",
+        "author": "Undeceiver and Killshot"
     }
 ]
