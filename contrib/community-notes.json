@@ -4,7 +4,7 @@
     "fields": [
       {
         "name": "AdvancedStashStackable",
-        "note": "According to Phrozen Keep member Yupgoolg, this controls the ability to stack items in the stash. You need to also edit layout/bankexpansionlayouthd.json in order for the item to actually show up in the stash tab."
+        "note": "According to Phrozen Keep member Yupgoolg, you need to also edit layout/bankexpansionlayouthd.json in order for the item to actually show up in the stash tab."
       }
     ]
   },
@@ -18,22 +18,8 @@
             "code": "33",
             "column": 3,
             "note": "If the associated skill's $!#ItemTarget#!$ is set to 4, the game will crash upon loading."
-          },
-          {
-            "code": "34",
-            "column": 3,
-            "note": "If the monster's health is lower than $!#calc1#!$, or $!#calc2#!$ (if the target unit is Champion, Unique or Super Unique), the unit is instantly killed."
           }
         ]
-      }
-    ]
-  },
-  {
-    "file": "propertygroups",
-    "fields": [
-      {
-        "name": "pickmode",
-        "note": "This field is undocumented by Blizzard. There is no semantic difference between 1 and 2 - 2 only adds extra checks. However, entering a 0 here will cause all of the properties to be added; effectively allowing you to add more properties to Unique Items, Runewords, etc."
       }
     ]
   },
