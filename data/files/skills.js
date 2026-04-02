@@ -332,9 +332,12 @@ files["skills"] = {
                 ],
                 [
                     "30",
-                    "",
-                    "",
-                    "Do nothing"
+                    {
+                        "id": "srv-SkillStartPlayerChannelSkill",
+                        "text": "SkillStartPlayerChannelSkill"
+                    },
+                    "$!#srvmissilea!$",
+                    "Starts a channeling skill by applying the \"skill_channeling\" state on the unit for 20 frames, saving off the skill's target. Also create a position missile using $!#srvmissilea!$ targeted at the target. If the state is already present and the target is the same, the duration of the skill is extended by 7 frames. Also extend the missile's lifetime by 7 frames."
                 ],
                 [
                     "31",
@@ -351,8 +354,8 @@ files["skills"] = {
                         "id": "BarStartBash",
                         "text": "BarStartBash"
                     },
-                    "$!#aurastate!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#calc3!$<br>$!#calc4!$",
-                    "Validate the target enemy and attack it. Use $!#calc1!$ to control the physical damage percent increase. Use $!#calc2!$ to control the flat damage increase. Use $!#calc3!$ to control the attack speed bonus. Use $!#calc4!$ to control the percent of damage converted to elemental, if the $!#EType!$ field is used. Applies $!#aurastate!$ to self."
+                    "$!#aurastate!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#calc3!$<br>$!#calc4!$<br>$!#calc4!$<br>$!#calc4!$<br>$!#ResultFlags!$<br>$!#HitFlags!$<br>$!#HitClass!$",
+                    "Validate the target enemy and attack it. Use $!#calc1!$ to control the physical damage percent increase. Use $!#calc2!$ to control the flat damage increase. Use $!#calc3!$ to control the attack speed bonus. Use $!#calc4!$ to control the percent of damage converted to elemental, if the $!#EType!$ field is used. Apply $!#ResultFlags!$, $!#HitFlags!$ and $!#HitClass!$. Applies $!#aurastate!$ and all $!#aurastat#!$ to self."
                 ],
                 [
                     "33",
@@ -673,7 +676,7 @@ files["skills"] = {
                         "text": "BarStartDoubleSwing (Server)"
                     },
                     "$!#calc2!$",
-                    "Uses $!#calc2!$ to apply an attack rate bonus."
+                    "Uses $!#calc3!$ to apply an attack rate bonus."
                 ],
                 [
                     "69",
@@ -681,8 +684,8 @@ files["skills"] = {
                         "id": "srv-WarStartConsume",
                         "text": "WarStartConsume (Server)"
                     },
-                    "",
-                    ""
+                    "$!#pettype!$",
+                    "Verify the target is a pet. If $!#pettype!$ is filled out, then the pet must be of that type (also checks pooled pets, see $!pettype#pool!$)"
                 ],
                 [
                     "70",
@@ -690,8 +693,8 @@ files["skills"] = {
                         "id": "WarStartHealthLink",
                         "text": "WarStartHealthLink"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#auratargetstate!$<br>$!#auralencalc!$<br>$!#calc2!$",
+                    "Verify $!#aurastate!$ and $!#auratargetstate!$ exist. Fail to cast if the maximum number of units affected by $!#auratargetstate!$ has been reached, using $!#calc2!$ as the max (0 is infinite units). Tracks the amount of units affected by placing a statslist on the caster of state $!#aurastate!$ and length $!#auralencalc!$ and storing what units are affected in it. If the statslist already exists (like from repeat casts), then also remove any units from the list that are no longer affected."
                 ]
             ]
         },
@@ -795,7 +798,7 @@ files["skills"] = {
                         "text": "BarDoFrenzy"
                     },
                     "$!#aurastate!$<br>$!#auralencalc!$<br>$!#calc1!$<br>$!#calc4!$",
-                    "Attack with both weapons on a target or to nearby targets. Add the $!#aurastate!$ state to the caster unit, with a duration controlled by $!#auralencalc!$. Use $!#calc1!$ to control the percentage increase for physical damage dealt. Use $!#calc4!$ to control the percent of damage converted to elemental, if the $!#EType!$ field is used."
+                    "Attack a target or nearby targets. Performs as many attacks as there are in the animation. Add the $!#aurastate!$ state to the caster unit, with a duration controlled by $!#auralencalc!$. Use $!#calc1!$ to control the percentage increase for physical damage dealt. Use $!#calc4!$ to control the percent of damage converted to elemental, if the $!#EType!$ field is used."
                 ],
                 [
                     "10",
@@ -921,7 +924,7 @@ files["skills"] = {
                         "text": "SorDoBlaze"
                     },
                     "$!#aurastate!$<br>$!#auralencalc!$",
-                    "Add the $!#aurastate!$ state on the caster with a duration controlled by $!#auralencalc!$. Apply any aura stats or events."
+                    "Add the $!#aurastate!$ state on the caster with a duration controlled by $!#auralencalc!$. Remove any other states in the same $!states#group!$ Apply any aura stats or events."
                 ],
                 [
                     "24",
@@ -1262,8 +1265,8 @@ files["skills"] = {
                         "id": "NecDoConfuse",
                         "text": "NecDoConfuse"
                     },
-                    "$!#auratargetstate!$<br>$!#auralencalc!$<br>$!#aurarangecalc!$<br>$!#aurastat1!$",
-                    "Validate that the target is a monster and can have its AI changed. Apply the $!#auratargetstate!$ state on any valid monsters in an area controlled by $!#aurarangecalc!$ which lasts a duration controlled by $!#auralencalc!$."
+                    "$!#aurafilter!$<br>$!#auratargetstate!$<br>$!#auralencalc!$<br>$!#aurarangecalc!$<br>$!#aurastat#!$<br>$!#calc1!$",
+                    "Apply the $!#auratargetstate!$ state on any units caught by $!#aurafilter!$ in an area controlled by $!#aurarangecalc!$ which lasts a duration controlled by $!#auralencalc!$. If its a $!states#curse!$ the length is modified by $!difficultylevels#AiCurseDivisor!$. Apply $!#aurastat#!$ on each target. If the target can have its AI switched, use $!#calc1!$ as the random chance for the AI to switch. Only try to switch the AI once per skill cast."
                 ],
                 [
                     "62",
@@ -1695,7 +1698,7 @@ files["skills"] = {
                         "text": "DoTownPortal"
                     },
                     "",
-                    ""
+                    "Creates a Town Portal without using a scroll."
                 ],
                 [
                     "110",
@@ -2091,7 +2094,7 @@ files["skills"] = {
                         "text": "WarDoSealDeathExplode"
                     },
                     "",
-                    ""
+                    "Perform $!skills#NecDoCorpseExplosion!$ on the target if it is a monster (don't check for a corpse)."
                 ],
                 [
                     "154",
@@ -2099,8 +2102,8 @@ files["skills"] = {
                         "id": "srv-WarDoRingOfFire",
                         "text": "WarDoRingOfFire (Server)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#srvmissile#!$<br>$!#calc2!$<br>$!#calc3!$",
+                    "Fire $!#calc2!$ number (must be a power of 2) of missiles in a circle. Use the $!#srvmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields. $!#calc3!$ will determine the additional velocity of the missiles."
                 ],
                 [
                     "155",
@@ -2108,8 +2111,8 @@ files["skills"] = {
                         "id": "WarDoDeathMark",
                         "text": "WarDoDeathMark"
                     },
-                    "",
-                    ""
+                    "$!#auratargetstate!$<br>$!#auralencalc!$<br>$!#aurarangecalc!$<br>$!#aurastat#!$<br>$!#auraevent#!$<br>$!#pettype!$<br>$!#sumoverlay!$<br>$!#calc1!$<br>$!#calc2!$",
+                    "Teleport $!#calc2!$ amount of pets to a target location using $!#aurarangecalc!$ as the range and respecting $!levels#Teleport!$. If $!#pettype!$ is filled out, then the pet must be of that type (also checks pooled pets, see $!pettype#pool!$). For each pet teleported: attempt to direct their AI at the target, apply $!#sumoverlay!$, and if $!#calc1!$ is true remove the stun, freeze, and cold states. <br>If a target exists and a pet was teleported to them, apply $!#auratargetstate!$ for length $!#auralencalc!$ with all the $!#aurastat#!$ and $!#auraevent#!$."
                 ],
                 [
                     "156",
@@ -2117,8 +2120,8 @@ files["skills"] = {
                         "id": "srv-WarDoFlameWave",
                         "text": "WarDoFlameWave (Server)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#srvmissile#!$<br>$!#calc1!$<br>$!#calc2!$",
+                    "Spawn missiles in a wall pattern centered on the player. Use the $!#srvmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields. $!#calc1!$ is the number of missiles to spawn to the left and right of the player. $!#calc2!$ is the number of frames to wait for the wall missiles to start moving."
                 ],
                 [
                     "157",
@@ -2126,8 +2129,8 @@ files["skills"] = {
                         "id": "srv-WarDoSeal",
                         "text": "WarDoSeal (Server)"
                     },
-                    "",
-                    ""
+                    "$!#prgcalc1!$<br>$!#srvmissile#!$<br>$!#aurastate!$<br>$!#calc3!$",
+                    "Use the $!#srvmissilea!$ missile by default, or if $!#progressive!$ is true use 1 of the 3 missiles depending on the value of $!#prgcalc1!$. Validate the target location and then create the missile. Use $!#calc3!$ as the maximum amount of missiles to allow, using a statslist with $!#aurastate!$. Make space for the new missile, removing the oldest missiles first."
                 ],
                 [
                     "158",
@@ -2135,8 +2138,8 @@ files["skills"] = {
                         "id": "WarDoBindDemon",
                         "text": "WarDoBindDemon"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat#!$<br>$!#auraevent#!$<br>$!#passivestat#!$<br>$!#pettype!$<br>$!#petmax!$<br>$!#sumskill#!$<br>$!#sumumod!$<br>$!#sumoverlay!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#calc3!$<br>$!#calc4!$<br>$!#calc5!$<br>$!#calc6!$",
+                    "Convert an existing monster to a pet. Test the monster can be converted, has an entry in $!monpet!$, and roll against $!monpet#bindchancecalc!$. On a success convert the target to a $!#pettype!$ pet, limited by $!#petmax!$. Use $!#calc2!$, $!#calc3!$, $!#calc4!$, and $!#calc5!$ as monster mods to apply. Set the monsters level to min(player level, monster level). Use $!#calc6!$ to determine HP regen behavior, with 0 being the monsters default HP regen behavior (no regen for elites), 1 disabling HP regen, and 2 always enabling HP regen. Apply $!#aurastate!$, all $!#aurastat#!$, all $!#auraevent#!$, all $!#passivestat#!$, all $!#sumskill#!$, $!#sumumod!$, and $!#sumoverlay!$ to the monster. Use $!#calc1!$ as additional percent max life. Add any equipment from $!monequip!$."
                 ],
                 [
                     "159",
@@ -2144,8 +2147,8 @@ files["skills"] = {
                         "id": "WarDoConsume",
                         "text": "WarDoConsume"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#auralencalc!$<br>$!#aurastat#!$<br>$!#auraevent#!$<br>$!#pettype!$<br>$!#calc1!$",
+                    "Verify the target is a monster and not dead. Apply a $!#auralencalc!$ length statslist to the player using $!#aurastate!$ and apply all $!#aurastat#!$ and $!#auraevent#!$. If the monster has an entry in $!monpet!$, apply all its $!monpet#consumestat#!$. Deal $!#calc1!$ percent of the monster's hp as damage to it. If the skill has a $!#pettype!$, save it off in the statslist.<br>If this function is called again as a periodic callback, then check for a saved $!#pettype!$ in the statslist. If we're at the max for the pet type (also checks pooled pets, see $!pettype#pool!$) then remove the statslist."
                 ],
                 [
                     "160",
@@ -2153,8 +2156,8 @@ files["skills"] = {
                         "id": "srv-WarDoBloodBoil",
                         "text": "WarDoBloodBoil (Server)"
                     },
-                    "",
-                    ""
+                    "$!#aurafilter!$<br>$!#aurarangecalc!$<br>$!#pettype!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#calc3!$<br>$!#calc4!$<br>$!#ResultFlags!$<br>$!#HitFlags!$",
+                    "For each pet, using only pets of $!#pettype!$ if it is set (also checks pooled pets, see $!pettype#pool!$), damage them and then damage all targets in an area around them. Damage the pet by a percent of its max health, using $!#calc1!$ if only one pet exists, $!#calc2!$ for two, and $!#calc3!$ for three. If more than three pets are present, just use $!#calc1!$. If the pet would die from this damage then don't proceed.<br>For every target in an $!#aurarangecalc!$ radius around the pet that matches the $!#aurafilter!$, damage them by the skill's physical and elemental damage, using $!#ResultFlags!$ and $!#HitFlags!$. Apply a next hit delay of $!#calc4!$ frames."
                 ],
                 [
                     "161",
@@ -2162,8 +2165,8 @@ files["skills"] = {
                         "id": "srv-WarDoEngorge",
                         "text": "WarDoEngorge (Server)"
                     },
-                    "",
-                    ""
+                    "$!#srvoverlay!$<br>$!#aurastate!$<br>$!#auralencalc!$<br>$!#aurastat#!$<br>$!#auraevent#!$<br>$!#pettype!$<br>$!#calc1!$",
+                    "For each pet, heal them by $!#calc1!$ percent of their health and apply $!#aurastate!$, all $!#aurastat#!$, and all $!#auraevent#!$ for the duration of $!#auralencalc!$. If $!#pettype!$ is filled out, then the pet must be of that type (also checks pooled pets, see $!pettype#pool!$). Disable corpse visuals on the target."
                 ],
                 [
                     "162",
@@ -2171,8 +2174,8 @@ files["skills"] = {
                         "id": "WarDoHealthLink",
                         "text": "WarDoHealthLink"
                     },
-                    "",
-                    ""
+                    "$!#aurafilter!$<br>$!#aurastate!$<br>$!#auratargetstate!$<br>$!#auralencalc!$<br>$!#aurarangecalc!$<br>$!#aurastat#!$<br>$!#auraevent#!$<br>$!#calc3!$",
+                    "Apply a $!#auralencalc!$ length statslist to the target using $!#auratargetstate!$ and apply all $!#aurastat#!$ and $!#auraevent#!$. Save the caster off as well. For the caster, find an existing statslist of $!#aurastate!$ and save the target into it.<br>Repeat this for a $!#calc3!$ max of targets, using $!#aurafilter!$ to filter targets and $!#aurarangecalc!$ as the range. Run $!#WarStartHealthLink!$ for every target found this way."
                 ],
                 [
                     "163",
@@ -2180,8 +2183,8 @@ files["skills"] = {
                         "id": "WarDoApocalpyse",
                         "text": "WarDoApocalpyse"
                     },
-                    "",
-                    ""
+                    "$!#srvoverlay!$<br>$!#aurafilter!$<br>$!#auratargetstate!$<br>$!#aurarangecalc!$<br>$!#aurastat#!$<br>$!#ResultFlags!$<br>$!#HitFlags!$<br>$!#HitClass!$",
+                    "Search for targets in an area using $!#aurafilter!$ as the filter and $!#aurarangecalc!$ as the range. For each target, apply $!#auratargetstate!$ and all $!#aurastat#!$, do the skill's physical and elemental damage, then remove $!#auratargetstate!$ and all $!#aurastat#!$. Use $!#ResultFlags!$, $!#HitFlags!$, and $!#HitClass!$ when applying the damage. Also apply $!#srvoverlay!$."
                 ],
                 [
                     "164",
@@ -2189,8 +2192,8 @@ files["skills"] = {
                         "id": "srv-WarDoCleave",
                         "text": "WarDoCleave (Server)"
                     },
-                    "",
-                    ""
+                    "$!#aurafilter!$<br>$!#calc5!$<br>$!#calc6!$<br>$!#calc7!$",
+                    "Attack targets in an area. Divide a circle into $!#calc6!$ slices and use $!#calc5!$ as the amount of slices of that circle to damage targets in. The front of the circle is the direction to the target from the caster. Note that the calculated area is constrained to the game square system which only has 64 directions. Filter targets using $!#aurafilter!$. Use $!#calc7!$ as a range bonus. For each target, run $!#BarStartBash!$, but don't apply the attack rate speed up."
                 ],
                 [
                     "165",
@@ -2198,8 +2201,8 @@ files["skills"] = {
                         "id": "WarDoRebound",
                         "text": "WarDoRebound"
                     },
-                    "",
-                    ""
+                    "$!#srvoverlay!$<br>$!#auratargetstate!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#ResultFlags!$<br>$!#HitFlags!$",
+                    "Periodically applies the skill's physical and elemental damage and refreshes states on units in a $!#aurarangecalc!$ radius which statisfy $!#aurafilter!$. $!#calc1!$ specifies the amount of life drain to add to the damage. $!#calc2!$ specifies the amount of mana drain to apply to the damage. $!#auratargetstate!$ specifies which state to refresh. If the state is part of a $!states#group!$, all the states that belong to the group will be refreshed, using each state's associated skill's $!#calc1!$ as the new length. Apply $!#srvoverlay!$."
                 ],
                 [
                     "166",
@@ -2207,8 +2210,8 @@ files["skills"] = {
                         "id": "srv-WarDoMirroredBlades",
                         "text": "WarDoMirroredBlades (Server)"
                     },
-                    "",
-                    ""
+                    "$!#srvmissilea!$<br>$!#decquant!$<br>$!#lob!$<br>$!#calc1!$<br>$!#calc5!$<br>$!#calc6!$<br>$!#calc7!$<br>$!#calc8!$<br>$!#calc9!$<br>$!#Param12!$",
+                    "Attack multiple times at once, supporting melee weapons, missile weapons, and normal missiles. Use $!#calc5!$ as the total amount of attacks to perform or missiles to create.<br>\u00b7 For melee weapons, run $!#BarStartBash!$ for each attack, but don't apply the attack rate speed up. The first attack consumes durability and uses full weapon damage. Any attacks after do not consume durability, have weapon damage modified by $!#calc6!$ percent, and the Crushing Blow base divisor is replaced by $!#calc9!$ for players/mercenaries and $!#calc7!$ for everything else.<br>\u00b7 For missile weapons, use the weapon's missile type, including special missiles from stats. Use $!#calc1!$ to control the physical damage percent increase. The first missile consumes durability unless the missile type says otherwise. Any missiles after do not consume durability, have total damage modified by $!#calc6!$ percent (using \"skill_missile_damage_scale\" applied multiplicatively with existing sources), are offset by 1 square from each other (alternating sides), and the Crushing Blow base divisor is replaced by $!#calc9!$ for players/mercenaries and $!#calc8!$ for everything else. Consider each missile created as a separate cast if $!#Param12!$ is true.<br>\u00b7 For normal missiles, use $!#srvmissilea!$. Lob the missiles if $!#lob!$ is set. The first missile consumes durability if $!#decquant!$ is set. Otherwise the same as the missile weapon flow."
                 ],
                 [
                     "167",
@@ -2216,8 +2219,8 @@ files["skills"] = {
                         "id": "WarDoMiasmaChains",
                         "text": "WarDoMiasmaChains"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#srvmissile#!$",
+                    "Creates progressive missile that path towards the target. Progressive missile: use the $!#srvmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ field."
                 ],
                 [
                     "168",
@@ -2225,8 +2228,8 @@ files["skills"] = {
                         "id": "BarDoColossalWhirlwind",
                         "text": "BarDoColossalWhirlwind"
                     },
-                    "",
-                    ""
+                    "$!#calc2!$<br>$!#calc3!$<br>$!#calc6!$",
+                    "Runs a skill with Skill Id $!#calc6!$ at level $!#calc2!$, at a random chance of $!#calc3!$/100. Then run $!#srv-BarDoWhirlwind!$."
                 ],
                 [
                     "169",
@@ -2234,8 +2237,8 @@ files["skills"] = {
                         "id": "MonDoSelfHeal",
                         "text": "MonDoSelfHeal"
                     },
-                    "",
-                    ""
+                    "$!#calc1!$",
+                    "Heal the unit by $!#calc1!$ percent of their maxhp, minimum 1 hit point."
                 ],
                 [
                     "170",
@@ -2243,8 +2246,8 @@ files["skills"] = {
                         "id": "BarDoColossalLeapAttack",
                         "text": "BarDoColossalLeapAttack"
                     },
-                    "",
-                    ""
+                    "$!#calc6!$<br>$!#calc7!$",
+                    "Run $!#srv-BarDoLeapAttack!$. Then runs a skill with Skill Id $!#calc5!$ at level $!#calc6!$ after landing."
                 ],
                 [
                     "171",
@@ -2252,8 +2255,8 @@ files["skills"] = {
                         "id": "srv-MonDoChargedBoltDisk",
                         "text": "MonDoChargedBoltDisk (Server)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#srvmissile#!$<br>$!#calc1!$",
+                    "Create a $!#calc1!$ number of missiles in a disc, all using the charged bolt type of random paths. Use the $!#srvmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields."
                 ]
             ]
         },
@@ -2701,7 +2704,7 @@ files["skills"] = {
         },
         {
             "name": "requirespettype",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then the skill requires at least one pet of the $!pettype!$ to cast.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -3499,7 +3502,7 @@ files["skills"] = {
                         "text": "MonStartFetishInferno"
                     },
                     "",
-                    ""
+                    "Reset internal variables for $!#MonDoFetishInferno!$."
                 ],
                 [
                     "55",
@@ -3507,8 +3510,8 @@ files["skills"] = {
                         "id": "clt-AmaStartImpale",
                         "text": "AmaStartImpale (Client)"
                     },
-                    "",
-                    ""
+                    "$!#Param9!$",
+                    "Adjust the caster unit's attack speed based on the $!#Param9!$ field"
                 ],
                 [
                     "56",
@@ -3516,8 +3519,8 @@ files["skills"] = {
                         "id": "clt-WarStartConsume",
                         "text": "WarStartConsume (Client)"
                     },
-                    "",
-                    ""
+                    "$!#pettype!$",
+                    "Verify the target is a pet. If $!#pettype!$ is filled out, then the pet must be of that type (also checks pooled pets, see $!pettype#pool!$)"
                 ],
                 [
                     "57",
@@ -3525,17 +3528,17 @@ files["skills"] = {
                         "id": "WarStartMirroredBlades",
                         "text": "WarStartMirroredBlades"
                     },
-                    "",
-                    ""
+                    "$!#cltcalc2!$<br>$!#calc5!$",
+                    "If the weapon isn't a missile weapon, set up $!#calc5!$ graphical copies of the weapon, capped by $!#cltcalc2!$ (HD mode only). Also set up randomized HD weapon animations. Run $!#clt-BarStartDoubleSwing!$."
                 ],
                 [
                     "58",
                     {
-                        "id": "SkillStartPlayerChannelSkill",
+                        "id": "clt-SkillStartPlayerChannelSkill",
                         "text": "SkillStartPlayerChannelSkill"
                     },
-                    "",
-                    ""
+                    "$!#prgoverlay!$<br>$!#prgsound!$<br>",
+                    "Starts a channeling skill by applying the \"skill_channeling\" state on the unit for 20 frames, applying $!#prgoverlay!$, and playing $!#prgsound!$. If the state is already present, the duration of the skill is extended by 7 frames. Animation sequences are set back to frame 8."
                 ],
                 [
                     "59",
@@ -3544,7 +3547,7 @@ files["skills"] = {
                         "text": "WarStartCleave"
                     },
                     "",
-                    ""
+                    "Set up randomized HD weapon animations. Run $!#clt-BarStartDoubleSwing!$."
                 ],
                 [
                     "60",
@@ -3552,8 +3555,8 @@ files["skills"] = {
                         "id": "SkillStartActiveStatePeriodic",
                         "text": "SkillStartActiveStatePeriodic"
                     },
-                    "",
-                    ""
+                    "$!#periodic!$",
+                    "Starts the provided skill to be applied periodically on the client. Requires skill to be marked as $!#periodic!$."
                 ]
             ]
         },
@@ -4442,8 +4445,8 @@ files["skills"] = {
                         "id": "clt-DruDoVolcano",
                         "text": "DruDoVolcano (Client)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#cltmissile#!$",
+                    "Based on the $!#progressive!$ flag, the $!#aurastate!$ field, or the $!#aurastat1!$ field, validate the $!#cltmissilea!$ missile or use the other missiles based on the $!#aurastat1!$ value. Validate that the target location is valid."
                 ],
                 [
                     "98",
@@ -4452,7 +4455,7 @@ files["skills"] = {
                         "text": "WarDoDeathSealExplosion"
                     },
                     "",
-                    ""
+                    "Run $!#NecDoCExplosion!$ on the target if it is a monster."
                 ],
                 [
                     "99",
@@ -4460,8 +4463,8 @@ files["skills"] = {
                         "id": "clt-WarDoRingOfFire",
                         "text": "WarDoRingOfFire (Client)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#cltmissile#!$<br>$!#calc2!$<br>$!#calc3!$",
+                    "Fire $!#calc2!$ number (must be a power of 2) of missiles in a circle. Use the $!#cltmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields. $!#calc3!$ will determine the additional velocity of the missiles."
                 ],
                 [
                     "100",
@@ -4469,8 +4472,8 @@ files["skills"] = {
                         "id": "clt-WarDoFlameWave",
                         "text": "WarDoFlameWave (Client)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#cltmissile#!$<br>$!#calc1!$<br>$!#calc2!$",
+                    "Spawn missiles in a wall pattern centered on the player. Use the $!#cltmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields. $!#calc1!$ is the number of missiles to spawn to the left and right of the player. $!#calc2!$ is the number of frames to wait for the wall missiles to start moving."
                 ],
                 [
                     "101",
@@ -4478,8 +4481,8 @@ files["skills"] = {
                         "id": "clt-WarDoSeal",
                         "text": "WarDoSeal (Client)"
                     },
-                    "",
-                    ""
+                    "$!#prgcalc1!$<br>$!#cltmissile#!$<br>$!#aurastate!$<br>$!#calc3!$",
+                    "Use the $!#cltmissilea!$ missile by default, or if $!#progressive!$ is true use 1 of the 3 missiles depending on the value of $!#prgcalc1!$. Validate the target location and then create the missile. Use $!#calc3!$ as the maximum amount of missiles to allow, using a statslist with $!#aurastate!$. Make space for the new missile, removing the oldest missiles first."
                 ],
                 [
                     "102",
@@ -4487,8 +4490,8 @@ files["skills"] = {
                         "id": "clt-WarDoEngorge",
                         "text": "WarDoEngorge (Client)"
                     },
-                    "",
-                    ""
+                    "$!#pettype!$<br>$!#cltmissilea!$<br>$!#cltmissileb!$",
+                    "Creates vfx missiles on the engorge target ($!#cltmissileb!$) and on the affected pets ($!#cltmissilea!$). If $!#pettype!$ is filled out, then the pet must be of that type (also checks pooled pets, see $!pettype#pool!$)"
                 ],
                 [
                     "103",
@@ -4496,8 +4499,8 @@ files["skills"] = {
                         "id": "clt-WarDoCleave",
                         "text": "WarDoCleave (Client)"
                     },
-                    "",
-                    ""
+                    "$!#calc5!$<br>$!#calc6!$<br>$!#calc7!$",
+                    "For internal development builds only, draw debug info for the attacked area. Divide a circle into $!#calc6!$ slices and use $!#calc5!$ as the amount of slices that are attackable. Use $!#calc7!$ as a range bonus."
                 ],
                 [
                     "104",
@@ -4505,8 +4508,8 @@ files["skills"] = {
                         "id": "clt-WarDoMirroredBlades",
                         "text": "WarDoMirroredBlades (Client)"
                     },
-                    "",
-                    ""
+                    "$!#cltmissilea!$<br>$!#lob!$<br>$!#calc5!$<br>$!#Param12!$",
+                    "Create multiple missiles at once, supporting missile weapons and normal missiles. Use $!#calc5!$ as the total amount of missiles to create.<br>\u00b7 For missile weapons, use the weapon's missile type, including special missiles from stats. Any missiles after the first are offset by 1 square from each other (alternating sides). Consider each missile created as a separate cast if $!#Param12!$ is true.<br>\u00b7 For normal missiles, use $!#cltmissilea!$. Lob the missiles if $!#lob!$ is set. Otherwise the same as the missile weapon flow."
                 ],
                 [
                     "105",
@@ -4514,8 +4517,8 @@ files["skills"] = {
                         "id": "clt-WarDoBloodBoil",
                         "text": "WarDoBloodBoil (Client)"
                     },
-                    "",
-                    ""
+                    "$!#pettype!$<br>$!#calc1!$<br>$!#calc2!$<br>$!#calc3!$<br>$!#cltcalc1!$<br>$!#cltcalc2!$<br>$!#cltcalc3!$",
+                    "For each pet, using only pets of $!#pettype!$ if it is set (also checks pooled pets, see $!pettype#pool!$), check if the skill will kill them and if not create a missile on top of them. Check if a percent of its max health will kill the pet, using $!#calc1!$ if only one pet exists, $!#calc2!$ for two, and $!#calc3!$ for three. If more than three pets are present, just use $!#calc1!$. If the pet would die from this damage then don't proceed.<br>Create a missile on top of the pet. Set its radius to $!#cltcalc2!$ normally, $!#cltcalc1!$ if its $!monstats2#small!$, or $!#cltcalc3!$ if its $!monstats2#large!$. Use $!missiles#CltParam1!$ as the missile's timeout timer (used by $!missiles#ProcessHoldLastWithTimeout!$)."
                 ],
                 [
                     "106",
@@ -4523,8 +4526,8 @@ files["skills"] = {
                         "id": "SkillDoPlayerChannelSkill",
                         "text": "SkillDoPlayerChannelSkill"
                     },
-                    "",
-                    ""
+                    "$!#cltmissilea!$",
+                    "Spawns $!#cltmissilea!$ towards the target if provided. Update channeling animation on multiplayer units, similarly to $!#clt-SkillStartPlayerChannelSkill!$."
                 ],
                 [
                     "107",
@@ -4532,8 +4535,8 @@ files["skills"] = {
                         "id": "SkillDoActiveStatePeriodic",
                         "text": "SkillDoActiveStatePeriodic"
                     },
-                    "",
-                    ""
+                    "$!#periodic!$<br>$!#perdelay!$",
+                    "Requires $!#periodic!$ to be set on the skill and for the skill to exist on the unit. Periodically runs the skill's do function. Automatically registers for the next period using $!#perdelay!$."
                 ],
                 [
                     "108",
@@ -4541,8 +4544,8 @@ files["skills"] = {
                         "id": "clt-MonDoChargedBoltDisk",
                         "text": "MonDoChargedBoltDisk (Client)"
                     },
-                    "",
-                    ""
+                    "$!#aurastate!$<br>$!#aurastat1!$<br>$!#cltmissile#!$<br>$!#calc1!$",
+                    "Create a $!#calc1!$ number of missiles in a disc, all using the charged bolt type of random paths. Use the $!#cltmissilea!$ missile by default, or use 1 of the 3 missiles depending on the progressive charges controlled by the $!#aurastate!$ field and $!#aurastat1!$ fields."
                 ],
                 [
                     "109",
@@ -4551,7 +4554,7 @@ files["skills"] = {
                         "text": "WarDoEldritchBlastPeriodic"
                     },
                     "",
-                    ""
+                    "Triggers $!#clt-SorDoFrostNova!$ only when run as a periodic callback. Do not modify the unit's mode event so that input continues to be processed."
                 ]
             ]
         },
@@ -4741,7 +4744,7 @@ files["skills"] = {
         },
         {
             "name": "requiresweapon",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then the skill requires an equiped weapon to cast.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -5353,7 +5356,7 @@ files["skills"] = {
         },
         {
             "name": "reqlevel",
-            "description": "Minimum character level required to be allowed to spend Skill Points on this skill",
+            "description": "Minimum character level required to be allowed to spend Skill Points on this skill. For Reign of the Warlock mode games, also use this to calculate an item's staff mods, using the following level tiers: {1, 6, 12, 18, 24, 30}.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -5626,7 +5629,7 @@ files["skills"] = {
         },
         {
             "name": "periodicClearAura",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then upon removal of the registered periodic event, the associated $!#aurastate!$ will be cleared.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -6046,7 +6049,7 @@ files["skills"] = {
                 "ELevLen2",
                 "ELevLen3"
             ],
-            "description": "Controls the additional elemental duration added by the skill, calculated using the leveling formula between 3 level thresholds of the skill\u00e2\u20ac\u2122s current level. The level thresholds are levels 2-8, 9-16, 17 and beyond. These 3 level thresholds correlate to each field number. These fields only apply to appropriate elemental types with a duration.",
+            "description": "Controls the additional elemental duration added by the skill, calculated using the leveling formula between 3 level thresholds of the skills current level. The level thresholds are levels 2-8, 9-16, 17 and beyond. These 3 level thresholds correlate to each field number. These fields only apply to appropriate elemental types with a duration.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

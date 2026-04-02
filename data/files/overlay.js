@@ -209,16 +209,23 @@ files["overlay"] = {
         },
         {
             "name": "WeaponStateFlags",
-            "description": "",
+            "description": "Controls a bit field flag where each value specifies which state the overlay can react to (used for vfx).",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
-            }
+            },
+            "bittable": [
+                "None",
+                "Hex Bane",
+                "Hex Siphon",
+                "Hex Purge",
+                "Levitate"
+            ]
         },
         {
             "name": "WeaponStateGroup",
-            "description": "",
+            "description": "Specify a filter to have the overlay react only for states that belong to the specified group.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
@@ -227,13 +234,13 @@ files["overlay"] = {
         },
         {
             "name": "StartSound",
-            "description": "",
+            "description": "Optional sound to play when the overlay is started.",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "",
-                "field": ""
+                "file": "sounds",
+                "field": "Sound"
             }
         }
     ]

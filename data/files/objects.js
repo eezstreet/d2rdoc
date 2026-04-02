@@ -13,7 +13,7 @@ files["objects"] = {
             "description": "Defines the unique type class of the object which is used to reference this object.",
             "type": {
                 "type": "text",
-                "dataLength": 47,
+                "dataLength": 63,
                 "memSize": 16
             }
         },
@@ -22,7 +22,7 @@ files["objects"] = {
             "description": "String key. Used as the display name of the object when being highlighted by the player.",
             "type": {
                 "type": "text",
-                "dataLength": 63,
+                "dataLength": 31,
                 "memSize": 0
             }
         },
@@ -31,8 +31,8 @@ files["objects"] = {
             "description": "Determines what files to use to display the graphics of the object.",
             "type": {
                 "type": "text",
-                "dataLength": 2,
-                "memSize": 0
+                "dataLength": 4,
+                "memSize": 32
             }
         },
         {
@@ -1163,7 +1163,7 @@ files["objects"] = {
                 [
                     "1",
                     "ObjectInitShrine",
-                    "General function for determining which type of Shrine function to pick for the Shrine object. (See $!shrines!$ file for a list of shrine types)<br><br>This also uses the $!#Parm0!$ field to define the Shrine Type<br>\u00e2\u20ac\u00a2 If equals 0, default to health shrine<br>\u00e2\u20ac\u00a2 If equals 1, then use Health Shrine<br>\u00e2\u20ac\u00a2 If equals 2, then use Mana Shrine<br>\u00e2\u20ac\u00a2 If equals 3, then pick a random stats shrine with a 10% chance to spawn a surprise shrine"
+                    "General function for determining which type of Shrine function to pick for the Shrine object. (See $!shrines!$ file for a list of shrine types)<br><br>This also uses the $!#Parm0!$ field to define the Shrine Type<br>\u00b7 If equals 0, default to health shrine<br>\u00b7 If equals 1, then use Health Shrine<br>\u00b7 If equals 2, then use Mana Shrine<br>\u00b7 If equals 3, then pick a random stats shrine with a 10% chance to spawn a surprise shrine"
                 ],
                 [
                     "2",

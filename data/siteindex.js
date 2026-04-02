@@ -7,6 +7,14 @@ const siteIndex = [
         "path": "/index.html"
     },
     {
+        "name": "About",
+        "path": "/about.html"
+    },
+    {
+        "name": "Changelog",
+        "path": "/changelog.html"
+    },
+    {
         "name": "Files",
         "children": [
             {
@@ -40,6 +48,10 @@ const siteIndex = [
             {
                 "name": "cubemain.txt",
                 "path": "/files/cubemain.html"
+            },
+            {
+                "name": "desecratedzones",
+                "path": "/files/desecratedzones.html"
             },
             {
                 "name": "difficultylevels.txt",
@@ -163,7 +175,7 @@ const siteIndex = [
             },
             {
                 "name": "MonType.txt",
-                "path": "/files/MonType.html"
+                "path": "/files/montype.html"
             },
             {
                 "name": "monumod.txt",
@@ -387,12 +399,20 @@ const siteIndex = [
             {
                 "name": "Getting Started",
                 "path": "/guides/getting-started.html"
+            },
+            {
+                "name": "Terror Zones",
+                "path": "/guides/desecratedzones.html"
             }
         ]
     },
     {
         "name": "Appendix",
         "children": [
+            {
+                "name": "Game Mode Split",
+                "path": "/docs/game-mode-split.html"
+            },
             {
                 "name": "Generic Pet AI",
                 "path": "/docs/genericpetai.html"

@@ -1079,13 +1079,13 @@ files["shareditems"] = {
         },
         {
             "name": "UICatOverride",
-            "description": "",
+            "description": "Allows this item to override what UI Category it should use (for loot filter and chronicle uniques page). If there's no override, this item will belong to the category that its type1 field uses. If Null, this item will be excluded from lootfilter / chronicle. If a valid UI Category, this item will belong to that UI category instead of the one its type would usually put it in.",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 8,
-                "file": "",
-                "field": ""
+                "file": "itemuicategories",
+                "field": "Name"
             }
         },
         {

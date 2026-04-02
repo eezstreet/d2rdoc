@@ -93,7 +93,7 @@ files["itemtypes"] = {
         },
         {
             "name": "Quiver",
-            "description": "Points to the index of another Item Type as the required equipped Item Type to be used as this ammo\u00e2\u20ac\u2122s weapon",
+            "description": "Points to the index of another Item Type as the required equipped Item Type to be used as this ammo's weapon",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
@@ -292,40 +292,33 @@ files["itemtypes"] = {
         },
         {
             "name": "UICategory",
-            "description": "",
+            "description": "Determines what UI Category this item type will be displayed in (used for loot filter and chronicle uniques page). All items that have this type as their type1 will display in the loot filter under this category, unless the item overrides it in misc/armor/weapon files",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 8,
-                "file": "",
-                "field": ""
+                "file": "itemuicategories",
+                "field": "Name"
             }
         },
         {
-            "name": "RunewordCategory1",
-            "description": "",
+            "name": "RunewordCategory#",
+            "altNames": [
+                "RunewordCategory1",
+                "RunewordCategory2"
+            ],
+            "description": "Determines what Runeword UI Category this item type will be displayed in (used the chronicle runewords page). Different item types have different runeword UI categories assigned to them. This is then used in the Chronicle runewords page, where it checks each runeword's $!runes#itype#!$, and then the associated $!#RunewordCategory#!$ for each valid itype to decide which runewords should be filtered on each category",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 8,
-                "file": "",
-                "field": ""
-            }
-        },
-        {
-            "name": "RunewordCategory2",
-            "description": "",
-            "type": {
-                "type": "reference",
-                "dataLength": 47,
-                "memSize": 8,
-                "file": "",
-                "field": ""
+                "file": "runeworduicategories",
+                "field": "Name"
             }
         },
         {
             "name": "Restricted",
-            "description": "",
+            "description": "Boolean Field. If equals 1, this item type is now restricted. Only one item of a given restricted type may be present across all equipped + socketed items. Multiple different restricted types are allowed.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

@@ -1,5 +1,11 @@
 "use strict";
 
+function closeResponsiveSidebar() {
+    for (const element of document.querySelectorAll(".hamburger input:checked")) {
+        element.checked = false;
+    }
+}
+
 ///////////////////////////////////////////////
 // Index
 
@@ -22,9 +28,10 @@ function populateSidebarRecursive(index, pathToHomeDirectory, ul) {
         const link = document.createElement("a");
         link.setAttribute("href", indexPath);
         link.innerHTML = index.name;
-        if (indexPath.indexOf(window.location.pathname) != -1) {
+        if (window.location.pathname.indexOf(index.path) != -1) {
             link.classList.add("current");
         }
+        li.addEventListener("click", closeResponsiveSidebar);
         li.appendChild(link);
         if (ulChildren) li.appendChild(ulChildren);
     }
@@ -103,7 +110,7 @@ function getSearchResults(text, search) {
 
 function generateSearchResults(inputSearch, ulSearchResults, pathToHomeDirectory) {
     ulSearchResults.innerHTML = "";
-    
+
     let styleA = true;
 
     const results = getSearchResults(inputSearch.value, search);
@@ -118,6 +125,11 @@ function generateSearchResults(inputSearch, ulSearchResults, pathToHomeDirectory
         const searchLink = document.createElement("a");
         searchLink.innerHTML = result.name;
         searchLink.href = pathToHomeDirectory + result.path;
+        searchLink.addEventListener("click", (e) => {
+            inputSearch.value = "";
+            inputSearch.dispatchEvent(new KeyboardEvent('keyup', {}));
+            closeResponsiveSidebar();
+        });
 
         switch (result.type) {
             case SearchResultFile:
@@ -141,7 +153,7 @@ function generateSearchResults(inputSearch, ulSearchResults, pathToHomeDirectory
 }
 
 ///////////////////////////////////////////////
-// Sidebar
+// Site Sidebar
 
 function populateSiteSidebar(pathToHomeDirectory, siteIndex) {
     const sidebarContainer = document.querySelector("#site-sidebar");
@@ -182,4 +194,109 @@ function populateSiteSidebar(pathToHomeDirectory, siteIndex) {
     }
 
     sidebarContainer.appendChild(ulIndex);
+}
+
+///////////////////////////////////////////////
+// Page Sidebar
+
+function createSidebarField(field, ulFields) {
+    const liField = document.createElement("li");
+    const fieldLink = document.createElement("a");
+
+    fieldLink.href = `#${field.id ? field.id : field.name}`;
+    fieldLink.innerHTML = field.name;
+
+    liField.appendChild(fieldLink);
+    ulFields.appendChild(liField);
+
+    if (field.fields) {
+        const ulFieldFields = document.createElement("ul");
+        for (const subField of field.fields) {
+            createSidebarField(subField, ulFieldFields);
+        }
+        liField.appendChild(ulFieldFields);
+    }
+}
+
+function createSidebarFile(fileData, ulSidebar) {
+    const liFile = document.createElement("li");
+    liFile.innerText = fileData.title;
+    ulSidebar.appendChild(liFile);
+
+    const ulFields = document.createElement("ul");
+    for (const field of fileData.fields) {
+        createSidebarField(field, ulFields);
+    }
+
+    ulSidebar.appendChild(ulFields);
+}
+
+function populatePageSidebar(fileData, container = null) {
+    const sidebar = document.querySelector("#page-sidebar");
+    const ulSidebar = container ? container : document.createElement("ul");
+
+    createSidebarFile(fileData, ulSidebar)
+
+    if (fileData.appendFiles) {
+        for (const appendFile of fileData.appendFiles) {
+            createSidebarFile(files[appendFile], ulSidebar)
+        }
+    }
+
+    if (!container) {
+        sidebar.appendChild(ulSidebar);
+    }
+}
+
+function playActiveAnimation() {
+    const currentlyActive = document.querySelectorAll(".active");
+    for (let active of currentlyActive) {
+        active.classList.remove("active");
+        void active.offsetWidth;
+    }
+
+    const id = decodeURIComponent(location.hash).substring(1);
+    if (id) {
+        const hashed = document.getElementById(id);
+        if (hashed) {
+            // Find the first target in the parent stack
+            let target = hashed;
+            while (target && !target.classList.contains("page-sidebar-target")) {
+                target = target.parentElement;
+            }
+
+            if (target) {
+                target.classList.add("active");
+            }
+        }
+    }
+}
+
+function fixupPageSidebar() {
+    // Add highlighting on scroll
+    const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            const id = entry.target.id;
+            const selector = `#page-sidebar li a[href="${id ? `#${id}` : ""}"]`;
+
+            if (entry.isIntersecting) {
+                document.querySelector(selector).classList.add('current');
+            }
+            else {
+                document.querySelector(selector).classList.remove('current');
+            }
+        };
+    });
+    document.querySelectorAll('.page-sidebar-target').forEach((field) => {
+        observer.observe(field);
+    });
+
+    // Add responsive design support to the page sidebar after it is generated
+    for (const li of document.querySelectorAll("#page-sidebar a")) {
+        li.addEventListener("click", closeResponsiveSidebar);
+    }
+
+    // Add highlight animation on targeted elements
+    window.addEventListener("hashchange", playActiveAnimation);
+    playActiveAnimation();
 }

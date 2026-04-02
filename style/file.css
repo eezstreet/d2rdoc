@@ -12,16 +12,36 @@
     gap: 2rem;
 }
 
-.field-columns {
+.field-rows {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0.75rem;
 }
 
 .field-divider {
-    border-left:1px solid #8c7c49; 
+    border-top:1px solid #8c7c49;
     align-items: stretch;
     left: 50%;
+}
+
+/* Json Field */
+
+.json-divider {
+    border-left:1px solid #8c7c49;
+    align-items: stretch;
+    margin-right: 1rem;
+}
+
+.json-properties {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.json-properties .field-divider {
+    display: none;
 }
 
 /* Name */
@@ -43,12 +63,17 @@
     text-decoration: none;
 }
 
+.field-label {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
 .field-alt-names {
     display: flex;
     flex-flow: row wrap;
     gap: 0.75rem;
     margin-top: 0.5rem;
-    max-width: 15rem;
     font-size: small;
 }
 

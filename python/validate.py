@@ -41,24 +41,28 @@ def doesFileExist(fileName):
     return fileName in files
 
 def doesFieldExist(fileName, fieldName):
-    def fieldCheck(file, fieldNameCasefold):
-        if "fields" in file:
-            for field in file["fields"]:
-                if field["name"].casefold() == fieldNameCasefold:
+    def fieldCheck(container, fieldNameCasefold):
+        if "fields" in container:
+            for field in container["fields"]:
+                if "id" in field:
+                    if field["id"] == fieldNameCasefold:
+                        return True
+                elif field["name"].casefold() == fieldNameCasefold:
                     return True
                 if "altNames" in field:
                     for altName in field["altNames"]:
                         if altName.casefold() == fieldNameCasefold:
                             return True
                 if "table" in field:
-                    table = field["table"]
-                    for row in table:
+                    for row in field["table"]:
                         for column in row:
                             if type(column) == dict:
                                 if "id" in column:
                                     id = column["id"]
                                     if id.casefold() == fieldNameCasefold:
                                         return True
+                if fieldCheck(field, fieldNameCasefold):
+                    return True
         return False
 
     if doesFileExist(fileName):
@@ -146,6 +150,42 @@ def isFieldNameIgnored(file, fieldNameCasefold):
                 return True
     return False
 
+def validateFieldType(file, field, fieldName, fieldType):
+    if fieldValidateFieldNotEmpty(file, fieldType, fieldName, "type"):
+        fieldTypeName = fieldType["type"]
+        validFieldTypes = ["int", "int or", "float", "text", "reference", "string", "boolean", "inverse boolean", "parse", "comment", "object", "array"]
+        if not fieldTypeName in validFieldTypes:
+            printErrorField(file, fieldName, f'invalid type "{fieldTypeName}".')
+
+        if fieldTypeName == "reference":
+            refHasFile = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "file")
+            refHasField = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "field")
+            if refHasFile and refHasField:
+                refFileName = fieldType["file"]
+                refFieldName = fieldType["field"]
+                if not doesFieldExist(refFileName, refFieldName):
+                    printErrorField(file, fieldName, f'type reference "{refFileName}#{refFieldName}" does not exist.')
+        elif fieldTypeName == "parse":
+            if fieldValidateFieldNotEmpty(file, fieldType, fieldName, "description"):
+                validateReferenceLinks(file, fieldName, fieldType["description"])
+        elif fieldTypeName == "object":
+            if "file" in fieldType or "field" in fieldType:
+                refHasFile = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "file")
+                refHasField = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "field")
+                if refHasFile and refHasField:
+                    refFileName = fieldType["file"]
+                    refFieldName = fieldType["field"]
+                    if not doesFieldExist(refFileName, refFieldName):
+                        printErrorField(file, fieldName, f'object type reference "{refFileName}#{refFieldName}" does not exist.')
+            elif "fields" not in field:
+                printErrorField(file, fieldName, f'field is an object type but has no subfields.')
+        elif fieldTypeName == "array":
+            if fieldValidateFieldNotEmpty(file, fieldType, fieldName, "arrayType"):
+                validateFieldType(file, field, f'{fieldName}, array', fieldType["arrayType"])
+
+    fieldValidateFieldExists(file, fieldType, fieldName, "dataLength")
+    fieldValidateFieldExists(file, fieldType, fieldName, "memSize")
+
 def validateField(file, field, fieldExports, usedNames):
     fieldName = "???"
     if fieldValidateFieldNotEmpty(file, field, fieldName, "name"):
@@ -154,7 +194,12 @@ def validateField(file, field, fieldExports, usedNames):
         fieldNameCasefold = fieldName.casefold()
         if fieldNameCasefold in usedNames:
             printErrorField(file, fieldName, f'name "{fieldName}" already in use.')
-        usedNames.append(fieldNameCasefold)
+
+        fieldId = field["id"] if "id" in field else fieldNameCasefold
+        if not fieldId:
+            printErrorField(file, fieldName, f'"id" is empty.')
+            
+        usedNames.append(fieldId)
 
         if isFieldNameIgnored(file, fieldNameCasefold):
             printErrorField(file, fieldName, f'name "{fieldName}" is both a field and in "ignoreFields"')
@@ -178,29 +223,37 @@ def validateField(file, field, fieldExports, usedNames):
     if fieldValidateFieldExists(file, field, fieldName, "type"):
         fieldType = field["type"]
 
-        if fieldValidateFieldNotEmpty(file, fieldType, fieldName, "type"):
-            fieldTypeName = fieldType["type"]
-        validFieldTypes = ["int", "int or", "text", "reference", "string", "boolean", "inverse boolean", "parse", "comment"]
-        if not fieldTypeName in validFieldTypes:
-            printErrorField(file, fieldName, f'invalid type "{fieldTypeName}".')
+        # Some extra data grabbing for later
+        fieldTypeName = fieldType["type"] if "type" in fieldType else ""
+        hasDataLength = "dataLength" in fieldType
+        hasMemSize = "memSize" in fieldType
 
-        hasDataLength = fieldValidateFieldExists(file, fieldType, fieldName, "dataLength")
-        hasMemSize = fieldValidateFieldExists(file, fieldType, fieldName, "memSize")
-
-        if fieldTypeName == "reference":
-            refHasFile = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "file")
-            refHasField = fieldValidateFieldNotEmpty(file, fieldType, fieldName, "field")
-            if refHasFile and refHasField:
-                refFileName = fieldType["file"]
-                refFieldName = fieldType["field"]
-                if not doesFieldExist(refFileName, refFieldName):
-                    printErrorField(file, fieldName, f'type reference "{refFileName}#{refFieldName}" does not exist.')
-        elif fieldTypeName == "parse":
-            if fieldValidateFieldNotEmpty(file, fieldType, fieldName, "description"):
-                validateReferenceLinks(file, fieldName, fieldType["description"])
+        validateFieldType(file, field, f'{fieldName}, type', fieldType)
 
     if "table" in field:
         table = field["table"]
+
+        # Some table fields need extra validation
+        # [ "field name", entry name column, column to check is empty ]
+        extraTableValidations = [
+            ["Server Event Functions", 1, 3],
+            ["pCltDoFunc", 1, 3],
+            ["pCltHitFunc", 1, 3],
+            ["pSrvDoFunc", 1, 3],
+            ["pSrvHitFunc", 1, 3],
+            ["pSrvDmgFunc", 1, 3],
+            ["srvstfunc", 1, 3],
+            ["srvdofunc", 1, 3],
+            ["srvstopfunc", 1, 3],
+            ["cltstfunc", 1, 3],
+            ["cltdofunc", 1, 3],
+            ["cltstopfunc", 1, 3],
+        ]
+        extraTableValidation = None
+        for extraValidation in extraTableValidations:
+            if fieldNameCasefold == extraValidation[0].casefold():
+                extraTableValidation = extraValidation
+
         for row in table:
             for column in row:
                 if type(column) == dict:
@@ -213,6 +266,11 @@ def validateField(file, field, fieldExports, usedNames):
                         validateReferenceLinks(file, fieldName, column["text"])
                 else:
                     validateReferenceLinks(file, fieldName, column)
+            if extraTableValidation:
+                if not row[extraValidation[2]]:
+                    rowName = row[extraValidation[1]]["id"] if type(row[extraValidation[1]]) == dict else row[extraValidation[1]]
+                    printErrorField(file, fieldName, f'"{rowName}" is empty.')
+
     elif "bittable" in field:
         bittable = field["bittable"]
         for row in bittable:
@@ -261,6 +319,10 @@ def validateField(file, field, fieldExports, usedNames):
             if not doesFieldExist(appendFieldFileName, appendFieldFieldName):
                 printErrorField(file, fieldName, f'appendField "{appendFieldFileName}#{appendFieldFieldName}" does not exist.')
 
+    if "fields" in field:
+        for subField in field["fields"]:
+            validateField(file, subField, fieldExports, usedNames)
+
 def validateFields(file, fieldExports):
     if "fields" not in file:
         printError(file, f'has no "fields" array.')
@@ -285,7 +347,10 @@ def validateFields(file, fieldExports):
 
 def validateFile(file):
     guideOnly = "guideOnly" in file and file["guideOnly"]
-    fieldExports = next((f for f in allFieldExports if f["name"].casefold() == file["key"].casefold()), None)
+
+    fieldExports = None
+    if not guideOnly:
+        fieldExports = next((f for f in allFieldExports if f["name"].casefold() == file["key"].casefold()), None)
 
     if not guideOnly and not fieldExports:
         printError(file, f'code does not support file {file["key"]}')

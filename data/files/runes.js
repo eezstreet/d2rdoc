@@ -25,7 +25,7 @@ files["runes"] = {
         },
         {
             "name": "disallowCraftingInLadder",
-            "description": "",
+            "description": "If 1, then the Rune Word cannot be crafted in online-ladder games. This does not affect already-crafted Rune Words. See also: $!#disallowCraftingInNonLadder!$",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -34,7 +34,7 @@ files["runes"] = {
         },
         {
             "name": "disallowCraftingInNonLadder",
-            "description": "",
+            "description": "If 1, then the Rune Word cannot be crafted in online-nonladder or offline games. This does not affect already-crafted Rune Words. See also: $!#disallowCraftingInLadder!$",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,

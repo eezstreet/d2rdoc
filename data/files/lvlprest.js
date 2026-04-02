@@ -162,7 +162,7 @@ files["lvlprest"] = {
         },
         {
             "name": "Dt1Mask",
-            "description": "This functions as a bit field mask with a size of a 32 bit value. This explains to the ds1 file which of the 32 dt1 tile 1, File2=2, File3 = 4, File4=8, File5=16\u00e2\u20ac\u00a6.File32 = 2147483648). To build the $!#Dt1Mask!$, you would select which $!lvltypes#File #!$ fields to use from and add their associated bit values together for a total value. This total value is the bitmask value.",
+            "description": "This functions as a bit field mask with a size of a 32 bit value. This explains to the ds1 file which of the 32 dt1 tile 1, File2=2, File3 = 4, File4=8, File5=16...File32 = 2147483648). To build the $!#Dt1Mask!$, you would select which $!lvltypes#File #!$ fields to use from and add their associated bit values together for a total value. This total value is the bitmask value.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

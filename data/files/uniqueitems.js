@@ -128,7 +128,7 @@ files["uniqueitems"] = {
         },
         {
             "name": "carry1",
-            "description": "Boolean Field. If equals 1, then players can only carry one of these items in their inventory. If equals 0, then ignore this.",
+            "description": "Assigns the Unique item to a group. Players can only carry one item from each group in their inventory.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

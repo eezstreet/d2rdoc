@@ -964,12 +964,38 @@ files["states"] = {
         },
         {
             "name": "vfxweaponstate",
-            "description": "",
+            "description": "Specifies which weapon state to set on the vfx.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 32
-            }
+            },
+            "table": [
+                [
+                    "Value",
+                    "Weapon State Name"
+                ],
+                [
+                    "0",
+                    "None"
+                ],
+                [
+                    "1",
+                    "Hex Bane"
+                ],
+                [
+                    "2",
+                    "Hex Siphon"
+                ],
+                [
+                    "4",
+                    "Hex Purge"
+                ],
+                [
+                    "8",
+                    "Levitate"
+                ]
+            ]
         }
     ],
     "ignoreFields": [

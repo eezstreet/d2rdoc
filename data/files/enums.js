@@ -640,8 +640,8 @@ files["enums"] = {
                         "id": "WarApplyExecute",
                         "text": "WarApplyExecute"
                     },
-                    "",
-                    ""
+                    "$!skills#calc1!$<br>$!skills#calc2!$",
+                    "Kill a monster if they are at a certain percentage of health remaining. Use $!skills#calc1!$ for normal monsters and $!skills#calc2!$ for elite monsters (unique, champion, superunique)."
                 ],
                 [
                     "35",
@@ -649,8 +649,8 @@ files["enums"] = {
                         "id": "WarApplyBloodOathShare",
                         "text": "WarApplyBloodOathShare"
                     },
-                    "",
-                    ""
+                    "$!skills#pettype!$<br>$!skills#calc1!$<br>$!skills#calc2!$",
+                    "Remove $!skills#calc1!$ percent from incoming damage and transfer it evenly to $!skills#calc2!$ amount of pets. If $!skills#pettype!$ is set, only share with pets of that type (also checks pooled pets, see $!pettype#pool!$)."
                 ],
                 [
                     "36",
@@ -658,8 +658,8 @@ files["enums"] = {
                         "id": "WarApplyHexDebuff",
                         "text": "WarApplyHexDebuff"
                     },
-                    "",
-                    ""
+                    "$!skills#auratargetstate!$<br>$!skills#aurastat#!$<br>$!skills#calc1!$<br>$!skills#calc3!$<br>$!skills#Param1!$",
+                    "Apply a statslist to the target of length $!skills#calc1!$ using $!skills#auratargetstate!$ and applying all $!skills#aurastat#!$. If the $!skills#auratargetstate!$ is equal to \"hexpurgedebuff\", apply $!skills#Param1!$ as the $!#Server Event Functions!$ for the events \"damagedbymissile\". \"damagedinmelee\", and \"hextrigger\". Save off the value of $!skills#calc3!$ for use in $!#WarApplyPurgeExplosion!$ where it is used as the max amounts of charges."
                 ],
                 [
                     "37",
@@ -667,8 +667,8 @@ files["enums"] = {
                         "id": "WarApplyPsychicWard",
                         "text": "WarApplyPsychicWard"
                     },
-                    "",
-                    ""
+                    "$!skills#calc1!$",
+                    "Apply a stun of length $!skills#calc1!$ on the attacker."
                 ],
                 [
                     "38",
@@ -676,8 +676,8 @@ files["enums"] = {
                         "id": "WarApplyHealthLink",
                         "text": "WarApplyHealthLink"
                     },
-                    "",
-                    ""
+                    "$!skills#aurafilter!$<br>$!skills#auratargetstate!$<br>$!skills#aurarangecalc!$<br>$!skills#calc1!$",
+                    "Duplicate a $!skills#calc1!$ percent of the incoming damage to $!skills#aurarangecalc!$ nearby units that have $!skills#auratargetstate!$ active, filtering units using $!skills#aurafilter!$. Only duplicate damage once for each individual skill cast. Remove absorbs, status effects (cold, freeze, stun, pull, knockback), elemental conversion, and drains from the duplicated damage."
                 ],
                 [
                     "39",
@@ -685,8 +685,8 @@ files["enums"] = {
                         "id": "WarApplyPurgeExplosion",
                         "text": "WarApplyPurgeExplosion"
                     },
-                    "",
-                    ""
+                    "$!skills#aurafilter!$<br>$!skills#auratargetstate!$<br>$!skills#aurarangecalc!$<br>$!skills#calc2!$<br>$!skills#calc3!$<br>$!skills#srvoverlay!$",
+                    "Roll a $!skills#calc1!$ chance to explode, applying the skill's physical and elemental damage to $!skills#aurarangecalc!$ nearby units, filtering units using $!skills#aurafilter!$, and applying $!skills#srvoverlay!$. Use $!skills#calc3!$ as the total charges, and grab the stored charges from $!#WarApplyHexDebuff!$ using $!skills#auratargetstate!$, decrementing by one. If no charges remain then remove the state."
                 ],
                 [
                     "40",
@@ -694,8 +694,8 @@ files["enums"] = {
                         "id": "WarPsychicWardAbsorbDamage",
                         "text": "WarPsychicWardAbsorbDamage"
                     },
-                    "",
-                    ""
+                    "$!skills#aurastate!$<br>$!skills#aurastat1!$<br>$!skills#aurastat2!$<br>$!skills#prgoverlay!$",
+                    "Calculates the amount of damage to absorb based on the aura stat values. If no remaining absorbing damage is left, then remove the $!skills#aurastate!$. $!skills#aurastat1!$ is the current amount of damage left to absorb. $!skills#aurastat2!$ is the maximum amount of damage to absorb. Displays an overlay, using the $!skills#prgoverlay!$ as a base and then adding 0-7 based on the direction."
                 ]
             ]
         },
@@ -1592,6 +1592,62 @@ files["enums"] = {
                 [
                     "loc",
                     "This is a location based skill, which ignores the weapon equipped and instead uses the player's location"
+                ]
+            ]
+        },
+        {
+            "name": "Tooltip Range Type",
+            "description": "Used in the Chronicle to define the general type of ranges a Property might use with relation to its min, max, and param values. Updates the mod's tooltip as follows",
+            "type": {
+                "type": "comment",
+                "dataLength": 0,
+                "memSize": 0
+            },
+            "table": [
+                [
+                    "Value",
+                    "Name",
+                    "Tooltip Description"
+                ],
+                [
+                    "0",
+                    "DefaultReplacement",
+                    "\"Add +X to Stat\" -> \"Add +(x - y) to Stat\""
+                ],
+                [
+                    "1",
+                    "Level",
+                    "\"Add +X to Stat\" -> \"Add +(x - y) to Stat\" \n(This is different from DefaultReplacement since there's no specific minmax, and instead it's calculated based on level)"
+                ],
+                [
+                    "2",
+                    "SingleClassSkill",
+                    "\"+7 to Firebolt\" -> \"+(5-15) to a Random Sorceress Skill\""
+                ],
+                [
+                    "3",
+                    "RandomClassSkills",
+                    "\"+7 to Amazon Skills\" -> \"+(5-15) to a Random Class' Skill\""
+                ],
+                [
+                    "4",
+                    "NoRange",
+                    "\"+X% to Fire Damage\" -> \"+X% to Fire Damage\""
+                ],
+                [
+                    "5",
+                    "DefaultReplacementWithParamID",
+                    "\"+X to Skill\" -> \"+(x - y) to Skill\" \n(This is different from DefaultReplacement because it uses the param ID to differentiate between different instances of the Property, allowing you to have multiple ranged instances of the same property)"
+                ],
+                [
+                    "6",
+                    "DefaultReplacementWithChargedSkillID",
+                    "\"+X to Skill\" -> \"+(x - y) to Skill\" \n(This is different from DefaultReplacement because it uses the charged skill to differentiate between different instances of the Property, allowing you to have multiple ranged instances of the same property)"
+                ],
+                [
+                    "7",
+                    "ItemLevelRange",
+                    "\"Chance to cast lvl X skill\" -> \"Chance to cast lvl (x-y) skill\" \n(Where X-Y is defined based on the item level of the item)"
                 ]
             ]
         }

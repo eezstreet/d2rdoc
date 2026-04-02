@@ -3,13 +3,14 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
 files["runeworduicategories"] = {
     "title": "RunewordUICategories.txt",
-    "overview": "",
+    "overview": "This file defines the list of valid runeword categories, to be used in the Chronicle runeword tab for runeword filtering. The categories are used in $!itemtypes#RunewordCategory#!$",
     "fields": [
         {
             "name": "Name",
+            "description": "The identifier used to define a category of Runeword for use in the Chronicle. This category is assigned to an item type in $!itemtypes#RunewordCategory#!$",
             "type": {
                 "type": "text",
-                "dataLength": 47,
+                "dataLength": 5,
                 "memSize": 16
             }
         }

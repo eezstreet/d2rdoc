@@ -1,6 +1,6 @@
 "use strict";
 
-function makeReferenceLinkHtml(page, element) {
+function makeReferenceLinkHtml(page, element, pathToHtml="") {
     let link = "";
     let text = "";
 
@@ -21,10 +21,10 @@ function makeReferenceLinkHtml(page, element) {
         return "";
     }
 
-    return `<a class="reference-link" target="_blank" href="${link}">${text}</a>`;
+    return `<a class="reference-link" target="_blank" href="${pathToHtml}${link}">${text}</a>`;
 }
 
-function replaceReferenceLink(match, p1, pageOverride) {
+function replaceReferenceLink(match, p1, pageOverride, pathToHtml) {
     if (p1) {
         let i = p1.indexOf('#');
         if (i >= 0) {
@@ -34,29 +34,28 @@ function replaceReferenceLink(match, p1, pageOverride) {
             }
             else if (splits[0]) {
                 // Page and element
-                return makeReferenceLinkHtml(splits[0], splits[1]);
+                return makeReferenceLinkHtml(splits[0], splits[1], pathToHtml);
             }
             else if (pageOverride) {
                 // Page and element, using the page override
-                return makeReferenceLinkHtml(pageOverride, splits[1]);
+                return makeReferenceLinkHtml(pageOverride, splits[1], pathToHtml);
             }
             else {
                 // Just element
-                return makeReferenceLinkHtml("", splits[1]);
+                return makeReferenceLinkHtml("", splits[1], pathToHtml);
             }
         }
         else {
             // Just page
-            return makeReferenceLinkHtml(p1, "");
+            return makeReferenceLinkHtml(p1, "", pathToHtml);
         }
     }
     return match;
 }
 
-function parseJSONText(text, pageOverride) {
+function parseJSONText(text, pageOverride, pathToHtml="") {
     // Reference Links
-    text = text || "";
-    text = text.replaceAll(/\$\!(.*?)\!\$/g, (match, p1) => replaceReferenceLink(match, p1, pageOverride));
+    text = text.replaceAll(/\$\!(.*?)\!\$/g, (match, p1) => replaceReferenceLink(match, p1, pageOverride, pathToHtml));
     return text;
 }
 
@@ -322,7 +321,29 @@ function createBittable(table, entries, pageOverride) {
     }
 }
 
-function createAppendField(appendField, fileTitle, pageOverride, tableNotes = null) {
+function findField(container, fieldName) {
+    if (container.fields) {
+        for (let field of container.fields) {
+            if (field.id)
+            {
+                if (field.id == fieldName) {
+                    return field;
+                }
+            }
+            else if (field.name == fieldName) {
+                return field;
+            }
+            
+            let subField = findField(field, fieldName);
+            if (subField) {
+                return subField;
+            }
+        }
+    }
+    return null;
+}
+
+function createAppendField(appendField, fileTitle, pageOverride) {
     const appendfieldTemplate = document.querySelector("#appendfield-template");
     const appendfieldClone = appendfieldTemplate.content.cloneNode(true);
 
@@ -337,7 +358,7 @@ function createAppendField(appendField, fileTitle, pageOverride, tableNotes = nu
     // Table
     if (appendField.table) {
         const attachIds = false;
-        createTable(appendfieldClone.querySelector(".field-table"), appendField.table, pageOverride, attachIds, tableNotes);
+        createTable(appendfieldClone.querySelector(".field-table"), appendField.table, pageOverride, attachIds);
     }
     else if (appendField.bittable) {
         createBittable(appendfieldClone.querySelector(".field-table"), appendField.bittable, pageOverride);
@@ -349,23 +370,28 @@ function createAppendField(appendField, fileTitle, pageOverride, tableNotes = nu
     return appendfieldClone;
 }
 
-function createField(fieldTemplate, field, fileKey) {
-    const fieldClone = fieldTemplate.content.cloneNode(true);
+function createField(fieldClone, jsonFieldClone, field, fileKey) {
+
+    const fieldElement = fieldClone.querySelector(".field");
+    fieldElement.id = field.id ? field.id : field.name;
 
     // Field name
     const nameLink = fieldClone.querySelector(".field-name");
-    nameLink.id = field.name;
-    nameLink.href = `#${field.name}`;
+    nameLink.href = `#${fieldElement.id}`;
     const nameText = nameLink.querySelector("h3");
     nameText.innerText = field.name;
 
     // Alternate names
     if (field.altNames) {
+        const altNameTargets = fieldClone.querySelector(".field-alt-name-targets");
         const altNames = fieldClone.querySelector(".field-alt-names");
         for (const altName of field.altNames) {
+            const altTarget = document.createElement("div");
+            altTarget.id = altName;
+            altNameTargets.appendChild(altTarget);
+
             const alt = document.createElement("a");
             alt.classList.add("field-alt-name");
-            alt.id = altName;
             alt.href = `#${altName}`;
             const altH = document.createElement("h4");
             altH.innerText = altName;
@@ -379,53 +405,87 @@ function createField(fieldTemplate, field, fileKey) {
 
     // Type
     if (field.type && field.type.type) {
+        const getTypeStrings = (type) => {
+            let typeString = "";
+            let tooltipString = "";
+            switch (type.type) {
+                case "int":
+                case "int or":
+                    typeString = `Integer`;
+                    tooltipString = `Limit: ${type.memSize} bits`
+                    break;
+
+                case "float":
+                    typeString = `Float`;
+                    tooltipString = `Limit: ${type.memSize} bits`
+                    break;
+
+                case "text":
+                    typeString = `Text`;
+                    tooltipString = `Max Length: ${type.dataLength ? type.dataLength : `\u221e`} characters<br>Limit: ${type.memSize ? type.memSize : `\u221e`} bits`
+                    break;
+
+                case "reference":
+                    typeString = `Reference of ${makeReferenceLinkHtml(type.file, type.field)}`;
+                    tooltipString = `Max Length: ${type.dataLength} characters<br>Limit: ${type.memSize} bits`
+                    break;
+                    
+                case "string":
+                    typeString = `Localized String`;
+                    tooltipString = `Max Length: ${type.dataLength} characters<br>Limit: ${type.memSize} bits`
+                    break;
+
+                case "boolean":
+                case "inverse boolean":
+                    typeString = "Boolean";
+                    tooltipString = jsonFieldClone ? "true or false" : "0 or 1";
+                    break;
+                
+                case "parse":
+                    if (type.description) {
+                        typeString = `Parse: ${parseJSONText(type.description)}`;
+                    }
+                    else {
+                        console.error(`Parse type for ${field.name} has no description`);
+                    }
+                    break;
+
+                case "comment":
+                    typeString = "Comment";
+                    tooltipString = "This field is not used by code";
+                    break;
+
+                case "object":
+                    if (type.file && type.field) {
+                        typeString = `Object of ${makeReferenceLinkHtml(type.file, type.field)}`;
+                    }
+                    else {
+                        typeString = "Object";
+                    }
+                    break;
+
+                case "array":
+                    let [typeString2, tooltipString2] = getTypeStrings(type.arrayType);
+                    typeString = `Array of ${typeString2}`;
+                    tooltipString = tooltipString2;
+                    break;
+
+                default:
+                    // Just display whatever we put otherwise. The validation script will pick up any errors
+                    typeString = type.type;
+            }
+            return [typeString, tooltipString];
+        }
+
+        let [typeString, tooltipString] = getTypeStrings(field.type);
+
         const typeText = fieldClone.querySelector(".field-type-text");
         const typeTooltip = fieldClone.querySelector(".field-type-tooltip-text");
+        typeText.innerHTML = typeString;
+        typeTooltip.innerHTML = tooltipString;
 
-        switch (field.type.type) {
-            case "int":
-            case "int or":
-                typeText.innerHTML = `Integer`;
-                typeTooltip.innerHTML = `Limit: ${field.type.memSize} bits`
-                break;
-
-            case "text":
-                typeText.innerHTML = `Text`;
-                typeTooltip.innerHTML = `Max Length: ${field.type.dataLength} characters<br>Limit: ${field.type.memSize} bits`
-                break;
-
-            case "reference":
-                typeText.innerHTML = `Reference of ${makeReferenceLinkHtml(field.type.file, field.type.field)}`;
-                typeTooltip.innerHTML = `Max Length: ${field.type.dataLength} characters<br>Limit: ${field.type.memSize} bits`
-                break;
-                
-            case "string":
-                typeText.innerHTML = `Localized String`;
-                typeTooltip.innerHTML = `Max Length: ${field.type.dataLength} characters<br>Limit: ${field.type.memSize} bits`
-                break;
-
-            case "boolean":
-            case "inverse boolean":
-                typeText.innerHTML = "Boolean (0 or 1)";
-                break;
-            
-            case "parse":
-                if (field.type.description) {
-                    typeText.innerHTML = `Parse: ${parseJSONText(field.type.description)}`;
-                    fieldClone.querySelector(".field-type-tooltip-icon").remove()
-                }
-                else {
-                    console.error(`Parse type for ${field.name} has no description`);
-                }
-                break;
-
-            case "comment":
-                typeText.innerHTML = "Comment";
-                typeTooltip.innerHTML = "This field is not used by code";
-                break;
-
-            default:
-                console.error(`Invalid type ${field.type.type} for ${field.name}`);
+        if (!tooltipString) {
+            fieldClone.querySelector(".field-type-tooltip-icon").remove()
         }
     }
     else {
@@ -449,21 +509,24 @@ function createField(fieldTemplate, field, fileKey) {
     }
 
     // Append field
+    let removeAppendField = true;
     if (field.appendField) {
         let otherFile = files[field.appendField.file];
-        let appendField = otherFile.fields.find(f => f.name == field.appendField.field);
-        if (appendField) {
-            const tableNotes = fileKey ? getCommunityTableNotes(fileKey, field.name) : null;
-            const appendFieldClone = createAppendField(appendField, otherFile.title, field.appendField.file, tableNotes);
+        if (otherFile) {
+            let appendField = findField(otherFile, field.appendField.field);
+            if (appendField) {
+                const appendFieldClone = createAppendField(appendField, otherFile.title, field.appendField.file);
 
-            const appendFieldContainer = fieldClone.querySelector(".field-appendfield")
-            appendFieldContainer.appendChild(appendFieldClone);
-        }
-        else {
-            console.error(`${field.name}: Append field ${field.appendField.file}#${field.appendField.field} does not exist`)
+                const appendFieldContainer = fieldClone.querySelector(".field-appendfield")
+                appendFieldContainer.appendChild(appendFieldClone);
+                removeAppendField = false;
+            }
+            else {
+                console.error(`${field.name}: Append field ${field.appendField.file}#${field.appendField.field} does not exist`)
+            }
         }
     }
-    else {
+    if (removeAppendField) {
         fieldClone.querySelector(".field-appendfield").remove();
     }
 
@@ -474,16 +537,53 @@ function createField(fieldTemplate, field, fileKey) {
             const noteDiv = document.createElement("div");
             noteDiv.classList.add("community-note");
             noteDiv.innerHTML = parseJSONText(communityNote, fileKey);
-            fieldClone.querySelectorAll(".field-column")[1].appendChild(noteDiv);
+            fieldClone.querySelectorAll(".field-row")[1].appendChild(noteDiv);
         }
     }
 
-    return fieldClone;
+    if (jsonFieldClone) {
+        if (field.fields) {
+            const jsonFieldTemplate = document.querySelector("#json-field-template");
+            const fieldTemplate = document.querySelector("#field-template");
+
+            let subFieldsContainer = jsonFieldClone.querySelector(".json-properties");
+
+            for (const subField of field.fields) {
+                const jsonSubFieldClone = jsonFieldTemplate.content.cloneNode(true);
+                const subFieldClone = fieldTemplate.content.cloneNode(true);
+
+                createField(subFieldClone, jsonSubFieldClone, subField, fileKey);
+
+                jsonSubFieldClone.querySelector(".json-field").appendChild(subFieldClone);
+                subFieldsContainer.appendChild(jsonSubFieldClone);
+            }
+        }
+        else {
+            jsonFieldClone.querySelector(".json-divider").remove();
+        }
+    }
 }
 
-function createFields(fieldTemplate, container, fieldsJson, fileKey) {
-    for (const field of fieldsJson) {
-        container.appendChild(createField(fieldTemplate, field, fileKey));
+function createFields(fieldsContainer, fields, fileKey) {
+    const fieldTemplate = document.querySelector("#field-template");
+    const jsonFieldTemplate = document.querySelector("#json-field-template");
+
+    for (const field of fields) {
+        let jsonFieldClone = null;
+        if (field.fields) {
+            jsonFieldClone = jsonFieldTemplate.content.cloneNode(true);
+        }
+
+        const fieldClone = fieldTemplate.content.cloneNode(true);
+        createField(fieldClone, jsonFieldClone, field, fileKey);
+
+        if (jsonFieldClone) {
+            jsonFieldClone.querySelector(".json-field").appendChild(fieldClone);
+            fieldsContainer.appendChild(jsonFieldClone);
+        }
+        else {
+            fieldsContainer.appendChild(fieldClone);
+        }
     }
 }
 
@@ -507,11 +607,11 @@ function createFile(fileData, fileContainer) {
         overview.after(noteDiv);
     }
 
-    const fieldTemplate = document.querySelector("#field-template");
     const fieldsContainer = fileClone.querySelector(".file-fields");
-    createFields(fieldTemplate, fieldsContainer, fileData.fields, fileKey);
 
     fileContainer.appendChild(fileClone);
+
+    createFields(fieldsContainer, fileData.fields, fileKey);
 }
 
 function populateFile(fileData) {
@@ -525,46 +625,13 @@ function populateFile(fileData) {
             createFile(files[appendFile], fileContainer)
         }
     }
-}
 
-///////////////////////////////////////////////
-// Sidebar
+    for (const field of document.querySelectorAll(".field")) {
+        const nameLink = field.querySelector(".field-name");
+        const divider = field.querySelector(".field-divider");
 
-function createSidebarField(field, ulFields) {
-        const liField = document.createElement("li");
-        const fieldLink = document.createElement("a");
-
-        fieldLink.setAttribute("href", "#" + field.name);
-        fieldLink.innerHTML = field.name;
-
-        liField.appendChild(fieldLink);
-        ulFields.appendChild(liField);
-}
-
-function createSidebarFile(fileData, ulSidebar) {
-    const liFile = document.createElement("li");
-    liFile.innerText = fileData.title;
-    ulSidebar.appendChild(liFile);
-
-    const ulFields = document.createElement("ul");
-    for (const field of fileData.fields) {
-        createSidebarField(field, ulFields);
+        // Set the width of the divider to the width of the name
+        // The DOM is a fickle beast so the field must be added to the html body so width is generated
+        divider.setAttribute("style", `width:${nameLink.offsetWidth}px`);
     }
-    ulSidebar.appendChild(ulFields);
 }
-
-function populatePageSidebar(fileData) {
-    const sidebar = document.querySelector("#page-sidebar");
-    const ulSidebar = document.createElement("ul");
-
-    createSidebarFile(fileData, ulSidebar)
-
-    if (fileData.appendFiles) {
-        for (const appendFile of fileData.appendFiles) {
-            createSidebarFile(files[appendFile], ulSidebar)
-        }
-    }
-
-    sidebar.appendChild(ulSidebar);
-}
-

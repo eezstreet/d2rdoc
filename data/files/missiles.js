@@ -14,7 +14,7 @@ files["missiles"] = {
             "description": "Defines the unique name ID for the missile, which is how other files can reference the missile. The order of defined missiles will determine their ID numbers, so they should not be reordered.",
             "type": {
                 "type": "text",
-                "dataLength": 47,
+                "dataLength": 31,
                 "memSize": 16
             }
         },
@@ -658,7 +658,7 @@ files["missiles"] = {
                         "text": "ProcessHoldLastWithTimeout"
                     },
                     "",
-                    ""
+                    "At the end of the missile's animation, tick down a timer that when reaches 0 kills the missile. Only works with missiles created by certain skill functions, like $!skills#NecDoCExplosion!$ or $!skills#clt-WarDoBloodBoil!$. Otherwise, run the $!#ProcessMissileMode!$ function."
                 ],
                 [
                     "70",
@@ -667,7 +667,7 @@ files["missiles"] = {
                         "text": "ProcessHoldLastCheckSource"
                     },
                     "",
-                    ""
+                    "At the end of the missile's animation, set it to dead and destroy its light, and if the source unit no longer exists, remove the missile. Otherwise, run the $!#ProcessMissileMode!$ function."
                 ],
                 [
                     "71",
@@ -675,8 +675,8 @@ files["missiles"] = {
                         "id": "WaveTrailMaker",
                         "text": "WaveTrailMaker"
                     },
-                    "",
-                    ""
+                    "$!#CltSubMissile1!$<br>$!#CltSubMissile2!$<br>$!#Param2!$<br>$!#CltParam1!$",
+                    "Create $!#CltSubMissile1!$ as a trailing missile. Optionally leaves $!#CltSubMissile2!$ as a linger missile, falling back on the trailing missile. $!#Param2!$ controls duration of linger missile compared to the range value. $!#CltParam1!$ controls the number of subloops."
                 ],
                 [
                     "72",
@@ -684,8 +684,8 @@ files["missiles"] = {
                         "id": "RadialMaker",
                         "text": "RadialMaker"
                     },
-                    "",
-                    ""
+                    "$!#CltSubMissile1!$",
+                    "Spawns $!#CltSubMissile1!$ at the target's location, only once."
                 ],
                 [
                     "73",
@@ -693,8 +693,8 @@ files["missiles"] = {
                         "id": "WaveWallMaker",
                         "text": "WaveWallMaker"
                     },
-                    "",
-                    ""
+                    "$!#CltSubMissile1!$<br>$!#Param1!$<br>$!#Param2!$",
+                    "Create a series of $!#CltSubMissile1!$ as a wave wall. $!#Param1!$ controls the delay between each wall missile's creation. $!#Param2!$ controls how many missiles to add on each side of the wall. Sets velocity to 1. Must be used with $!skills#clt-WarDoFlameWave!$ so all parameters are set properly. Also uses $!#CltSubMissile1!$ as the trail missile and sets some information on each created wall missile used by $!#WaveTrailMaker!$. The wave wall missile's $!#Param1!$ controls duration of tail offset."
                 ],
                 [
                     "74",
@@ -703,7 +703,7 @@ files["missiles"] = {
                         "text": "ProcessTargetAttached"
                     },
                     "",
-                    ""
+                    "Moves missile to keep it attached to a target unit, if it still exists. Uses internal params as the target."
                 ],
                 [
                     "75",
@@ -712,7 +712,7 @@ files["missiles"] = {
                         "text": "ProcessSoaringStrike"
                     },
                     "",
-                    ""
+                    "Updates missile for a boomering effect: when the missile is on the \"return trip\" of the boomerang, adjust its path to go towards its source."
                 ],
                 [
                     "76",
@@ -720,8 +720,8 @@ files["missiles"] = {
                         "id": "ProcessMiasmaChains",
                         "text": "ProcessMiasmaChains"
                     },
-                    "",
-                    ""
+                    "$!#Param3!$<br>$!#Range!$<br>$!#Radius!$",
+                    "Move the missile until it has a collision or exceeds its duration. Once it does, try to attach to a target in its originally calculated $!#Radius!$. Otherwise, attach to the floor, only allowing valid end locations if $!#Param3!$ is 1. Extend the missile's duration back to its originally calculated $!#Range!$. Afterwards, update the missile's position to its target's."
                 ]
             ]
         },
@@ -789,7 +789,7 @@ files["missiles"] = {
                         "text": "HitSoaringStrike (Client)"
                     },
                     "",
-                    ""
+                    "Adjusts the missile for a boomerang effect. If the missile is \"going out\" it always pierces. Start the \"return trip\" back to the source if it reaches its lifetime or hits a wall. Cap the return trip path at 50 squares. If on the return trip, kill the missile if it reaches its lifetime or hits a wall."
                 ],
                 [
                     "6",
@@ -990,7 +990,7 @@ files["missiles"] = {
                         "text": "HitIceBreak"
                     },
                     "",
-                    "Create a missile with a forced animation rate value of 1, depending on the missile class used.<br>\u00e2\u20ac\u00a2 If \"Missile\" equals \"icebreaksmall\" then create \"icebreaksmallmelt\"<br>\u00e2\u20ac\u00a2 If \"Missile\" equals \"icebreakmedium\" then create \"icebreaklargemelt\"<br>\u00e2\u20ac\u00a2 If \"Missile\" equals \"icebreaklarge\" then create \"icebreaklargemelt\"<br>\u00e2\u20ac\u00a2 If \"Missile\" equals \"catapult cold explosion\" then create \"icebreaklargemelt\""
+                    "Create a missile with a forced animation rate value of 1, depending on the missile class used.<br>\u00b7 If \"Missile\" equals \"icebreaksmall\" then create \"icebreaksmallmelt\"<br>\u00b7 If \"Missile\" equals \"icebreakmedium\" then create \"icebreaklargemelt\"<br>\u00b7 If \"Missile\" equals \"icebreaklarge\" then create \"icebreaklargemelt\"<br>\u00b7 If \"Missile\" equals \"catapult cold explosion\" then create \"icebreaklargemelt\""
                 ],
                 [
                     "32",
@@ -1281,7 +1281,7 @@ files["missiles"] = {
                         "text": "HitSetTarget"
                     },
                     "",
-                    ""
+                    "Set the hit target as the missile's target"
                 ]
             ]
         },
@@ -1339,8 +1339,8 @@ files["missiles"] = {
                         "id": "MissileAttachAndHit",
                         "text": "MissileAttachAndHit"
                     },
-                    "",
-                    ""
+                    "$!#Param1!$<br>$!#Param2!$<br>$!#InitSteps!$",
+                    "Moves the missile to the target. If $!#Param1!$ is greater than 0, then the missile is killed when the target becomes unavailable or dies. Periodically calls the hit function. $!#InitSteps!$ controls the hit period. If $!#Param2!$ is set, call the hit function along the length of a missile's link."
                 ],
                 [
                     "5",
@@ -1642,8 +1642,8 @@ files["missiles"] = {
                         "id": "MissileMakeWaveTrail",
                         "text": "MissileMakeWaveTrail"
                     },
-                    "",
-                    ""
+                    "$!#SubMissile1!$<br>$!#Param1!$<br>$!#Param2!$",
+                    "Create $!#SubMissile1!$ as a trailing missile. Optionally leaves $!#SubMissile1!$ as a linger missile, falling back on the trailing missile. $!#Param2!$ controls duration of linger missile compared to the range value."
                 ],
                 [
                     "39",
@@ -1651,8 +1651,8 @@ files["missiles"] = {
                         "id": "MissileDoAbyss",
                         "text": "MissileDoAbyss"
                     },
-                    "",
-                    ""
+                    "$!#Param1!$<br>$!#Radius!$<br>$!#ResultFlags!$<br>$!#HitFlags!$",
+                    "Applies the missile's damage on all unit within $!#Radius!$ range. Use the $!#ResultFlags!$ and $!#HitFlags!$. Disable the \"pull\" result flag after the first tick. Center the pull on this missile."
                 ],
                 [
                     "40",
@@ -1660,8 +1660,8 @@ files["missiles"] = {
                         "id": "MissileRadialMaker",
                         "text": "MissileRadialMaker"
                     },
-                    "",
-                    ""
+                    "$!#SubMissile1!$",
+                    "Spawns $!#SubMissile1!$ at the target's location, only once."
                 ],
                 [
                     "41",
@@ -1669,8 +1669,8 @@ files["missiles"] = {
                         "id": "MissileDot",
                         "text": "MissileDot"
                     },
-                    "",
-                    ""
+                    "$!#Param1!$<br>$!#InitSteps!$<br>$!#Radius!$",
+                    "Periadically apply damage from the missile. If $!#Param1!$ is greater than 0, then the missile damage is done on the link, otherwise around its $!#Radius!$. $!#InitSteps!$ controls the hit period."
                 ],
                 [
                     "42",
@@ -1678,8 +1678,8 @@ files["missiles"] = {
                         "id": "MissileMakeWaveWall",
                         "text": "MissileMakeWaveWall"
                     },
-                    "",
-                    ""
+                    "$!#SubMissile1!$<br>$!#Param1!$<br>$!#Param2!$",
+                    "Create a series of $!#SubMissile1!$ as a wave wall. $!#Param1!$ controls the delay between each wall missile's creation. $!#Param2!$ controls how many missiles to add on each side of the wall. Sets velocity to 1. Must be used with $!skills#srv-WarDoFlameWave!$ so all parameters are set properly. Also uses $!#SubMissile1!$ as the trail missile and sets some information on each created wall missile used by $!#MissileMakeWaveTrail!$. The wave wall missile's $!#Param1!$ controls duration of tail offset."
                 ],
                 [
                     "43",
@@ -1687,8 +1687,8 @@ files["missiles"] = {
                         "id": "MissileLinkSpawner",
                         "text": "MissileLinkSpawner"
                     },
-                    "",
-                    ""
+                    "$!#SubMissile1!$<br>$!#SrvCalc1!$<br>$!#Param1!$<br>$!#Param2!$<br>$!#Param3!$<br>$!#Param4!$<br>",
+                    "Spawns $!#SubMissile1!$ and attaches a link between the missile and an anchor. $!#SrvCalc1!$ controls the length of the link. $!#Param1!$ is the anchor type: 0->Source, 1->HitTarget, 2->CurrentEnemy, 3->SourceEnemy, 4->Attacker, 5->ClosestEnemy, 6->ClosestEnemyFromTarget, 7->ClosestEnemyFromSource. If $!#Param2!$ is greater than 0, then the link is created as a position on the ground (not attached to a unit). If $!#Param3!$ is greater than 0, then the link is cut when the anchor unit dies. If $!#Param4!$ is greater than 0, then the missile will move and end at the target. Propogate any channeling duty from $!skills#srv-SkillStartPlayerChannelSkill!$ to the created missile."
                 ],
                 [
                     "44",
@@ -1697,7 +1697,7 @@ files["missiles"] = {
                         "text": "MissileDoSoaringStrike"
                     },
                     "",
-                    ""
+                    "Updates missile for a boomering effect: when the missile is on the \"return trip\" of the boomerang, adjust its path to go towards its source."
                 ],
                 [
                     "45",
@@ -1705,8 +1705,8 @@ files["missiles"] = {
                         "id": "MissileDoMiasmaChains",
                         "text": "MissileDoMiasmaChains"
                     },
-                    "",
-                    ""
+                    "$!#Param2!$<br>$!#Param3!$<br>$!#Range!$<br>$!#Radius!$<br>$!#InitSteps!$",
+                    "Move the missile until it has a collision or exceeds its duration. Once it does, try to attach to a target in its originally calculated $!#Radius!$. Otherwise, attach to the floor, only allowing valid end locations if $!#Param3!$ is 1. Extend the missile's duration back to its originally calculated $!#Range!$. Afterwards, execute $!#pSrvHitFunc!$ on its target every $!#InitSteps!$ frames. If $!#Param2!$ is 1, also execute $!#pSrvHitFunc!$ on all targets between it and the missile's anchor."
                 ]
             ]
         },
@@ -1738,7 +1738,7 @@ files["missiles"] = {
                         "text": "RadialFireDamage"
                     },
                     "$!#sHitPar1!$",
-                    "Deal elemental damage in an area where the parameter controls the damage radius"
+                    "Deal elemental damage in an area where the $!#sHitPar1!$ controls the damage radius. If the parameter is <= 0, use the skill's $!skills#calc1!$ field as the radius."
                 ],
                 [
                     "2",
@@ -2035,7 +2035,7 @@ files["missiles"] = {
                         "text": "HitSoaringStrike (Server)"
                     },
                     "",
-                    ""
+                    "Adjusts the missile for a boomerang effect. If the missile is \"going out\" it always pierces. Start the \"return trip\" back to the source if it reaches its lifetime or hits a wall. Cap the return trip path at 50 squares. If on the return trip, kill the missile if it reaches its lifetime or hits a wall. When the missile pierces and deals damage, apply a next hit delay for the duration of the missile. Reset next hit delays when starting the return trip. Only trigger the \"hextrigger\" event once per missile on hits."
                 ],
                 [
                     "35",
@@ -2097,8 +2097,8 @@ files["missiles"] = {
                         "id": "HitChainAndSpawn",
                         "text": "HitChainAndSpawn"
                     },
-                    "",
-                    ""
+                    "$!#Param1!$<br>$!#HitSubMissile1!$",
+                    "On hit, creates $!#HitSubMissile1!$ if it is provided. Then chains to nearby targets (same as $!#srv-HitChainLightning!$). If $!#Param1!$ is set, propogate target information to the created sub-missile."
                 ],
                 [
                     "42",
@@ -2107,7 +2107,7 @@ files["missiles"] = {
                         "text": "HitBladeDance"
                     },
                     "",
-                    ""
+                    "On hit, teleport the source to the hit location (only for normal missiles, does not apply to mirrored missiles). Respects the level's $!levels#Teleport!$ setting. Then runs $!#RadialDamage!$."
                 ],
                 [
                     "43",
@@ -2142,8 +2142,8 @@ files["missiles"] = {
                         "id": "HitAndSplatter",
                         "text": "HitAndSplatter"
                     },
-                    "",
-                    ""
+                    "$!#HitSubMissile1!$<br>$!#HitSubMissile2!$<br>$!#SrvCalc1!$<br>$!#Param1!$<br>$!#Param2!$<br>$!#Radius!$",
+                    "On hit, creates $!#HitSubMissile1!$. Also, create $!#HitSubMissile2!$ (or $!#HitSubMissile1!$ if not provided) on $!#SrvCalc1!$ amount of enemies in $!#Radius!$. $!#Param1!$ controls if the current missile's target should be passed to the sub-missiles. $!#Param2!$ controls where to spawn the splatter sub-missiles: if 0, then on the target; if greater than 0, then from the hit location and traveling to the target."
                 ],
                 [
                     "47",
@@ -2266,7 +2266,7 @@ files["missiles"] = {
                         "text": "HitAxeChargedDiscDamage"
                     },
                     "",
-                    ""
+                    "Run $!#srv-HitCatapultChargedBall!$. This missile always deals damage."
                 ]
             ]
         },
@@ -2396,8 +2396,8 @@ files["missiles"] = {
                         "id": "DamageLightningJavelin",
                         "text": "DamageLightningJavelin"
                     },
-                    "",
-                    ""
+                    "$!#DmgCalc1!$",
+                    "Converts a $!#DmgCalc1!$ percentage of physical damage to elemental damage per level, clearing all damage except for that element."
                 ],
                 [
                     "13",
@@ -2415,7 +2415,7 @@ files["missiles"] = {
                         "text": "DamageMoltenBoulder"
                     },
                     "$!#dParam1!$<br>$!#dParam2!$",
-                    "Uses $!#dParam2!$ as the percent chance to knockback the target unit. Uses $!#dParam1!$ to control how this percent chance is modified. Also relies on the $!monstats2#small!$ and $!monstats2#large!$ fields.<br>\u00e2\u20ac\u00a2 If the target unit is a player and $!#dParam1!$ is greater than or equal to 1, then set the knockback chance to $!#dParam2!$<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ is less than 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ equals 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$ * 2<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ equals 1 and the monster is a large size, then set the knockback chance to $!#dParam2!$<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ is greater than 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$ * 3<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ is greater than 1 and the monster is a large size, then set the knockback chance to $!#dParam2!$ * 2<br>\u00e2\u20ac\u00a2 If $!#dParam1!$ is greater than 1 and the monster is not a small or large size, then set the knockback chance to $!#dParam2!$"
+                    "Uses $!#dParam2!$ as the percent chance to knockback the target unit. Uses $!#dParam1!$ to control how this percent chance is modified. Also relies on the $!monstats2#small!$ and $!monstats2#large!$ fields.<br>\u00b7 If the target unit is a player and $!#dParam1!$ is greater than or equal to 1, then set the knockback chance to $!#dParam2!$<br>\u00b7 If $!#dParam1!$ is less than 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$<br>\u00b7 If $!#dParam1!$ equals 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$ * 2<br>\u00b7 If $!#dParam1!$ equals 1 and the monster is a large size, then set the knockback chance to $!#dParam2!$<br>\u00b7 If $!#dParam1!$ is greater than 1 and the monster is a small size, then set the knockback chance to $!#dParam2!$ * 3<br>\u00b7 If $!#dParam1!$ is greater than 1 and the monster is a large size, then set the knockback chance to $!#dParam2!$ * 2<br>\u00b7 If $!#dParam1!$ is greater than 1 and the monster is not a small or large size, then set the knockback chance to $!#dParam2!$"
                 ],
                 [
                     "15",
@@ -2424,7 +2424,7 @@ files["missiles"] = {
                         "text": "DamageHolyBolt"
                     },
                     "$!#sHitPar2!$<br>$!#dParam1!$",
-                    "Uses $!#dParam1!$ as a percent damage multiplier for the total elemental damage, depending on the use case of $!#sHitPar2!$<br>\u00e2\u20ac\u00a2 If the target unit is a monster<br>o If $!#sHitPar2!$ equals 0, then do not modify the damage<br>o If $!#sHitPar2!$ equals 1, then only modify the damage if the monster is an Undead type<br>o If $!#sHitPar2!$ equals 2, then only modify the damage if the monster is a Demon type<br>o If $!#sHitPar2!$ equals 3, then only modify the damage if the monster is an Undead or Demon type<br>\u00e2\u20ac\u00a2 If the target unit is a player<br>o If $!#sHitPar2!$ equals 0, then modify the damage<br>o If $!#sHitPar2!$ equals 0, then do not modify the damage"
+                    "Uses $!#dParam1!$ as a percent damage multiplier for the total elemental damage, depending on the use case of $!#sHitPar2!$<br>\u00b7 If the target unit is a monster<br>o If $!#sHitPar2!$ equals 0, then do not modify the damage<br>o If $!#sHitPar2!$ equals 1, then only modify the damage if the monster is an Undead type<br>o If $!#sHitPar2!$ equals 2, then only modify the damage if the monster is a Demon type<br>o If $!#sHitPar2!$ equals 3, then only modify the damage if the monster is an Undead or Demon type<br>\u00b7 If the target unit is a player<br>o If $!#sHitPar2!$ equals 0, then modify the damage<br>o If $!#sHitPar2!$ equals 0, then do not modify the damage"
                 ],
                 [
                     "16",
@@ -2432,8 +2432,8 @@ files["missiles"] = {
                         "id": "DamageSoaringStrike",
                         "text": "DamageSoaringStrike"
                     },
-                    "",
-                    ""
+                    "$!#DmgCalc1!$",
+                    "On hit, disable any event triggers. If the missile is in the return trip, optionally applies a pull based on $!#DmgCalc1!$ random chance."
                 ],
                 [
                     "17",
@@ -2441,8 +2441,8 @@ files["missiles"] = {
                         "id": "DamageRingOfFire",
                         "text": "DamageRingOfFire"
                     },
-                    "",
-                    ""
+                    "$!#DmgCalc1!$",
+                    "On hit, applies $!#DmgCalc1!$ as a damage multiplier to all damage types."
                 ]
             ]
         },
@@ -2607,7 +2607,7 @@ files["missiles"] = {
         },
         {
             "name": "Range",
-            "description": "Controls the duration that the missile will exist for after it is created. This is measured in frames where 25 Frames = 1 second.",
+            "description": "Controls the duration that the missile will exist for after it is created. This is measured in frames where 25 Frames = 1 second. Note that there are some instances where a skill function will overwrite this.",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
@@ -2617,7 +2617,7 @@ files["missiles"] = {
         },
         {
             "name": "Radius",
-            "description": "",
+            "description": "Specify the radius of the missile. This is different from its size. The radius is used for missile function searches and for vfx rendering. The size is used for collision and overlap checks.",
             "type": {
                 "type": "parse",
                 "dataLength": 255,
@@ -2867,7 +2867,7 @@ files["missiles"] = {
         },
         {
             "name": "CollisionOverlap",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then an overlap collision check is done on the current missile location before stepping the missile on its next path location.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -3412,13 +3412,13 @@ files["missiles"] = {
         },
         {
             "name": "OnDiedSound",
-            "description": "",
+            "description": "Optional sound to play when the missile dies.",
             "type": {
                 "type": "reference",
                 "dataLength": 47,
                 "memSize": 16,
-                "file": "",
-                "field": ""
+                "file": "sounds",
+                "field": "Sound"
             }
         },
         {
@@ -3522,7 +3522,7 @@ files["missiles"] = {
         },
         {
             "name": "MissileWeaponVFX",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then the missile is being represented by a weapon or a vfx based on a weapon.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,

@@ -112,7 +112,7 @@ files["misc"] = {
                         "text": "SkillItemRejuvPotion"
                     },
                     "$!#stat#!$<br>$!#calc#!$",
-                    "Adds a percentage of the stat's \"maxstat\" value (see itemstatcost.txt) to the current stat. This percentage is determined by the related calculated value."
+                    "Adds a percentage of the stat's \"maxstat\" value (see ItemStatCost.txt) to the current stat. This percentage is determined by the related calculated value."
                 ],
                 [
                     "6",
@@ -202,7 +202,7 @@ files["misc"] = {
                         "text": "SkillItemDesecrateZone"
                     },
                     "$!#calc1!$",
-                    "SkillItemDesecrateZone - Manually desecrate (terrorize) a manual zone from a group in the desecrated zones config with the same id as $!#calc1!$."
+                    "Manually desecrate (terrorize) a manual zone from a group in the desecrated zones config with the same $!desecratedzones#group_id!$ as $!#calc1!$.<br>For each zone in the zone group's $!desecratedzones#manual_zones-zones!$, remove it if its $!desecratedzones#id!$ is already active or if the percentage of its levels that are already active is >= $!desecratedzones#manual_removal_threshold!$. Otherwise, if that percentage is >= $!desecratedzones#manual_deprioritize_threshold!$ then add it to a separate \"deprioritized list\".<br>Randomly select from the zones list. If there are no zones, try to select from the deprioritized zones."
                 ]
             ]
         },
@@ -351,7 +351,7 @@ files["misc"] = {
         },
         {
             "name": "AdvancedStashStackable",
-            "description": "",
+            "description": "Boolean Field. If equals 1, then marks the item as being stackable in the dedicated shared stash tab.",
             "type": {
                 "type": "int",
                 "dataLength": 0,

@@ -591,7 +591,7 @@ files["monstats"] = {
         },
         {
             "name": "nopreventmonsterheal",
-            "description": "",
+            "description": "Boolean Field. Prevents the \"item_preventheal\" stat from working on this monster.",
             "type": {
                 "type": "boolean",
                 "dataLength": 0,
@@ -1390,6 +1390,10 @@ files["monstats"] = {
                 [
                     "2",
                     "Kill the source unit that is related to this monster. Typically this is a mount type unit that the monster is riding when it dies"
+                ],
+                [
+                    "3",
+                    "Remove the unit from the game."
                 ]
             ]
         },

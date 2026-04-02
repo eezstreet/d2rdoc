@@ -54,6 +54,21 @@ h2, h3, h4, h5 {
     color: #BD9B4E; 
 }
 
+/* Highlighting */
+@keyframes targetFlash {
+    0% {border: 1px solid transparent;}
+    50% {border: 1px solid #B4AC92;}
+    100% {border: 1px solid transparent;}
+}
+
+.active {
+    animation: targetFlash 1.5s;
+}
+
+.page-sidebar-target {
+    border: 1px solid transparent;
+}
+
 /* Links */
 
 a {
@@ -82,6 +97,13 @@ a:hover {
     line-height: 1.3em;
     padding-right: 1em;
     margin-right: 1em;
+    scrollbar-width: thin;
+}
+
+#site-sidebar {
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar ul {
@@ -94,7 +116,9 @@ a:hover {
 }
 
 .site-index {
+    overflow: auto;
     margin-top: 2rem;
+    scrollbar-width: thin;
 }
 
 .site-index a {
@@ -116,8 +140,23 @@ a:hover {
     color: #f5f5f5;
 }
 
-.sidebar .current {
-    color: #B4AC92; 
+#page-sidebar a {
+    text-decoration: none;
+    color: steelblue;
+}
+
+#page-sidebar a:hover {
+    text-decoration: none;
+    color: #BD9B4E;
+}
+
+#site-sidebar .current,
+#page-sidebar .current {
+    color: #B4AC92;
+}
+
+.sidebar-button {
+    display: none;
 }
 
 /* Search */
@@ -129,6 +168,10 @@ a:hover {
     
     padding-top: 0.5rem;
     padding-left: 1.5em;
+}
+
+#site-search-bar {
+    width: 85%;
 }
 
 #site-search-results {
@@ -224,6 +267,8 @@ code {
 /* Table */
 
 table {
+    display: block;
+    overflow-x: auto;
     margin-top: 0.5rem;
     border-collapse: collapse;
     text-align: left;
@@ -237,4 +282,135 @@ td, th {
 th {
     font-family: Exocet, serif;
     padding: 1em;
+}
+
+/* Hamburger Button (for responsive design) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    width: max-content;
+    z-index: 10;
+    cursor: pointer;
+
+    --gap: 5px;
+    gap: var(--gap);
+}
+
+.hamburger::before,
+.hamburger::after,
+.hamburger input {
+    content: "";
+    width: 30px;
+    --height: 6px;
+    height: var(--height);
+    --x-width: calc(((var(--height) * 3) + (var(--gap) * 2)) * 1.41421356237); /* Magic number is the sqrt(2) */
+    transform-origin: left center;
+    background-color: #FFF;
+    border-radius: 100px;
+}
+
+.hamburger input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+    display: block;
+}
+
+.hamburger:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--height) / -2);
+}
+
+.hamburger:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--height) / 2);
+}
+
+.hamburger input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+#page-hamburger {
+    margin-left: auto;
+}
+
+/*
+ * Responsive Design
+ * Sidebars get moved behind hamburger buttons and only display after the buttons are pressed.
+*/
+@media screen and (max-width: 1160px) {
+    /* Only hide the page sidebar at this width */
+    #page-sidebar {
+        padding: 0.5em;
+        margin: 0;
+        max-height: calc(100vh - (0.5em * 2));
+    }
+
+    #page-hamburger {
+        display: flex;
+    }
+
+    #page-hamburger:has(input:not(:checked)) ~ ul {
+        display: none !important;
+    }
+
+    #page:has(#page-sidebar input:checked) #site-sidebar,
+    #page:has(#page-sidebar input:checked) .content {
+        display: none !important;
+    }
+
+    .sidebar:has(input:checked) {
+        flex: 100;
+    }
+
+    #page-sidebar:has(input:checked) {
+        margin-right: 0.5em;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .sidebar {
+        padding: 0.5em;
+        margin: 0;
+        max-height: calc(100vh - (0.5em * 2));
+    }
+
+    #site-search-bar {
+        width: 95%;
+    }
+
+    #site-search-results {
+        top: 4.5rem;
+        max-height: 50em;
+        width: 90%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    #site-hamburger:has(input:not(:checked)) ~ #site-search,
+    #site-hamburger:has(input:not(:checked)) ~ .site-index,
+    #page-hamburger:has(input:not(:checked)) ~ ul {
+        display: none !important;
+    }
+
+    #page:has(#site-sidebar input:checked) #page-sidebar,
+    #page:has(#page-sidebar input:checked) #site-sidebar,
+    #page:has(.sidebar input:checked) .content {
+        display: none !important;
+    }
+
+    #page-sidebar:has(input:checked) {
+        margin-right: 0.5em;
+    }
+
+    .field-label {
+        flex-wrap: wrap;
+    }
 }

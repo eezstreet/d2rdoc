@@ -23,7 +23,9 @@ def addField(field, fileEntry, htmlPathStr):
     # Field itself
     fieldEntry = {}
     fieldEntry["name"] = field["name"]
-    fieldEntry["path"] = htmlPathStr + "#" + field["name"]
+
+    fieldId = field["id"] if "id" in field else field["name"]
+    fieldEntry["path"] = htmlPathStr + "#" + fieldId
 
     # Sub-fields in alt names
     if "altNames" in field:
@@ -44,6 +46,10 @@ def addField(field, fileEntry, htmlPathStr):
                     fieldEntry.setdefault("subfields", []).append(subfieldEntry)
 
     fileEntry["fields"].append(fieldEntry)
+
+    if "fields" in field:
+        for subField in field["fields"]:
+            addField(subField, fileEntry, htmlPathStr)
 
 def convertFileToSearch(file):
     if "notSearchable" in file and file["notSearchable"]:

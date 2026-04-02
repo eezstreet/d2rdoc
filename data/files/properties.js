@@ -3,6 +3,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
 files["properties"] = {
     "title": "Properties.txt",
+    "referenceFiles": [
+        "enums"
+    ],
     "overview": "This file defines how item modifiers work. It takes a stat defined from $!itemstatcost!$ and uses a function to handle the stat's \"min\", \"max\" and \"parameter\" values.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
         {
@@ -338,11 +341,15 @@ files["properties"] = {
         },
         {
             "name": "uiRangeType",
-            "description": "",
+            "description": "Range type associated with the property. Is used in the Chronicle when defining the min/max stat values based on the Property's Min/Max and Param values",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 16
+            },
+            "appendField": {
+                "file": "enums",
+                "field": "Tooltip Range Type"
             }
         }
     ]

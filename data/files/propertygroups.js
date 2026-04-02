@@ -3,11 +3,11 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
 files["propertygroups"] = {
     "title": "PropertyGroups.txt",
-    "overview": "",
+    "overview": "This file defines groups of properties to be used when spawning items. (See: $!properties!$)",
     "fields": [
         {
             "name": "code",
-            "description": "",
+            "description": "Defines the property group ID. Used as a reference in other data files.",
             "type": {
                 "type": "text",
                 "dataLength": 47,
@@ -16,15 +16,38 @@ files["propertygroups"] = {
         },
         {
             "name": "pickmode",
+            "description": "Code to select how to select multiple properties from the group.",
             "type": {
                 "type": "int",
                 "dataLength": 0,
                 "memSize": 8
-            }
+            },
+            "table": [
+                [
+                    "Code",
+                    "Name",
+                    "Description"
+                ],
+                [
+                    "0",
+                    "All",
+                    "Select all properties (probability is simply ignored)."
+                ],
+                [
+                    "1",
+                    "Pick a card",
+                    "Select properties by picking a card from a deck. The probability of each remaining item increases across successive rolls."
+                ],
+                [
+                    "2",
+                    "Roll a dice",
+                    "Select properties by rolling a dice. The probability of a pick stays the same across successive rolls."
+                ]
+            ]
         },
         {
             "name": "prop#",
-            "description": "",
+            "description": "Name of the property to use for the pick.",
             "altNames": [
                 "prop1",
                 "prop2",
@@ -39,12 +62,12 @@ files["propertygroups"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": ""
+                "description": "Reference of $!properties#code!$ or $!propertygroups#code!$"
             }
         },
         {
             "name": "parMin#",
-            "description": "",
+            "description": "[Optional] Minimum parameter value for the property.",
             "altNames": [
                 "parMin1",
                 "parMin2",
@@ -59,12 +82,12 @@ files["propertygroups"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
+                "description": "A number"
             }
         },
         {
             "name": "parMax#",
-            "description": "",
+            "description": "[Optional] Maximum parameter value for the property.",
             "altNames": [
                 "parMax1",
                 "parMax2",
@@ -79,12 +102,12 @@ files["propertygroups"] = {
                 "type": "parse",
                 "dataLength": 255,
                 "memSize": 0,
-                "description": "A number or references $!skills#skill!$, $!montype#type!$, or $!states#state!$"
+                "description": "A number"
             }
         },
         {
             "name": "modMin#",
-            "description": "",
+            "description": "[Optional] Minimum mod value for the property.",
             "altNames": [
                 "modMin1",
                 "modMin2",
@@ -103,7 +126,7 @@ files["propertygroups"] = {
         },
         {
             "name": "modMax#",
-            "description": "",
+            "description": "[Optional] Maximum mod value for the property.",
             "altNames": [
                 "modMax1",
                 "modMax2",
@@ -122,7 +145,7 @@ files["propertygroups"] = {
         },
         {
             "name": "chance#",
-            "description": "",
+            "description": "Probability in number of tickets for the property to be chosen. All the probability numbers are added and selection is done via picking a ticket out of the raffle.",
             "altNames": [
                 "chance1",
                 "chance2",

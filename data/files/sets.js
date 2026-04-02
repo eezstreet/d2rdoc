@@ -3,6 +3,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp
 files["sets"] = {
     "title": "Sets.txt",
+    "referenceFiles": [
+        "playerclass"
+    ],
     "overview": "This file controls the item modifiers for Set bonus statistics when the player has equipped enough Set Items.<br>Any column field name starting with \"*\" is considered a comment field and is not used by the game.",
     "fields": [
         {
@@ -189,14 +192,18 @@ files["sets"] = {
             }
         },
         {
-            "name": "uiclass",
-            "description": "",
+            "name": "UIClass",
+            "description": "Three letter code which defines the player class category the set is assigned to. Is used in the Chronicle sets page to filter different sets by different player classes.",
             "type": {
                 "type": "reference",
                 "dataLength": 4,
                 "memSize": 8,
-                "file": "",
-                "field": ""
+                "file": "playerclass",
+                "field": "Code"
+            },
+            "appendField": {
+                "file": "playerclass",
+                "field": "Code"
             }
         }
     ]
