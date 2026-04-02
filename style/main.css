@@ -117,7 +117,7 @@ a:hover {
 
 .site-index {
     overflow: auto;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     scrollbar-width: thin;
 }
 
@@ -165,13 +165,29 @@ a:hover {
     position: fixed;
     overflow: hidden;
     top: 0;
-    
+
     padding-top: 0.5rem;
     padding-left: 1.5em;
+    margin-bottom: 0.25rem;
 }
 
 #site-search-bar {
     width: 85%;
+    background-color: rgb(30, 30, 30);
+    border: 1px solid #BD9B4E;
+    border-radius: 6px;
+    color: #BD9B4E;
+    padding: 4px 8px;
+    font-family: Formal, sans-serif;
+    outline: none;
+}
+
+#site-search-bar::placeholder {
+    color: #6b5c30;
+}
+
+#site-search-bar:focus {
+    border-color: #BD9B4E;
 }
 
 #site-search-results {
@@ -344,10 +360,12 @@ th {
  * Sidebars get moved behind hamburger buttons and only display after the buttons are pressed.
 */
 @media screen and (max-width: 1160px) {
-    /* Only hide the page sidebar at this width */
+    /* Collapse page sidebar to just the hamburger */
     #page-sidebar {
         padding: 0.5em;
         margin: 0;
+        width: auto;
+        flex-shrink: 1;
         max-height: calc(100vh - (0.5em * 2));
     }
 
@@ -366,6 +384,7 @@ th {
 
     .sidebar:has(input:checked) {
         flex: 100;
+        width: 100%;
     }
 
     #page-sidebar:has(input:checked) {
@@ -377,7 +396,16 @@ th {
     .sidebar {
         padding: 0.5em;
         margin: 0;
+        width: auto;
+        flex-shrink: 1;
         max-height: calc(100vh - (0.5em * 2));
+    }
+
+    /* Make search flow in the sidebar instead of overlaying content */
+    #site-search {
+        position: static;
+        padding-left: 1em;
+        padding-top: 0.5rem;
     }
 
     #site-search-bar {
@@ -385,7 +413,8 @@ th {
     }
 
     #site-search-results {
-        top: 4.5rem;
+        position: absolute;
+        top: auto;
         max-height: 50em;
         width: 90%;
     }

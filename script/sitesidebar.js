@@ -165,6 +165,7 @@ function populateSiteSidebar(pathToHomeDirectory, siteIndex) {
     const inputSearch = document.createElement("input");
     inputSearch.id = "site-search-bar";
     inputSearch.type = "text";
+    inputSearch.placeholder = "Search...";
 
     const ulSearchResults = document.createElement("ul");
     ulSearchResults.id = "site-search-results";
