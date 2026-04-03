@@ -1,5 +1,6 @@
 # Generated output — do not commit, regenerate with update_fileguide.py
 files/*.html
+files/old/*
 guides/*.html
 data/search.js
 data/community-notes.js

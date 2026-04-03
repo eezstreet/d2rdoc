@@ -373,7 +373,8 @@ th {
         display: flex;
     }
 
-    #page-hamburger:has(input:not(:checked)) ~ ul {
+    #page-hamburger:has(input:not(:checked)) ~ ul,
+    #page-hamburger:has(input:not(:checked)) ~ #version-switcher-container {
         display: none !important;
     }
 
@@ -425,7 +426,8 @@ th {
 
     #site-hamburger:has(input:not(:checked)) ~ #site-search,
     #site-hamburger:has(input:not(:checked)) ~ .site-index,
-    #page-hamburger:has(input:not(:checked)) ~ ul {
+    #page-hamburger:has(input:not(:checked)) ~ ul,
+    #page-hamburger:has(input:not(:checked)) ~ #version-switcher-container {
         display: none !important;
     }
 

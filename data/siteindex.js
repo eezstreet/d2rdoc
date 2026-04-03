@@ -74,6 +74,10 @@ const siteIndex = [
                 "path": "/files/hireling.html"
             },
             {
+                "name": "hirelingdesc.txt",
+                "path": "/files/hirelingdesc.html"
+            },
+            {
                 "name": "inventory.txt",
                 "path": "/files/inventory.html"
             },

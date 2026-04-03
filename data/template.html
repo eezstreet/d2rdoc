@@ -77,13 +77,19 @@
                 <input type="checkbox"></input>
             </label>
         </nav>
-        <div id="file-content" class="content">
-            <noscript><&&></noscript>
+        <div class="content">
+            <div id="file-content">
+                <noscript><&&></noscript>
+            </div>
+            <footer>
+                This is a community project and not affiliated with Blizzard Entertainment. Want to contribute? Check it out on <a href="https://github.com/eezstreet/d2rdoc">GitHub!</a>
+            </footer>
         </div>
         <nav id="page-sidebar" class="sidebar">
             <label id="page-hamburger" class="hamburger">
                 <input type="checkbox"></input>
             </label>
+            <div id="version-switcher-container"></div>
         </nav>
     </div>
 
@@ -93,19 +99,22 @@
     <script src="../data/siteindex.js"></script>
     <script src="../data/search.js"></script>
     <script src="../script/sitesidebar.js"></script>
+    <script src="../data/schemas.js"></script>
     <script src="../data/files/<@@>.js"></script>
     <$$>
     <script src="../data/community-notes.js"></script>
     <script src="../script/file.js"></script>
+    <script src="../script/version-switcher.js"></script>
     <script>
+        var currentFileKey = "<@@>";
         populateSiteSidebar("..", siteIndex);
-        populateFile(files["<@@>"]);
-        populatePageSidebar(files["<@@>"]);
-        fixupPageSidebar();
+        initVersionSwitcher("..", currentFileKey, function() {
+            populateFile(files[currentFileKey]);
+            populatePageSidebar(files[currentFileKey]);
+            fixupPageSidebar();
+        });
     </script>
 
-    <footer>
-        This is a community project and not affiliated with Blizzard Entertainment. Want to contribute? Check it out on <a href="https://github.com/eezstreet/d2rdoc">GitHub!</a>
-    </footer>
+
 </body>
 </html>

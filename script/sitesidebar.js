@@ -273,23 +273,33 @@ function playActiveAnimation() {
     }
 }
 
+var pageSidebarObserver = null;
+
 function fixupPageSidebar() {
+    // Disconnect previous observer to prevent leaks on re-render
+    if (pageSidebarObserver) {
+        pageSidebarObserver.disconnect();
+    }
+
     // Add highlighting on scroll
-    const observer = new IntersectionObserver((entries) => {
+    pageSidebarObserver = new IntersectionObserver((entries) => {
         for (const entry of entries) {
             const id = entry.target.id;
             const selector = `#page-sidebar li a[href="${id ? `#${id}` : ""}"]`;
+            const el = document.querySelector(selector);
 
-            if (entry.isIntersecting) {
-                document.querySelector(selector).classList.add('current');
-            }
-            else {
-                document.querySelector(selector).classList.remove('current');
+            if (el) {
+                if (entry.isIntersecting) {
+                    el.classList.add('current');
+                }
+                else {
+                    el.classList.remove('current');
+                }
             }
         };
     });
     document.querySelectorAll('.page-sidebar-target').forEach((field) => {
-        observer.observe(field);
+        pageSidebarObserver.observe(field);
     });
 
     // Add responsive design support to the page sidebar after it is generated
