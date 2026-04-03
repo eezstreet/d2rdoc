@@ -5,12 +5,13 @@ from generate_html_files import generateHtmlFiles
 from generate_search import generateSearch
 from generate_community_notes import generateCommunityNotes
 from generate_guides import generateGuides
+from generate_sitemap import generateSitemap
 from validate import validateDataGuide
 
 def parseArgs():
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('-a', choices=['all', 'files', 'search', 'notes', 'guides', 'validate'], required=True)
+    parser.add_argument('-a', choices=['all', 'files', 'search', 'notes', 'guides', 'sitemap', 'validate'], required=True)
     parser.add_argument("-data", help="path to the directory that contains the data files")
     parser.add_argument("-html", help="path to the directory that contains the .html files")
     parser.add_argument("-p", action='store_true', help="whether perforce should be used")
@@ -64,6 +65,12 @@ def main():
     if runAll or args.a == 'guides':
         repoRoot = os.path.dirname(os.path.abspath(args.data))
         if not generateGuides(repoRoot, args.data, args.p):
+            return
+
+    # Generate sitemap
+    if runAll or args.a == 'sitemap':
+        repoRoot = os.path.dirname(os.path.abspath(args.data))
+        if not generateSitemap(repoRoot):
             return
 
     # Validate

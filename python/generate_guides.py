@@ -113,7 +113,7 @@ def generateGuides(repoRoot, dataPath, usePerforce):
             meta += f'<p class="guide-description">{description}</p>\n'
 
         slug = Path(filename).stem
-        htmlContent = template.replace("<##>", title).replace("<@@>", meta + content)
+        htmlContent = template.replace("<##>", title).replace("<%%>", slug).replace("<@@>", meta + content)
 
         outputPath = guidesOutputPath / f"{slug}.html"
         with io.open(outputPath, 'w', encoding='utf-8') as f:

@@ -3,6 +3,7 @@ files/*.html
 guides/*.html
 data/search.js
 data/community-notes.js
+sitemap.xml
 
 # Python
 __pycache__/
